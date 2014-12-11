@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwakenYourSmile.Web", "AwakenYourSmile.Web\AwakenYourSmile.Web.csproj", "{39B2ED25-6AD4-45C7-A9C5-CC30D694CC75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rainbow.Web", "Rainbow\Rainbow.Web.csproj", "{8585A923-ED0F-4C4A-898A-DE6903AA781E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39B2ED25-6AD4-45C7-A9C5-CC30D694CC75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B2ED25-6AD4-45C7-A9C5-CC30D694CC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B2ED25-6AD4-45C7-A9C5-CC30D694CC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B2ED25-6AD4-45C7-A9C5-CC30D694CC75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8585A923-ED0F-4C4A-898A-DE6903AA781E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8585A923-ED0F-4C4A-898A-DE6903AA781E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8585A923-ED0F-4C4A-898A-DE6903AA781E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8585A923-ED0F-4C4A-898A-DE6903AA781E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
