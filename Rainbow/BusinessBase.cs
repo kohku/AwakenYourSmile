@@ -63,6 +63,7 @@ namespace Rainbow.Web
         /// </summary>
         [DataMember]
         [ConcurrencyCheck]
+        [System.ComponentModel.DataAnnotations.Key]
         public KEY ID
         {
             [System.Diagnostics.DebuggerStepThrough]

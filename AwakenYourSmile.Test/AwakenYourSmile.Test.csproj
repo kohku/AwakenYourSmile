@@ -70,6 +70,10 @@
       <Project>{4f212f44-9e37-4538-9805-98e3c72f324b}</Project>
       <Name>AwakenYourSmile</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Rainbow\Rainbow.Web.csproj">
+      <Project>{8585a923-ed0f-4c4a-898a-de6903aa781e}</Project>
+      <Name>Rainbow.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

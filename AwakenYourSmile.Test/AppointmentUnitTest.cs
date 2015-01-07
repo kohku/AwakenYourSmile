@@ -29,24 +29,25 @@ namespace AwakenYourSmile.Test
                 Email = "email@someone.com",
                 Notes = "Some notes"
             };
-            
-            Appointment.InsertAppointment(appointment);
 
-            var loaded = Appointment.GetAppointments(appointment.ID).FirstOrDefault();
+            appointment.Save();
+
+            var loaded = Appointment.Load(appointment.ID);
 
             Assert.AreEqual<Appointment>(appointment, loaded);
 
             loaded.Notes += " Adding more notes";
 
-            Appointment.UpdateAppointment(loaded);
+            loaded.AcceptChanges();
 
-            var reloaded = Appointment.GetAppointments(loaded.ID).FirstOrDefault();
+            var reloaded = Appointment.Load(loaded.ID);
 
             Assert.AreEqual(loaded.Notes, reloaded.Notes);
 
-            Appointment.DeleteAppointment(reloaded);
+            reloaded.Delete();
+            reloaded.AcceptChanges();
 
-            var removed = Appointment.GetAppointments(reloaded.ID).FirstOrDefault();
+            var removed = Appointment.Load(reloaded.ID);
 
             Assert.IsNull(removed);
         }
