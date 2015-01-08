@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F212F44-9E37-4538-9805-98E3C72F324B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AwakenYourSmile</RootNamespace>
+    <AssemblyName>AwakenYourSmile</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Appointment.cs" />
+    <Compile Include="ClinicalHistory.cs" />
+    <Compile Include="DentalContext.cs" />
+    <Compile Include="enums.cs" />
+    <Compile Include="Migrations\201501071733438_NewModels.cs" />
+    <Compile Include="Migrations\201501071733438_NewModels.Designer.cs">
+      <DependentUpon>201501071733438_NewModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501071841552_IncludingBusinessBase.cs" />
+    <Compile Include="Migrations\201501071841552_IncludingBusinessBase.Designer.cs">
+      <DependentUpon>201501071841552_IncludingBusinessBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501072359185_ClinicalHistory.cs" />
+    <Compile Include="Migrations\201501072359185_ClinicalHistory.Designer.cs">
+      <DependentUpon>201501072359185_ClinicalHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501080000299_ClinicalHistory1.cs" />
+    <Compile Include="Migrations\201501080000299_ClinicalHistory1.Designer.cs">
+      <DependentUpon>201501080000299_ClinicalHistory1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501081733241_ClinicalHistoryMoreProperties.cs" />
+    <Compile Include="Migrations\201501081733241_ClinicalHistoryMoreProperties.Designer.cs">
+      <DependentUpon>201501081733241_ClinicalHistoryMoreProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Patient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201501071733438_NewModels.resx">
+      <DependentUpon>201501071733438_NewModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501071841552_IncludingBusinessBase.resx">
+      <DependentUpon>201501071841552_IncludingBusinessBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501072359185_ClinicalHistory.resx">
+      <DependentUpon>201501072359185_ClinicalHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501080000299_ClinicalHistory1.resx">
+      <DependentUpon>201501080000299_ClinicalHistory1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501081733241_ClinicalHistoryMoreProperties.resx">
+      <DependentUpon>201501081733241_ClinicalHistoryMoreProperties.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rainbow\Rainbow.Web.csproj">
+      <Project>{8585a923-ed0f-4c4a-898a-de6903aa781e}</Project>
+      <Name>Rainbow.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
