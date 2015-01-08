@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Bienvenido a tu administrador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="headline">
+    <div class="container">
+        <h3>Bienvenidos</h3>
+    </div>
+</section>
+<section class="container page-content">
+
+    <hr class="vertical-space3">
+
+    <h4>Despierta tu sonrisa</h4>
+    <br />
+    <p><strong>Bienvenido a tu administrador</strong></p>
+
+
+    <div class="eight columns offset-by-one">
+        <div class="contact-form">
+            <div class="clr"></div><br />
+            <form action="#" method="post" class="frmContact">
+                <h5>Usuario</h5>
+                <input id="txtName" name="txtName" type="text" class="txbx" value="usuario" /><br />
+                <h5>Contraseña</h5>
+                <input id="txtEmail" name="txtEmail" type="text" class="txbx" value="contraseña" /><br />
+
+                <button name="" type="button" class="sendbtn btnSend">Ingresar</button>
+
+                <div id="spanMessage">
+                </div>
+            </form>
+        </div>
+    </div><!-- end-contact-form  -->
+</section><!-- container -->
