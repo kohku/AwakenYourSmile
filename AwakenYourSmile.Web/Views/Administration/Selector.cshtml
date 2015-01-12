@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Bienvenido a tu administrador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container">
+
+    <section class="our-process-wrap">
+
+        <div class="icon-top-title aligncenter">
+            <hr class="vertical-space2">
+            <i class="icomoon-grin"></i>
+            <hr class="vertical-space1">
+            <h2>Bienvenido @User.Identity.GetUserName()</h2>
+            <h3 class="slight">Administrador de Despierta Tu Sonrisa :D</h3>
+            <hr class="vertical-space4">
+        </div>
+        <div class="our-process proc3level">
+            <div class="our-process-item">
+                <i class="icomoon-file"></i>
+                <div class="our-process-content">
+                    <h5>1. Historial Clínico</h5>
+                    <p>@Html.ActionLink("Crea o actualiza tus historiales clínicos.", "Index", "Historial")</p>
+                </div>
+            </div>
+            <div class="our-process-item">
+                <i class="icomoon-alarm"></i>
+                <div class="our-process-content">
+                    <h5>2.Agenda</h5>
+                    <p>@Html.ActionLink("Consulta tus citas pendientes.", "Index", "Agenda")</p>
+                </div>
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Administration", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="our-process-item">
+                        <i class="icomoon-exit"></i>
+                        <div class="our-process-content">
+                            <h5>3.Salir</h5>
+                            <p id="logOffBtn">Salir del administrador</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+</section>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#logOffBtn").click(function () {
+                $("#logoutForm").submit();
+            }).css("cursor", "pointer");
+        });
+    </script>
+}

@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Bienvenido a tu administrador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container">
+
+    <section class="our-process-wrap">
+
+        <div class="icon-top-title aligncenter">
+            <hr class="vertical-space2">
+            <i class="icomoon-grin"></i>
+            <hr class="vertical-space1">
+            <h2>Bienvenido @User.Identity.GetUserName()</h2>
+            <h3 class="slight">Administrador de Despierta Tu Sonrisa :D</h3>
+            <hr class="vertical-space4">
+        </div>
+        <div class="our-process proc3level">
+            <div class="our-process-item">
+                <i class="icomoon-pencil"></i>
+                <div class="our-process-content">
+                    <h5>1. Crea un nuevo historial clínico</h5>
+                </div>
+            </div>
+
+            <div class="our-process-item">
+                <i class="icomoon-search"></i>
+                <div class="our-process-content">
+                    <h5>2.Busca un historial clínico</h5>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+

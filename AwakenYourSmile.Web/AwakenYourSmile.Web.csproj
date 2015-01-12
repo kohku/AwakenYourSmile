@@ -161,6 +161,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\AgendaController.cs" />
+    <Compile Include="Controllers\HistorialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadFileController.cs" />
     <Compile Include="Global.asax.cs">
@@ -652,6 +654,9 @@
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\Administration\Register.cshtml" />
     <Content Include="Views\UploadFile\Index.cshtml" />
+    <Content Include="Views\Administration\Selector.cshtml" />
+    <Content Include="Views\Historial\Index.cshtml" />
+    <Content Include="Views\Agenda\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

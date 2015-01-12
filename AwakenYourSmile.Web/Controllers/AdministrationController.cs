@@ -38,14 +38,21 @@ namespace AwakenYourSmile.Web.Controllers
         }
 
         //
-        // GET: /Administration/
+        // GET: /Administration
         public ActionResult Index()
         {
             return View();
         }
 
         //
-        // POST: /Account/Login
+        // GET: /Administration/Login
+        public ActionResult Login()
+        {
+            return RedirectToAction("Index");
+        }
+
+        //
+        // POST: /Administration/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -70,7 +77,7 @@ namespace AwakenYourSmile.Web.Controllers
         }
 
         //
-        // GET: /Account/Register
+        // GET: /Administration/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -78,7 +85,7 @@ namespace AwakenYourSmile.Web.Controllers
         }
 
         //
-        // POST: /Account/Register
+        // POST: /Administration/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -98,7 +105,7 @@ namespace AwakenYourSmile.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Selector", "Administration");
                 }
                 else
                 {
@@ -108,6 +115,24 @@ namespace AwakenYourSmile.Web.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        //
+        // GET: /Administration/Selector
+        [Authorize]
+        public ActionResult Selector()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Administration/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Administration");
         }
 
         #region Helpers
@@ -143,7 +168,7 @@ namespace AwakenYourSmile.Web.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Selector", "Administration");
             }
         }
 
