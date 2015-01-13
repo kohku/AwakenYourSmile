@@ -10,7 +10,8 @@ namespace AwakenYourSmile.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //return View();
+            return Redirect(Url.Content("~/index.html"));
         }
 
         public ActionResult About()

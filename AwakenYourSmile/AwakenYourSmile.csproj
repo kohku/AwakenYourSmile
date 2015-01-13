@@ -72,6 +72,14 @@
     <Compile Include="Migrations\201501081733241_ClinicalHistoryMoreProperties.Designer.cs">
       <DependentUpon>201501081733241_ClinicalHistoryMoreProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501131814532_UpdatingModels.cs" />
+    <Compile Include="Migrations\201501131814532_UpdatingModels.Designer.cs">
+      <DependentUpon>201501131814532_UpdatingModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501131823407_NullableDates.cs" />
+    <Compile Include="Migrations\201501131823407_NullableDates.Designer.cs">
+      <DependentUpon>201501131823407_NullableDates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501081733241_ClinicalHistoryMoreProperties.resx">
       <DependentUpon>201501081733241_ClinicalHistoryMoreProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501131814532_UpdatingModels.resx">
+      <DependentUpon>201501131814532_UpdatingModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501131823407_NullableDates.resx">
+      <DependentUpon>201501131823407_NullableDates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

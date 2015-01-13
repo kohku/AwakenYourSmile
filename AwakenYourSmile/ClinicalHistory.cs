@@ -1,6 +1,8 @@
 ﻿using Rainbow.Web;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,7 @@ namespace AwakenYourSmile
         }
 
         private string _name;
+        [Required]
         public string Name
         {
             get { return _name; }
@@ -76,6 +79,7 @@ namespace AwakenYourSmile
         }
 
         private DateTime? _birthDate;
+        [DataType(DataType.Date)]
         public DateTime? BirthDate
         {
             get { return _birthDate; }
@@ -739,8 +743,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private DateTime _spontaneousBleedingNoseDate;
-        public DateTime SpontaneousBleedingNoseDate
+        private DateTime? _spontaneousBleedingNoseDate;
+        public DateTime? SpontaneousBleedingNoseDate
         {
             get { return _spontaneousBleedingNoseDate; }
             set
@@ -784,8 +788,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private DateTime _bloodTransfusionsDate;
-        public DateTime BloodTransfusionsDate
+        private DateTime? _bloodTransfusionsDate;
+        public DateTime? BloodTransfusionsDate
         {
             get { return _bloodTransfusionsDate; }
             set
@@ -1730,27 +1734,34 @@ namespace AwakenYourSmile
 
         protected override void ValidationRules()
         {
-            throw new NotImplementedException();
+            AddRule("EmptyCreatedBy","CreatedBy must be set.", 
+                string.IsNullOrEmpty(this.CreatedBy));
+            AddRule("MaxCreatedByLength", "CreatedBy cannot exceed 256 chars.", 
+                !string.IsNullOrEmpty(this.CreatedBy) && this.CreatedBy.Length > 256);
+            AddRule("EmptyLastUpdatedBy", "LastUpdatedBy must be set.", 
+                !IsNew && IsChanged && string.IsNullOrEmpty(this.LastUpdatedBy));
+            AddRule("MaxLastUpdatedByLength", "LastUpdatedBy cannot exceed 256 chars.", 
+                !IsNew && IsChanged && !string.IsNullOrEmpty(this.LastUpdatedBy) && this.LastUpdatedBy.Length > 256);
         }
 
         protected override ClinicalHistory DataSelect(Guid id)
         {
-            throw new NotImplementedException();
+            return ClinicalHistory.GetClinicalHistories(id, null, null).FirstOrDefault();
         }
 
         protected override void DataUpdate()
         {
-            throw new NotImplementedException();
+            ClinicalHistory.UpdateClinicalHistory(this);
         }
 
         protected override void DataInsert()
         {
-            throw new NotImplementedException();
+            ClinicalHistory.InsertClinicalHistory(this);
         }
 
         protected override void DataDelete()
         {
-            throw new NotImplementedException();
+            ClinicalHistory.DeleteClinicalHistory(this);
         }
 
         public bool Equals(ClinicalHistory other)
@@ -1759,6 +1770,71 @@ namespace AwakenYourSmile
                 return false;
 
             return this.ID == other.ID;
+        }
+
+        internal static void UpdateClinicalHistory(ClinicalHistory entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException("entity");
+
+            using (var db = new DentalContext("DentalContextDb"))
+            {
+                db.ClinicalHistories.Attach(entity);
+
+                var entry = db.Entry(entity);
+                entry.State = EntityState.Modified;
+
+                db.SaveChanges();
+            }
+        }
+
+        internal static void InsertClinicalHistory(ClinicalHistory entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException("entity");
+
+            using (var db = new DentalContext("DentalContextDb"))
+            {
+                db.ClinicalHistories.Add(entity);
+
+                db.SaveChanges();
+            }
+        }
+
+        internal static void DeleteClinicalHistory(ClinicalHistory entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException("entity");
+
+            using (var db = new DentalContext("DentalContextDb"))
+            {
+                var item = db.ClinicalHistories.Find(entity.ID);
+
+                if (item == null)
+                    return;
+
+                db.ClinicalHistories.Remove(item);
+
+                db.SaveChanges();
+            }
+        }
+
+        public static List<ClinicalHistory> GetClinicalHistories(Guid? id, string name, string nickname)
+        {
+            List<ClinicalHistory> entities = new List<ClinicalHistory>();
+
+            using (var db = new DentalContext("DentalContextDb"))
+            {
+                var query = from c in db.ClinicalHistories
+                            where !id.HasValue || c.ID == id.Value
+                            where string.IsNullOrEmpty(name) || c.Name.ToLower().Contains(name.ToLower())
+                            where string.IsNullOrEmpty(nickname) || c.NickName == nickname
+                            select c;
+
+                entities.AddRange(query);
+            }
+
+            return entities;
         }
     }
 }

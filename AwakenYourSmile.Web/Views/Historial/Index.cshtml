@@ -18,17 +18,22 @@
         </div>
         <div class="our-process proc3level">
             <div class="our-process-item">
-                <i class="icomoon-pencil"></i>
+                <a href="@Url.Action("Nuevo", "Historial")">
+                    <i class="icomoon-pencil"></i>
+                </a>
                 <div class="our-process-content">
-                    <h5>1. Crea un nuevo historial clínico</h5>
+                    <h5>1. Crea</h5>
+                    <p>@Html.ActionLink("Crea un nuevo historial clínico.", "Nuevo", "Historial")</p>
                 </div>
             </div>
 
             <div class="our-process-item">
-                <i class="icomoon-search"></i>
+                <a href="@Url.Action("Busqueda", "Historial")">
+                    <i class="icomoon-search"></i>
+                </a>
                 <div class="our-process-content">
-                    <h5>2.Busca un historial clínico</h5>
-                    <p></p>
+                    <h5>2. Busca</h5>
+                    <p>@Html.ActionLink("Busca un historial clínico.", "Busqueda", "Historial")</p>
                 </div>
             </div>
         </div>

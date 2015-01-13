@@ -1,0 +1,562 @@
+﻿@using AwakenYourSmile.Web.Models;
+@using System.Globalization;
+@model AwakenYourSmile.ClinicalHistory
+@{
+    ViewBag.Title = "Crea un nuevo historial clínico.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.CreatedBy)
+    <section class="container page-content">
+        <hr class="vertical-space2">
+        <div class="sixteen columns">
+            <div class="one_third">
+                <h6>Nombre:</h6>
+                @Html.TextBoxFor(model => model.Name, new { placeholder = "Nombre" })
+                @Html.ValidationMessageFor(model => model.Name)
+
+                @Html.ValidationSummary()
+                <input type="submit" value="Crear" class="form-submit-button">
+
+                <h6>Diminutivo:</h6>
+                @Html.TextBoxFor(model => model.NickName, new { placeholder = "Diminutivo" })
+                @Html.ValidationMessageFor(model => model.NickName)
+                <h6>Edad:</h6>
+                @Html.TextBoxFor(model => model.Age, new { placeholder = "Edad" })
+                @Html.ValidationMessageFor(model => model.Age)
+                <h6>Sexo:</h6>
+                @Html.DropDownListFor(m => m.Gender, ClinicalHistoryModelHelper.Genders, "Seleccione")
+                @Html.ValidationMessageFor(model => model.Gender)
+                <h6>Fecha de nacimiento:</h6>
+                @Html.TextBoxFor(model => model.BirthDate, String.Format("{0:yyyy-MM-dd}", Model.BirthDate), new { placeholder = "Cumpleaños" })
+                <h6>Domicilio:</h6>
+                @Html.TextBoxFor(model => model.Address, new { placeholder = "Domicilio" })
+                @Html.ValidationMessageFor(model => model.Address)
+                <h6>Colonia:</h6>
+                @Html.TextBoxFor(model => model.Address2, new { placeholder = "Colonia" })
+                @Html.ValidationMessageFor(model => model.Address2)
+                <h6>Ciudad:</h6>
+                @Html.TextBoxFor(model => model.CityState, new { placeholder = "Ciudad" })
+                @Html.ValidationMessageFor(model => model.CityState)
+                <h6>Teléfono:</h6>
+                @Html.TextBoxFor(model => model.PhoneNumber, new { placeholder = "Teléfono" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+                <h6>Escuela:</h6>
+                @Html.TextBoxFor(model => model.School, new { placeholder = "Escuela" })
+                @Html.ValidationMessageFor(model => model.School)
+
+                <h3>Papás</h3>
+                <h6>Nombre del papá:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="papá" />
+                <h6>Teléfono:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="teléfono" />
+                <h6>Ocupación:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Ocupación" />
+                <h6>Email:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Email" />
+                <h6>Nombre de la mamá:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Colonia" />
+                <h6>Teléfono:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Ciudad" />
+                <h6>Ocupación:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Teléfono" />
+                <h6>Email:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Teléfono" />
+                <h3>Motivo de la consulta</h3>
+                <select name="select2" id="select2">
+                    <option>Revisión</option>
+                    <option>Dolor</option>
+                    <option>Dientes Chuecos</option>
+                    <option>Traumatismo</option>
+                    <option>Lesión bucal</option>
+                </select>
+                <h6>Otro:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+                <h6>Recomendado por:</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Recomendado" />
+                <div class="spanMessage"></div>
+            </div>
+            <div class="one_third">
+                <h3>Historia clínica</h3>
+                <p>Eliga la respuesta o explíquela claramente ya que es importante su sinceridad para el correcto diagnóstico y atención de su hijo (a).</p>
+                <br>      <h3>Odontopediatría</h3>
+                <h6>¿Has asistido al odontólogo anteriormente?</h6>
+                <label>
+                    Si
+                    <input type="checkbox" name="Si" id="si">
+                    No
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>¿Por qué?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+
+                <br> <h6>La experiencia el tratamiento fue:</h6>
+                <label>
+                    Buena
+                    <input type="checkbox" name="Si" id="si">
+                    Mala
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br> <h6>¿Cómo piensa que reaccionó el niño en visitas médicas anteriores?</h6>
+                <label>
+                    Buena
+                    <input type="checkbox" name="Si" id="si">
+                    Regular
+                    <input type="checkbox" name="regular" id="regular">
+                    Mala
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br><h6>¿Cómo calificaría su grado de ansiedad en este momento?</h6>
+                <label>
+                    Buena
+                    <input type="checkbox" name="Si" id="si">
+                    Regular
+                    <input type="checkbox" name="regular" id="regular">
+                    Mala
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br> <h6>¿Cómo piensa que reaccione el niño en el sillón dental?</h6>
+                <label>
+                    Buena
+                    <input type="checkbox" name="Si" id="si">
+                    Regular
+                    <input type="checkbox" name="regular" id="regular">
+                    Mala
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br><h6>¿Cómo es el rendimiento escolar del niño?</h6>
+                <label>
+                    Buena
+                    <input type="checkbox" name="Si" id="si">
+                    Regular
+                    <input type="checkbox" name="regular" id="regular">
+                    Mala
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br><h6>¿Cómo motiva al niño?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="motivación" />
+
+                <h6>¿Se usó anestesia local anteriormente?</h6>
+                <label>
+                    Si
+                    <input type="checkbox" name="Si" id="si">
+                    No
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br><h6>¿Tuvo una reacción adversa?</h6>
+                <label>
+                    Si
+                    <input type="checkbox" name="Si" id="si">
+                    No
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br><h6>¿Cuál?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="reaación" />
+
+                <h6>¿Su hijo se cepilla los dientes solo?</h6>
+                <label>
+                    Si
+                    <input type="checkbox" name="Si" id="si">
+                    No
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br><h6>¿Cuántas veces al día?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+
+                <h6>Usa o usó</h6>
+                <label>
+                    Chupón
+                    <input type="checkbox" name="Si" id="si">
+                    Biberón
+                    <input type="checkbox" name="regular" id="regular">
+                    Se chupa el dedo
+                    <input type="checkbox" name="No" id="No">
+                    Se muerde las uñas
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <h6>¿A que edad empezó y cuando lo dejó?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+
+                <br><h6>¿Fue alimentado por seno materno?</h6>
+                <label>
+                    Si
+                    <input type="checkbox" name="Si" id="si">
+                    No
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <br><h6>Tiempo</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+
+                <br> <h6>¿Su alimentación es?</h6>
+                <label>
+                    Blanda
+                    <input type="checkbox" name="Si" id="si">
+                    Fibrosa y dura
+                    <input type="checkbox" name="regular" id="regular">
+                    Mixta
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <br>
+                <h6>Cuadro de inmunizaciones</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+
+                <h6>Habitación</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+
+
+                <div class="spanMessage"></div>
+            </div>
+            <div class="one_third column-last">
+                <h3>Antecedentes médicos</h3>
+                <br>  <h6>¿Tuvo problemas durante el embarazo o al nacer?</h6>
+                <label>
+                    Si
+                    <input type="checkbox" name="Si" id="si">
+                    No
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>¿Cuáles?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+                <br>  <h6>¿La salud en general del niño es?</h6>
+                <label>
+                    Buena
+                    <input type="checkbox" name="Si" id="si">
+                    Regular
+                    <input type="checkbox" name="No" id="No">
+                    Mala
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+
+                <br>  <h6>¿Es alérgico?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>A</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+
+                <br>  <h6>¿Ha tenido sangrado espontáneo por la nariz?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>Fecha</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                <h6>Causa</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+
+                <br>  <h6>¿Presenta moretones con facilidad?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>Fecha</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                <h6>Causa</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+
+                <br>  <h6>¿Ha recibido transfusiones sanguíneas?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>Fecha</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                <h6>Causa</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+
+                <br>  <h6>¿Ha sido hospitalizado?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>Fecha</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                <h6>Causa</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+
+                <br>  <h6>¿Ha sido hospitalizado?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>Fecha</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                <h6>Causa</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+
+                <br>  <h6>¿Actualmente toma algún medicamento?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>Fecha</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                <h6>¿Cuál y por qué?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+
+                <br>  <h6>¿Actualmente toma algún medicamento?</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label><br>
+                <h6>Fecha</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                <h6>¿Cuál y por qué?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+
+                <br>  <h6>¿Ha padecido o padece alguna de las siguientes enfermedades?</h6>
+                <label>
+                    Sarampión
+                    <input type="checkbox" name="Si" id="si">
+                    Asma
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <label>
+                    Enfermedad renal
+                    <input type="checkbox" name="Si" id="si">
+                    Enfermedad del corazón
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <label>
+                    Varicela
+                    <input type="checkbox" name="Si" id="si">
+                    Leucemia
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <label>
+                    Anemia
+                    <input type="checkbox" name="Si" id="si">
+                    Diabetes
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <label>
+                    Hepatitis
+                    <input type="checkbox" name="Si" id="si">
+                    Hemofilia
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <label>
+                    VIH
+                    <input type="checkbox" name="Si" id="si">
+                    Epilepsia
+                    <input type="checkbox" name="No" id="No">
+                </label>
+
+                <h3>Antecedentes hereditarios</h3>
+                <br><h6>¿El padre, la mare, abuelos o familiares cercanos presentan alguna enfermedad como: diabetes, hipertensión arterial sistémica, problemas del corazón, problemas de la sangre, retraso mental, labio o paladar hendido? Especifique ¿Cuál? y ¿Quién?</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <h3>Exploración intraoral</h3>
+                <h5>Mucosas</h5>
+
+                <br><h6>Frenillos</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Amigdalas</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Paladar duro</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Paladar blando</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <h4>Periodonto</h4>
+                <h5>Oclusión</h5>
+                <br><h6>Plano terminal<small> Derecho</small></h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6><small> Izquierdo</small></h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Clase molar<small> Derecho</small></h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6><small> Izquierdo</small></h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Clase canina<small> Derecho</small></h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6><small> Izquierdo</small></h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Overbite</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Overjet</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Forma de arco superior</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h6>Forma de arco interior</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br><h5>Hábitos</h5>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br>  <h6>Succión digital</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <br><h6>Frecuencia</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Intensidadd</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Tiempo</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br>  <h6>Deglución atípica</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <br><h6>Frecuencia</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Intensidadd</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Tiempo</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br>  <h6>Bruxismo</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <br><h6>Frecuencia</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Intensidadd</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Tiempo</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br>  <h6>Respiración oral</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <br><h6>Frecuencia</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Intensidadd</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Tiempo</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br>  <h6>Onicofagia</h6>
+                <label>
+                    No
+                    <input type="checkbox" name="Si" id="si">
+                    Si
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <br><h6>Frecuencia</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Intensidadd</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br><h6>Tiempo</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br>  <h6>Otros</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br>  <h6>Anomalías dentales</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br>  <h6>Hallazgos radiográficos</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                <br>  <h6>Impresión diagnóstica y padecimiento actual</h6>
+                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+
+                <br>  <h6>Cooperación del paciente durante la exploración</h6>
+                <label>
+                    Cooperador
+                    <input type="checkbox" name="Si" id="si">
+                    Potencialmente cooperador
+                    <input type="checkbox" name="No" id="No">
+                    No cooperador
+                    <input type="checkbox" name="No" id="No">
+                </label>
+                <br>  <h4>Subir archivo</h4>
+                <input name="" type="file">
+
+            </div>
+        </div>
+    </section>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryUI")
+    @Scripts.Render("~/bundles/modernizr")
+    @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
+    {
+        @Scripts.Render("~/Scripts/jquery-ui-datepicker-es.js");
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /* localizing calendar content to spanish language */
+                $('#__birthDay').datepicker($.datepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"]);
+            });
+        </script>
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var datefields = $("input[type='date']");
+
+            if (!Modernizr.inputtypes.date) {
+                datefields
+                    .datepicker()
+                    .each(function () {
+                        // Turn ISO 8601 date string into US date string
+                        var dateParts = this.value.split("-"),
+                            date = $.map(dateParts, function (el) {
+                                return !isNaN(parseInt(el, 10)) ? el : null;
+                            }).length === 3
+                                ? new Date(dateParts[0], dateParts[1], dateParts[2])
+                                : null;
+                        this.type = "text";
+                        this.value = !date ? "" :
+                       @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
+                        {
+                            @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                                                                        }
+                        else
+                        {
+                            @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+                                                                        }
+                    });
+            }
+        });
+    </script>
+}

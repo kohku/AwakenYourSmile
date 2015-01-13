@@ -18,16 +18,16 @@
         </div>
         <div class="our-process proc3level">
             <div class="our-process-item">
-                <i class="icomoon-file"></i>
+                <a href="@Url.Action("Index", "Historial")"><i class=" icomoon-file"></i></a>
                 <div class="our-process-content">
                     <h5>1. Historial Clínico</h5>
                     <p>@Html.ActionLink("Crea o actualiza tus historiales clínicos.", "Index", "Historial")</p>
                 </div>
             </div>
             <div class="our-process-item">
-                <i class="icomoon-alarm"></i>
+                <a href="@Url.Action("Index", "Agenda")"><i class=" icomoon-alarm"></i></a>
                 <div class="our-process-content">
-                    <h5>2.Agenda</h5>
+                    <h5>2. Agenda</h5>
                     <p>@Html.ActionLink("Consulta tus citas pendientes.", "Index", "Agenda")</p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#logOffBtn").click(function () {
+            $("i.icomoon-exit, #logOffBtn").click(function () {
                 $("#logoutForm").submit();
             }).css("cursor", "pointer");
         });

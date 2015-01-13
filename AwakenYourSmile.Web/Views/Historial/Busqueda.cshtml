@@ -1,0 +1,15 @@
+﻿@using AwakenYourSmile.Web.Models;
+@model ClinicalHistoryModelHelper
+@{
+    ViewBag.Title = "Busqueda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Busqueda</h2>
+
+<div>
+    @foreach (var item in Model.ClinicalHistories)
+    {
+        @Html.ActionLink(item.Name, "Modificar", new { id = item.ID })
+    }
+</div>

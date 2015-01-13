@@ -166,7 +166,7 @@ namespace AwakenYourSmile
             Appointment.DeleteAppointment(this);
         }
 
-        public static void InsertAppointment(Appointment entity)
+        internal static void InsertAppointment(Appointment entity)
         {
             if (entity == null)
                 throw new ArgumentNullException("entity");
@@ -179,25 +179,25 @@ namespace AwakenYourSmile
             }
         }
 
-        public static void DeleteAppointment(Appointment entity)
+        internal static void DeleteAppointment(Appointment entity)
         {
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
             using (var db = new DentalContext("DentalContextDb"))
             {
-                var appointment = db.Appointments.Find(entity.ID);
+                var item = db.Appointments.Find(entity.ID);
 
-                if (appointment == null)
+                if (item == null)
                     return;
 
-                db.Appointments.Remove(appointment);
+                db.Appointments.Remove(item);
 
                 db.SaveChanges();
             }
         }
 
-        public static void UpdateAppointment(Appointment entity)
+        internal static void UpdateAppointment(Appointment entity)
         {
             if (entity == null)
                 throw new ArgumentNullException("entity");
