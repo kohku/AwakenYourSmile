@@ -1,0 +1,56 @@
+﻿@using AwakenYourSmile.Web.Models;
+@model ClinicalHistoryModelHelper
+@{
+    ViewBag.Title = "Busca un historial clínico.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container page-content">
+
+    <hr class="vertical-space3">
+
+    <h4>Busca el historial clínico</h4>
+    <br />
+    <p><strong>Resultados</strong></p>
+
+    <div class="eight columns offset-by-one">
+        <div class="contact-form">
+            <div class="clr"></div><br />
+
+            <table id="results">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Diminutivo</th>
+                        <th>Cumpleaños</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.ClinicalHistories.Count > 0)
+                    {
+                        foreach (var item in Model.ClinicalHistories)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NickName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BirthDate)</td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Modificar", new { id = item.ID })
+                                    &nbsp;|&nbsp;
+                                    @Html.ActionLink("Borrar", "ConfirmarBorrar", new { id = item.ID })
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>No se encontraron coincidencias.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

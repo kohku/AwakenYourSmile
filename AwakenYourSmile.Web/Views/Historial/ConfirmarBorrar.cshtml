@@ -1,0 +1,36 @@
+﻿@using AwakenYourSmile.Web.Models;
+@using System.Globalization;
+@model AwakenYourSmile.ClinicalHistory
+@{
+    ViewBag.Title = "Confirmar borrado de historial clínico.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container">
+
+    <section class="our-process-wrap">
+
+        <div class="icon-top-title aligncenter">
+            <hr class="vertical-space2">
+            <i class="icomoon-grin"></i>
+            <hr class="vertical-space1">
+            <h2>Confirmar borrado de historial clínico.</h2>
+            <h3 class="slight">Administrador de Despierta Tu Sonrisa :D</h3>
+            <hr class="vertical-space4">
+        </div>
+        <div>
+            ¿Esta seguro de quere borrar el siguiente historial clínico?
+            <dl>
+                <dt>Nombre</dt>
+                <dd>@Html.DisplayFor(model => model.Name)</dd>
+                <dt>Diminutivo</dt>
+                <dd>@Html.DisplayFor(model => model.NickName)</dd>
+                <dt>Cumpleaños</dt>
+                <dd>@Html.DisplayFor(model => model.BirthDate)</dd>
+            </dl>
+            @Html.ActionLink("Confirmar borrado", "ConfirmarBorrar", new { id = Model.ID })
+            &nbsp;|&nbsp;
+            @Html.ActionLink("Cancelar", "Busqueda")
+        </div>
+    </section>
+</section>

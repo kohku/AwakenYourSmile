@@ -1746,7 +1746,7 @@ namespace AwakenYourSmile
 
         protected override ClinicalHistory DataSelect(Guid id)
         {
-            return ClinicalHistory.GetClinicalHistories(id, null, null).FirstOrDefault();
+            return ClinicalHistory.GetClinicalHistories(id, null, null, null).FirstOrDefault();
         }
 
         protected override void DataUpdate()
@@ -1819,7 +1819,7 @@ namespace AwakenYourSmile
             }
         }
 
-        public static List<ClinicalHistory> GetClinicalHistories(Guid? id, string name, string nickname)
+        public static List<ClinicalHistory> GetClinicalHistories(Guid? id, string name, string nickname, DateTime? birthDate)
         {
             List<ClinicalHistory> entities = new List<ClinicalHistory>();
 
@@ -1829,6 +1829,7 @@ namespace AwakenYourSmile
                             where !id.HasValue || c.ID == id.Value
                             where string.IsNullOrEmpty(name) || c.Name.ToLower().Contains(name.ToLower())
                             where string.IsNullOrEmpty(nickname) || c.NickName == nickname
+                            where !birthDate.HasValue || c.BirthDate.Value == birthDate.Value
                             select c;
 
                 entities.AddRange(query);

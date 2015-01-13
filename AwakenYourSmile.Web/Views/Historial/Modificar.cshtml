@@ -8,8 +8,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.ID)
-    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => odel.ID)
+    @Html.HiddenFor(model => model.CreatedmBy)
+    @Html.HiddenFor(model => model.DateCreated)
     <section class="container page-content">
         <hr class="vertical-space2">
         <div class="sixteen columns">
@@ -19,7 +20,7 @@
                 @Html.ValidationMessageFor(model => model.Name)
 
                 @Html.ValidationSummary()
-                <input type="submit" value="Crear" class="form-submit-button">
+                <input type="submit" value="Actualizar" class="form-submit-button">
 
                 <h6>Diminutivo:</h6>
                 @Html.TextBoxFor(model => model.NickName, new { placeholder = "Diminutivo" })

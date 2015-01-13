@@ -19,7 +19,10 @@ namespace Rainbow.Web.Utilities
 
         public static DateTime RoundToSqlDateTime(this DateTime dateTime)
         {
-            return DateTime.SpecifyKind(new SqlDateTime(dateTime).Value, dateTime.Kind);
+            var value = dateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MinValue.Value
+                : dateTime > SqlDateTime.MaxValue.Value ? SqlDateTime.MaxValue.Value : dateTime;
+
+            return DateTime.SpecifyKind(new SqlDateTime(value).Value, dateTime.Kind);
         }
 
         //private static readonly int[] OFFSET = { 0, -1, +1, 0, -1, +2, +1, 0, -1, +1 };

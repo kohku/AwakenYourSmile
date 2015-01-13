@@ -1,15 +1,81 @@
-﻿@using AwakenYourSmile.Web.Models;
+﻿@using System.Globalization;
+@using AwakenYourSmile.Web.Models;
 @model ClinicalHistoryModelHelper
 @{
-    ViewBag.Title = "Busqueda";
+    ViewBag.Title = "Busca un historial clínico.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Busqueda</h2>
+<section class="container page-content">
 
-<div>
-    @foreach (var item in Model.ClinicalHistories)
+    <hr class="vertical-space3">
+
+    <h4>Busca el historial clínico</h4>
+    <br />
+    <p><strong>Por nombre o fecha</strong></p>
+
+
+    <div class="eight columns offset-by-one">
+        <div class="contact-form">
+            <div class="clr"></div><br />
+            @using (Html.BeginForm("Resultados", "Historial", FormMethod.Get))
+            {
+                <h5>Nombre</h5>
+                @Html.TextBoxFor(model => model.Name, new { @class="txbx", placeholder = "nombre" })
+                <h5>Fecha</h5>
+                @Html.TextBoxFor(m => m.BirthDate, String.Format("{0:yyyy-MM-dd}", Model.BirthDate), new { id = "__birthDate", @class = "txbx", placeholder = "Cumpleaños", type = "date" })<br />
+
+                <input name="" type="submit" class="sendbtn btnSend" value="Buscar" />
+
+                <div id="spanMessage">
+                </div>
+            }
+        </div>
+    </div><!-- end-contact-form  -->
+    <div class="white-space"></div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryUI")
+    @Scripts.Render("~/bundles/modernizr")
+    @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
     {
-        @Html.ActionLink(item.Name, "Modificar", new { id = item.ID })
+        @Scripts.Render("~/Scripts/jquery-ui-datepicker-es.js");
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /* localizing calendar content to spanish language */
+                $('#__birthDate').datepicker($.datepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"]);
+            });
+        </script>
     }
-</div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var datefields = $("input[type='date']");
+
+            if (!Modernizr.inputtypes.date) {
+                datefields
+                    .datepicker()
+                    .each(function () {
+                        // Turn ISO 8601 date string into US date string
+                        var dateParts = this.value.split("-"),
+                            date = $.map(dateParts, function (el) {
+                                return !isNaN(parseInt(el, 10)) ? el : null;
+                            }).length === 3
+                                ? new Date(dateParts[0], dateParts[1], dateParts[2])
+                                : null;
+                        this.type = "text";
+                        this.value = !date ? "" :
+                       @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
+                        {
+                            @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                                                                        }
+                        else
+                        {
+                            @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+                                                                        }
+                    });
+            }
+        });
+    </script>
+}

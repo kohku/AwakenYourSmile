@@ -7,6 +7,12 @@ namespace AwakenYourSmile.Web.Models
 {
     public class ClinicalHistoryModelHelper
     {
+        public string Name { get; set; }
+
+        public DateTime? BirthDate { get; set; }
+
+        public virtual ICollection<ClinicalHistory> ClinicalHistories { get; set; }
+
         public static IEnumerable<System.Web.Mvc.SelectListItem> Genders
         {
             get
@@ -19,7 +25,5 @@ namespace AwakenYourSmile.Web.Models
                 return genders;
             }
         }
-        public virtual ICollection<ClinicalHistory> ClinicalHistories { get; set; }
-
     }
 }

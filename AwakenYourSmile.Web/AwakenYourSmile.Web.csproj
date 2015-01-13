@@ -162,7 +162,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
-    <Compile Include="Controllers\ClinicalHistoryViewModel.cs" />
     <Compile Include="Controllers\HistorialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadFileController.cs" />
@@ -665,6 +664,8 @@
     <Content Include="Views\Historial\Busqueda.cshtml" />
     <Content Include="Views\Historial\Nuevo.cshtml" />
     <Content Include="Views\Historial\Modificar.cshtml" />
+    <Content Include="Views\Historial\ConfirmarBorrar.cshtml" />
+    <Content Include="Views\Historial\Resultados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

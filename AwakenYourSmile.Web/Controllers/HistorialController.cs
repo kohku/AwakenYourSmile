@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -61,23 +62,14 @@ namespace AwakenYourSmile.Web.Controllers
         }
 
         //
-        // GET: /Historial/Busqueda
-        [Authorize]
-        public ActionResult Busqueda()
-        {
-            var model = new ClinicalHistoryModelHelper();
-
-            model.ClinicalHistories = ClinicalHistory.GetClinicalHistories(null, null, null);
-
-            return View(model);
-        }
-
-        //
         // GET: /Historial/Modificar
         [Authorize]
-        public ActionResult Modificar(Guid id)
+        public ActionResult Modificar(Guid? id)
         {
-            var model = ClinicalHistory.Load(id);
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var model = ClinicalHistory.Load(id.Value);
 
             if (model == null)
                 return HttpNotFound();
@@ -96,14 +88,26 @@ namespace AwakenYourSmile.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (model.IsValid)
+                    var current = ClinicalHistory.Load(model.ID);
+
+                    if (model == null)
+                        return HttpNotFound();
+
+                    typeof(ClinicalHistory).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                        .Where(p => p.CanWrite && p.CanRead).ToList()
+                        .ForEach(p => p.SetValue(current, p.GetValue(model, null)));
+
+                    if (current.IsChanged)
+                        current.LastUpdatedBy = User.Identity.Name;
+
+                    if (current.IsValid)
                     {
-                        model.AcceptChanges();
+                        current.AcceptChanges();
 
                         return RedirectToAction("Busqueda");
                     }
 
-                    ModelState.AddModelError("ValidationMessage", model.ValidationMessage);
+                    ModelState.AddModelError("ValidationMessage", current.ValidationMessage);
                 }
             }
             catch (DataException /* dex */)
@@ -114,5 +118,64 @@ namespace AwakenYourSmile.Web.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //
+        // GET: /Historial/Borrar
+        [Authorize]
+        public ActionResult ConfirmarBorrar(Guid? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var model = ClinicalHistory.Load(id.Value);
+
+            if (model == null)
+                return HttpNotFound();
+
+            return View(model);
+        }
+
+        //
+        // GET: /Historial/ConfirmarBorrar
+        [Authorize]
+        public ActionResult Borrar(Guid? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var model = ClinicalHistory.Load(id.Value);
+
+            if (model == null)
+                return HttpNotFound();
+
+            model.Delete();
+            model.AcceptChanges();
+
+            return RedirectToAction("Busqueda");
+        }
+
+        //
+        // GET: /Historial/Busqueda
+        [Authorize]
+        public ActionResult Busqueda()
+        {
+            var model = new ClinicalHistoryModelHelper();
+
+            return View(model);
+        }
+
+        //
+        // GET: /Historial/Resultados
+        [Authorize]
+        public ActionResult Resultados(string name, DateTime? birthDate)
+        {
+            var model = new ClinicalHistoryModelHelper();
+
+            model.ClinicalHistories = ClinicalHistory.GetClinicalHistories(null, name, null, birthDate);
+
+            return View(model);
+        }
+
+
     }
 }
