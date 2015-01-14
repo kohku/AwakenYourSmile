@@ -1,8 +1,45 @@
 ﻿@model AwakenYourSmile.Appointment
 @{
-    ViewBag.Title = "ConfirmarCita";
+    ViewBag.Title = "Confirmar Cita";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ConfirmarCita</h2>
+<section id="headline">
+    <div class="container">
+        <h3>Confirma tu cita</h3>
+    </div>
+</section>
+<section class="container page-content">
 
+    <div class="eight columns offset-by-one">
+        <div class="contact-form">
+            <div class="clr"></div><br />
+
+            @using (Html.BeginForm("ConfirmarCita", "Agenda", FormMethod.Post, new { @class = "frmContact", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.DateCreated)
+
+                <h5>Nombre:</h5>
+                @Html.DisplayTextFor(model => model.FirstName)<br/>
+                <h5>Apellidos:</h5>
+                @Html.DisplayTextFor(model => model.LastName)<br/>
+                <h5>Email:</h5>
+                @Html.DisplayTextFor(model => model.Email)<br/>
+                <h5>Teléfono:</h5>
+                @Html.DisplayTextFor(model => model.PhoneNumber)<br/>
+                <h5>Celular:</h5>
+                @Html.DisplayTextFor(model => model.CellPhone)<br/>
+                <h5>Fecha:</h5>
+                @Html.DisplayTextFor(model => model.AppointmentDate)<br/>
+
+                <input type="submit" class="sendbtn btnSend" value="Confirmar Cita" />
+
+                <div id="spanMessage">
+                </div>
+            }
+        </div>
+    </div>
+</section>

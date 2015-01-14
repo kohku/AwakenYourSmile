@@ -122,6 +122,36 @@ namespace AwakenYourSmile
             }
         }
 
+        private bool _confirmedByUser;
+        public bool ConfirmedByUser
+        {
+            get { return _confirmedByUser; }
+            set
+            {
+                var changed = !object.Equals(_confirmedByUser, value);
+                if (changed)
+                    this.OnPropertyChanging("ConfirmedByUser");
+                this._confirmedByUser = value;
+                if (changed)
+                    MarkChanged("ConfirmedByUser");
+            }
+        }
+
+        private bool _booked;
+        public bool Booked
+        {
+            get { return _booked; }
+            set
+            {
+                var changed = !object.Equals(_booked, value);
+                if (changed)
+                    this.OnPropertyChanging("Booked");
+                this._booked = value;
+                if (changed)
+                    MarkChanged("Booked");
+            }
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as Appointment;

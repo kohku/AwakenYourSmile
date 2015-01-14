@@ -1,4 +1,5 @@
 ﻿@using System.Globalization;
+@using Recaptcha.Web.Mvc;
 @model AwakenYourSmile.Appointment
 @{
     ViewBag.Title = "Cita";
@@ -33,7 +34,7 @@
                 <h5>@Html.LabelFor(m => m.LastName, "Apellidos:")</h5>
                 @Html.TextBoxFor(m => m.LastName, new { @class = "txbx", placeholder = "apellidos" })
                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.Email)</h5>
+                <h5>@Html.LabelFor(m => m.Email, "Email:")</h5>
                 @Html.TextBoxFor(m => m.Email, new { @class = "txbx", placeholder = "email" })
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })<br />
                 <h5>@Html.LabelFor(m => m.PhoneNumber, "Teléfono:")</h5>
@@ -45,6 +46,7 @@
                 <h5>@Html.LabelFor(m => m.AppointmentDate, "Fecha:")</h5>
                 @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha y hora" })
                 @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
+                @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)<br />
 
                 <input type="submit" class="sendbtn btnSend" value="Agendar Cita" />
 

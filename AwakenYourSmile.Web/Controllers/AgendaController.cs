@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Recaptcha.Web;
+using Recaptcha.Web.Mvc;
 
 namespace AwakenYourSmile.Web.Controllers
 {
@@ -41,6 +43,22 @@ namespace AwakenYourSmile.Web.Controllers
                 {
                     if (model.IsValid)
                     {
+                        RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
+
+                        if (String.IsNullOrEmpty(recaptchaHelper.Response))
+                        {
+                            ModelState.AddModelError("", "Captcha answer cannot be empty.");
+                            return View(model);
+                        }
+
+                        RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
+
+                        if (recaptchaResult != RecaptchaVerificationResult.Success)
+                        {
+                            ModelState.AddModelError("", "Incorrect captcha answer.");
+                            return View(model);
+                        }
+
                         model.AcceptChanges();
 
                         return RedirectToAction("ConfirmarCita", new { id = model.ID });
@@ -61,7 +79,6 @@ namespace AwakenYourSmile.Web.Controllers
         //
         // GET: /Agenda/ConfirmarCita
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult ConfirmarCita(Guid? id)
         {
             if (!id.HasValue)
@@ -90,8 +107,10 @@ namespace AwakenYourSmile.Web.Controllers
             if (entity == null)
                 return HttpNotFound();
 
-            // TODO: Confirmar cita
-            model.AcceptChanges();
+            entity.ConfirmedByUser = true;
+            entity.LastUpdatedBy = User.Identity.Name;
+
+            entity.AcceptChanges();
 
             return Redirect(Url.Content("~/index.html"));
         }

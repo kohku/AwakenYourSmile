@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201501131823407_NullableDates.Designer.cs">
       <DependentUpon>201501131823407_NullableDates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501142055120_AddConfirmed-Booked4Appointment.cs" />
+    <Compile Include="Migrations\201501142055120_AddConfirmed-Booked4Appointment.Designer.cs">
+      <DependentUpon>201501142055120_AddConfirmed-Booked4Appointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501131823407_NullableDates.resx">
       <DependentUpon>201501131823407_NullableDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501142055120_AddConfirmed-Booked4Appointment.resx">
+      <DependentUpon>201501142055120_AddConfirmed-Booked4Appointment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
