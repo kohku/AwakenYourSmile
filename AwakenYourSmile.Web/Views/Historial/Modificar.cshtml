@@ -5,11 +5,16 @@
     ViewBag.Title = "Modifica un historial clínico.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section AddToHead{
+    <link href="@Url.Content("~/css/datepicker.css")" rel="stylesheet" type="text/css" />
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => odel.ID)
-    @Html.HiddenFor(model => model.CreatedmBy)
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.CreatedBy)
     @Html.HiddenFor(model => model.DateCreated)
     <section class="container page-content">
         <hr class="vertical-space2">

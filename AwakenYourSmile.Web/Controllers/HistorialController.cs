@@ -14,6 +14,7 @@ namespace AwakenYourSmile.Web.Controllers
     {
         //
         // GET: /Historial/
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -46,7 +47,7 @@ namespace AwakenYourSmile.Web.Controllers
                     {
                         model.AcceptChanges();
 
-                        return RedirectToAction("Busqueda");
+                        return RedirectToAction("Index");
                     }
 
                     ModelState.AddModelError("ValidationMessage", model.ValidationMessage);
@@ -104,7 +105,7 @@ namespace AwakenYourSmile.Web.Controllers
                     {
                         current.AcceptChanges();
 
-                        return RedirectToAction("Busqueda");
+                        return RedirectToAction("Index");
                     }
 
                     ModelState.AddModelError("ValidationMessage", current.ValidationMessage);
@@ -151,7 +152,7 @@ namespace AwakenYourSmile.Web.Controllers
             model.Delete();
             model.AcceptChanges();
 
-            return RedirectToAction("Busqueda");
+            return RedirectToAction("Index");
         }
 
         //

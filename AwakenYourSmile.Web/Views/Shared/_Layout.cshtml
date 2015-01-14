@@ -31,7 +31,10 @@
     <!-- Favicons
     ================================================== -->
     <link rel="shortcut icon" href="@Url.Content("~/images/favicon.ico")">
-
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
 </head>
 <body>
 
@@ -44,7 +47,7 @@
 
                 <div class="container">
                     <div class="four columns">
-                        <div class="logo"><a href="index.html"><img src="@Url.Content("~/images/logo.png")" width="150" id="img-logo" alt="logo"></a></div>
+                        <div class="logo"><a href="@Url.Content("~/index.html")"><img src="@Url.Content("~/images/logo.png")" width="150" id="img-logo" alt="logo"></a></div>
                     </div>
 
                     <!-- Navigation starts

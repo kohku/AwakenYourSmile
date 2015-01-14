@@ -5,6 +5,11 @@
     ViewBag.Title = "Crea un nuevo historial clínico.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section AddToHead{
+    <link href="@Url.Content("~/css/datepicker.css")" rel="stylesheet" type="text/css" />
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

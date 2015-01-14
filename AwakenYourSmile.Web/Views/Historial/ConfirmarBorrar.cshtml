@@ -28,7 +28,7 @@
                 <dt>Cumpleaños</dt>
                 <dd>@Html.DisplayFor(model => model.BirthDate)</dd>
             </dl>
-            @Html.ActionLink("Confirmar borrado", "ConfirmarBorrar", new { id = Model.ID })
+            @Html.ActionLink("Confirmar borrado", "Borrar", new { id = Model.ID })
             &nbsp;|&nbsp;
             @Html.ActionLink("Cancelar", "Busqueda")
         </div>

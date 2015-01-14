@@ -187,6 +187,7 @@
     <Content Include="css\blog.css" />
     <Content Include="css\blox.css" />
     <Content Include="css\color-skins.css" />
+    <Content Include="css\datepicker.css" />
     <Content Include="css\elements.css" />
     <Content Include="css\flexslider.css" />
     <Content Include="css\icomoon.css" />
@@ -605,6 +606,7 @@
     <Content Include="php\likes.db" />
     <Content Include="php\likes.sqlite" />
     <Content Include="php\subscribe.php" />
+    <None Include="Properties\PublishProfiles\FTP.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
