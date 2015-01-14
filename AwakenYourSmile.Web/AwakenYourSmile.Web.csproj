@@ -169,6 +169,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AgendaModelHelper.cs" />
     <Compile Include="Models\ClinicalHistoryModelHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -540,6 +541,8 @@
     <Content Include="js\isotope-custom.js" />
     <Content Include="js\jcarousel.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon-es.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
     <Content Include="js\jquery.easy-pie-chart.js" />
     <Content Include="js\jquery.flexslider-min.js" />
     <Content Include="js\jquery.isotope.js" />
@@ -668,6 +671,8 @@
     <Content Include="Views\Historial\Modificar.cshtml" />
     <Content Include="Views\Historial\ConfirmarBorrar.cshtml" />
     <Content Include="Views\Historial\Resultados.cshtml" />
+    <Content Include="Views\Agenda\Cita.cshtml" />
+    <Content Include="Views\Agenda\ConfirmarCita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

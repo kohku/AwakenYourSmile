@@ -39,6 +39,9 @@ namespace AwakenYourSmile.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Nuevo(ClinicalHistory model)
         {
+            if (model == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             try
             {
                 if (ModelState.IsValid)
@@ -89,26 +92,26 @@ namespace AwakenYourSmile.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var current = ClinicalHistory.Load(model.ID);
+                    var entity = ClinicalHistory.Load(model.ID);
 
                     if (model == null)
                         return HttpNotFound();
 
                     typeof(ClinicalHistory).GetProperties(BindingFlags.Public | BindingFlags.Instance)
                         .Where(p => p.CanWrite && p.CanRead).ToList()
-                        .ForEach(p => p.SetValue(current, p.GetValue(model, null)));
+                        .ForEach(p => p.SetValue(entity, p.GetValue(model, null)));
 
-                    if (current.IsChanged)
-                        current.LastUpdatedBy = User.Identity.Name;
+                    if (entity.IsChanged)
+                        entity.LastUpdatedBy = User.Identity.Name;
 
-                    if (current.IsValid)
+                    if (entity.IsValid)
                     {
-                        current.AcceptChanges();
+                        entity.AcceptChanges();
 
                         return RedirectToAction("Index");
                     }
 
-                    ModelState.AddModelError("ValidationMessage", current.ValidationMessage);
+                    ModelState.AddModelError("ValidationMessage", entity.ValidationMessage);
                 }
             }
             catch (DataException /* dex */)

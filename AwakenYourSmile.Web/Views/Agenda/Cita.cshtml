@@ -1,0 +1,137 @@
+﻿@using System.Globalization;
+@model AwakenYourSmile.Appointment
+@{
+    ViewBag.Title = "Cita";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/css/datepicker.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="headline">
+    <div class="container">
+        <h3>Agenda tu cita</h3>
+    </div>
+</section>
+<section class="container page-content">
+
+    <div class="eight columns offset-by-one">
+        <div class="contact-form">
+            <div class="clr"></div><br />
+
+            @using (Html.BeginForm("Cita", "Agenda", FormMethod.Post, new { @class = "frmContact", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.DateCreated)
+
+                <h5>@Html.LabelFor(m => m.FirstName, "Nombre:")</h5>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "txbx", placeholder = "nombre" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })<br />
+                <h5>@Html.LabelFor(m => m.LastName, "Apellidos:")</h5>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "txbx", placeholder = "apellidos" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })<br />
+                <h5>@Html.LabelFor(m => m.Email)</h5>
+                @Html.TextBoxFor(m => m.Email, new { @class = "txbx", placeholder = "email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })<br />
+                <h5>@Html.LabelFor(m => m.PhoneNumber, "Teléfono:")</h5>
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "txbx", placeholder = "teléfono" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })<br />
+                <h5>@Html.LabelFor(m => m.CellPhone, "Celular:")</h5>
+                @Html.TextBoxFor(m => m.CellPhone, new { @class = "txbx", placeholder = "celular" })
+                @Html.ValidationMessageFor(m => m.CellPhone, "", new { @class = "text-danger" })<br />
+                <h5>@Html.LabelFor(m => m.AppointmentDate, "Fecha:")</h5>
+                @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha y hora" })
+                @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
+
+                <input type="submit" class="sendbtn btnSend" value="Agendar Cita" />
+
+                <div id="spanMessage">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+            }
+        </div>
+    </div>
+</section>
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryUI")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/Scripts/jquery-ui-timepicker-addon.js")
+
+@if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
+{
+    @Scripts.Render("~/Scripts/jquery-ui-datepicker-es.js")
+    @Scripts.Render("~/Scripts/jquery-ui-timepicker-addon-es.js")
+}
+
+<script type="text/javascript">
+    var timepicker = {
+        create: function (tp_inst, obj, unit, val, min, max, step) {
+            $('<input class="ui-timepicker-input" value="' + val + '" style="width:50%">')
+                .appendTo(obj)
+                .spinner({
+                    min: min,
+                    max: max,
+                    step: step,
+                    change: function (e, ui) { // key events
+                        // don't call if api was used and not key press
+                        if (e.originalEvent !== undefined)
+                            tp_inst._onTimeChange();
+                        tp_inst._onSelectHandler();
+                    },
+                    spin: function (e, ui) { // spin events
+                        tp_inst.control.value(tp_inst, obj, unit, ui.value);
+                        tp_inst._onTimeChange();
+                        tp_inst._onSelectHandler();
+                    }
+                });
+            return obj;
+        },
+        options: function (tp_inst, obj, unit, opts, val) {
+            if (typeof (opts) == 'string' && val !== undefined)
+                return obj.find('.ui-timepicker-input').spinner(opts, val);
+            return obj.find('.ui-timepicker-input').spinner(opts);
+        },
+        value: function (tp_inst, obj, unit, val) {
+            if (val !== undefined)
+                return obj.find('.ui-timepicker-input').spinner('value', val);
+            return obj.find('.ui-timepicker-input').spinner('value');
+        }
+    };
+
+    $(document).ready(function () {
+        $('#__appointmentDate').datetimepicker({
+            controlType: timepicker,
+            datepicker: $.datepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"],
+            timepicker: $.timepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"]
+        })
+
+        var datefields = $("input[type='date']");
+
+        if (!Modernizr.inputtypes.date) {
+            datefields
+                .datepicker()
+                .each(function () {
+                    // Turn ISO 8601 date string into US date string
+                    var dateParts = this.value.split("-"),
+                        date = $.map(dateParts, function (el) {
+                            return !isNaN(parseInt(el, 10)) ? el : null;
+                        }).length === 3
+                            ? new Date(dateParts[0], dateParts[1], dateParts[2])
+                            : null;
+                    this.type = "text";
+                    this.value = !date ? "" :
+                   @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
+                        {
+                            @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                                                                                                                }
+                        else
+                        {
+                            @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+                                                                                                                }
+                });
+        }
+    });
+</script>
