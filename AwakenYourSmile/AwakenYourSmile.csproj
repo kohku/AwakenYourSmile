@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201501142055120_AddConfirmed-Booked4Appointment.Designer.cs">
       <DependentUpon>201501142055120_AddConfirmed-Booked4Appointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501161743519_AppointmentCancelledFlag.cs" />
+    <Compile Include="Migrations\201501161743519_AppointmentCancelledFlag.Designer.cs">
+      <DependentUpon>201501161743519_AppointmentCancelledFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501142055120_AddConfirmed-Booked4Appointment.resx">
       <DependentUpon>201501142055120_AddConfirmed-Booked4Appointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501161743519_AppointmentCancelledFlag.resx">
+      <DependentUpon>201501161743519_AppointmentCancelledFlag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

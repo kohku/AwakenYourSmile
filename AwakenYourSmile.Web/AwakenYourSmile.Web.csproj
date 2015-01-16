@@ -725,7 +725,6 @@
     <Content Include="Views\UploadFile\Index.cshtml" />
     <Content Include="Views\Administration\Selector.cshtml" />
     <Content Include="Views\Historial\Index.cshtml" />
-    <Content Include="Views\Agenda\Index.cshtml" />
     <Content Include="Views\Historial\Busqueda.cshtml" />
     <Content Include="Views\Historial\Nuevo.cshtml" />
     <Content Include="Views\Historial\Modificar.cshtml" />
@@ -735,6 +734,7 @@
     <Content Include="Views\Agenda\ConfirmarCita.cshtml" />
     <Content Include="Views\Agenda\Calendario.cshtml" />
     <Content Include="Views\Agenda\Evento.cshtml" />
+    <Content Include="Views\Agenda\AgendarCita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

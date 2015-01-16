@@ -28,6 +28,9 @@
             <h5>Fecha:</h5>
             @Html.DisplayTextFor(model => model.AppointmentDate)<br />
 
+            @Html.ActionLink("Regresar", "Index")&nbsp;|&nbsp;
+            @Html.ActionLink("Confirmar", "Confirmar", new { id = Model.ID })&nbsp;|&nbsp;
+            @Html.ActionLink("Cancelar", "Cancelar", new { id = Model.ID })
         </div>
     </div>
 </section>

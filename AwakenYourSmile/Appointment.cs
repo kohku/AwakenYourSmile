@@ -152,6 +152,21 @@ namespace AwakenYourSmile
             }
         }
 
+        private bool _cancelled;
+        public bool Cancelled
+        {
+            get { return _cancelled; }
+            set
+            {
+                var changed = !object.Equals(_cancelled, value);
+                if (changed)
+                    this.OnPropertyChanging("Cancelled");
+                this._cancelled = value;
+                if (changed)
+                    MarkChanged("Cancelled");
+            }
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as Appointment;
@@ -178,7 +193,7 @@ namespace AwakenYourSmile
 
         protected override Appointment DataSelect(Guid id)
         {
-            return Appointment.GetAppointments(id, null, null).FirstOrDefault();
+            return Appointment.GetAppointments(id, null, null, null, null, null).FirstOrDefault();
         }
 
         protected override void DataUpdate()
@@ -245,15 +260,15 @@ namespace AwakenYourSmile
 
         public static List<Appointment> GetAppointments()
         {
-            return Appointment.GetAppointments(null, null, null);
+            return Appointment.GetAppointments(null, null, null, null, null, null);
         }
 
         public static List<Appointment> GetAppointments(DateTime? start, DateTime? end)
         {
-            return Appointment.GetAppointments(null, start, end);
+            return Appointment.GetAppointments(null, start, end, null, null, null);
         }
 
-        public static List<Appointment> GetAppointments(Guid? id, DateTime? start, DateTime? end)
+        public static List<Appointment> GetAppointments(Guid? id, DateTime? start, DateTime? end, bool? confirmed, bool? booked, bool? cancelled)
         {
             List<Appointment> entities = new List<Appointment>();
 
@@ -261,8 +276,11 @@ namespace AwakenYourSmile
             {
                 var query = from a in db.Appointments
                             where !id.HasValue || a.ID == id.Value
-                            where start.HasValue || a.AppointmentDate >= start.Value
-                            where end.HasValue || a.AppointmentDate <= end.Value
+                            where !start.HasValue || a.AppointmentDate >= start.Value
+                            where !end.HasValue || a.AppointmentDate <= end.Value
+                            where !confirmed.HasValue || a.ConfirmedByUser == confirmed.Value
+                            where !booked.HasValue || a.Booked == booked.Value
+                            where !cancelled.HasValue || a.Cancelled == cancelled.Value
                             select a;
 
                 entities.AddRange(query);

@@ -16,7 +16,7 @@ namespace AwakenYourSmile.Web.Controllers
         // GET: /Agenda/
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Calendario");
         }
 
         //
@@ -116,6 +116,48 @@ namespace AwakenYourSmile.Web.Controllers
         }
 
         //
+        // GET: /Agenda/AgendarCita
+        [Authorize]
+        public ActionResult AgendarCita()
+        {
+            var model = new Appointment();
+
+            model.CreatedBy = User.Identity.Name;
+
+            return View(model);
+        }
+
+        //
+        // POST: /Agenda/AgendarCita
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult AgendarCita(Appointment model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (model.IsValid)
+                    {
+                        model.AcceptChanges();
+
+                        return RedirectToAction("Index", new { id = model.ID });
+                    }
+
+                    ModelState.AddModelError("ValidationMessage", model.ValidationMessage);
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
         // GET: /Agenda/Calendario
         [Authorize]
         public ActionResult Calendario()
@@ -140,7 +182,10 @@ namespace AwakenYourSmile.Web.Controllers
                     title = string.Format("{0}, {1}", appointment.LastName, appointment.FirstName),
                     start = appointment.AppointmentDate,
                     end = appointment.AppointmentDate.AddHours(1),
-                    url = Url.Action("Evento", new { id = appointment.ID })
+                    url = Url.Action("Evento", new { id = appointment.ID }),
+                    className = (appointment.Cancelled ? "appointment_cancelled" : 
+                        appointment.Booked ? "appointment_booked" : 
+                        appointment.ConfirmedByUser ? "appointment_confirmed" : "appointment_entered")
                 });
             }
 
@@ -161,6 +206,50 @@ namespace AwakenYourSmile.Web.Controllers
                 return HttpNotFound();
 
             return View(model);
+        }
+
+        //
+        // GET: /Agenda/Confirmar
+        [Authorize]
+        public ActionResult Confirmar(Guid? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var entity = Appointment.Load(id.Value);
+
+            if (entity == null)
+                return HttpNotFound();
+
+            entity.Booked = true;
+            entity.Cancelled = false;
+            entity.LastUpdatedBy = User.Identity.Name;
+
+            entity.AcceptChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        //
+        // GET: /Agenda/Cancelar
+        [Authorize]
+        public ActionResult Cancelar(Guid? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var entity = Appointment.Load(id.Value);
+
+            if (entity == null)
+                return HttpNotFound();
+
+            entity.Booked = false;
+            entity.Cancelled = true;
+            entity.LastUpdatedBy = User.Identity.Name;
+
+            entity.AcceptChanges();
+
+            return RedirectToAction("Index");
         }
 
         public class FullcalendarEvent

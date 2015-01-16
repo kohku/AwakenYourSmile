@@ -8,10 +8,24 @@
     @Styles.Render("~/Content/fullcalendar")
     @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/fullcalendar")
+    <style type="text/css">
+        .appointment_cancelled {
+            background-color: #ffffff;
+            color: #ff0000 !important;
+            text-decoration: line-through;
+        }
+        .appointment_booked {
+        }
+        .appointment_confirmed {
+        }
+        .appointment_entered {
+        }
+    </style>
 }
 
 <section class="container page-content">
     <hr class="vertical-space2">
+    @Html.ActionLink("Agregar nueva cita", "Cita")
     <div id='calendar'></div>
 </section>
 
