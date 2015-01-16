@@ -1,0 +1,39 @@
+﻿@using System.Globalization;
+@{
+    ViewBag.Title = "Calendario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section AddToHead{
+    @Styles.Render("~/Content/fullcalendar")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/fullcalendar")
+}
+
+<section class="container page-content">
+    <hr class="vertical-space2">
+    <div id='calendar'></div>
+</section>
+
+@section Scripts {
+    @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
+    {
+        @Scripts.Render("~/Scripts/fullcalendar-lang/es.js");
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                lang: '@Html.DisplayTextFor(language => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)',
+                eventSources: [
+                    {
+                        url: '@Url.Action("Eventos")',
+                        type: "GET",
+                        error: function () {
+                            alert('"here was an error while fetching events.');
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

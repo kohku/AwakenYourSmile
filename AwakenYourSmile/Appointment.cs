@@ -178,7 +178,7 @@ namespace AwakenYourSmile
 
         protected override Appointment DataSelect(Guid id)
         {
-            return Appointment.GetAppointments(id).FirstOrDefault();
+            return Appointment.GetAppointments(id, null, null).FirstOrDefault();
         }
 
         protected override void DataUpdate()
@@ -245,10 +245,15 @@ namespace AwakenYourSmile
 
         public static List<Appointment> GetAppointments()
         {
-            return Appointment.GetAppointments(null);
+            return Appointment.GetAppointments(null, null, null);
         }
 
-        public static List<Appointment> GetAppointments(Guid? id)
+        public static List<Appointment> GetAppointments(DateTime? start, DateTime? end)
+        {
+            return Appointment.GetAppointments(null, start, end);
+        }
+
+        public static List<Appointment> GetAppointments(Guid? id, DateTime? start, DateTime? end)
         {
             List<Appointment> entities = new List<Appointment>();
 
@@ -256,6 +261,8 @@ namespace AwakenYourSmile
             {
                 var query = from a in db.Appointments
                             where !id.HasValue || a.ID == id.Value
+                            where start.HasValue || a.AppointmentDate >= start.Value
+                            where end.HasValue || a.AppointmentDate <= end.Value
                             select a;
 
                 entities.AddRange(query);
