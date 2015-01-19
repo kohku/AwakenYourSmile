@@ -23,10 +23,6 @@
                 <h6>Nombre:</h6>
                 @Html.TextBoxFor(model => model.Name, new { placeholder = "Nombre" })
                 @Html.ValidationMessageFor(model => model.Name)
-
-                @Html.ValidationSummary()
-                <input type="submit" value="Actualizar" class="form-submit-button">
-
                 <h6>Diminutivo:</h6>
                 @Html.TextBoxFor(model => model.NickName, new { placeholder = "Diminutivo" })
                 @Html.ValidationMessageFor(model => model.NickName)
@@ -54,7 +50,10 @@
                 @Html.TextBoxFor(model => model.School, new { placeholder = "Escuela" })
                 @Html.ValidationMessageFor(model => model.School)
 
-                <h3>Papás</h3>
+                @Html.ValidationSummary()
+                <input type="submit" value="Actualizar" class="form-submit-button">
+
+               <h3>Papás</h3>
                 <h6>Nombre del papá:</h6>
                 <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="papá" />
                 <h6>Teléfono:</h6>

@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201501161743519_AppointmentCancelledFlag.Designer.cs">
       <DependentUpon>201501161743519_AppointmentCancelledFlag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501192307058_AddingSomeValidators.cs" />
+    <Compile Include="Migrations\201501192307058_AddingSomeValidators.Designer.cs">
+      <DependentUpon>201501192307058_AddingSomeValidators.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501161743519_AppointmentCancelledFlag.resx">
       <DependentUpon>201501161743519_AppointmentCancelledFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501192307058_AddingSomeValidators.resx">
+      <DependentUpon>201501192307058_AddingSomeValidators.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
