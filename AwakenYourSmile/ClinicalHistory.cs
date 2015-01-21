@@ -50,7 +50,6 @@ namespace AwakenYourSmile
 
         private int _age;
         [Range(1, 100)]
-        [Required]
         public int Age
         {
             get { return _age; }
@@ -159,7 +158,7 @@ namespace AwakenYourSmile
         private string _school;
         public string School
         {
-            get { return _phoneNumber; }
+            get { return _school; }
             set
             {
                 var changed = !object.Equals(_school, value);

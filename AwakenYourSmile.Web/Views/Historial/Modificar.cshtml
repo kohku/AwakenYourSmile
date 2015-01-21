@@ -50,145 +50,154 @@
                 @Html.TextBoxFor(model => model.School, new { placeholder = "Escuela" })
                 @Html.ValidationMessageFor(model => model.School)
 
-                @Html.ValidationSummary()
-                <input type="submit" value="Actualizar" class="form-submit-button">
-
-               <h3>Papás</h3>
+                <h3>Papás</h3>
                 <h6>Nombre del papá:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="papá" />
+                @Html.TextBoxFor(model => model.FatherName, new { placeholder = "Nombre" })
+                @Html.ValidationMessageFor(model => model.FatherName)
                 <h6>Teléfono:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="teléfono" />
+                @Html.TextBoxFor(model => model.FatherPhoneNumber, new { placeholder = "Teléfono" })
+                @Html.ValidationMessageFor(model => model.FatherPhoneNumber)
                 <h6>Ocupación:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Ocupación" />
+                @Html.TextBoxFor(model => model.FatherOccupation, new { placeholder = "Ocupación" })
+                @Html.ValidationMessageFor(model => model.FatherOccupation)
                 <h6>Email:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Email" />
+                @Html.TextBoxFor(model => model.FatherEmail, new { placeholder = "Email" })
+                @Html.ValidationMessageFor(model => model.FatherEmail)
                 <h6>Nombre de la mamá:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Colonia" />
+                @Html.TextBoxFor(model => model.MotherName, new { placeholder = "Nombre" })
+                @Html.ValidationMessageFor(model => model.MotherName)
                 <h6>Teléfono:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Ciudad" />
+                @Html.TextBoxFor(model => model.MotherPhoneNumber, new { placeholder = "Teléfono" })
+                @Html.ValidationMessageFor(model => model.MotherPhoneNumber)
                 <h6>Ocupación:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Teléfono" />
+                @Html.TextBoxFor(model => model.MotherOccupation, new { placeholder = "Ocupación" })
+                @Html.ValidationMessageFor(model => model.MotherOccupation)
                 <h6>Email:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Teléfono" />
+                @Html.TextBoxFor(model => model.MotherEmail, new { placeholder = "Email" })
+                @Html.ValidationMessageFor(model => model.MotherEmail)
+
                 <h3>Motivo de la consulta</h3>
-                <select name="select2" id="select2">
-                    <option>Revisión</option>
-                    <option>Dolor</option>
-                    <option>Dientes Chuecos</option>
-                    <option>Traumatismo</option>
-                    <option>Lesión bucal</option>
-                </select>
+                @Html.DropDownListFor(m => m.ReasonForVisit, ClinicalHistoryModelHelper.ReasonForVisit, "Seleccione")
+                @Html.ValidationMessageFor(model => model.ReasonForVisit)
                 <h6>Otro:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+                @Html.TextBoxFor(model => model.ReasonOther, new { placeholder = "Otro" })
+                @Html.ValidationMessageFor(model => model.ReasonOther)
                 <h6>Recomendado por:</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Recomendado" />
+                @Html.TextBoxFor(model => model.RecommendedBy, new { placeholder = "Nombre" })
+                @Html.ValidationMessageFor(model => model.RecommendedBy)
                 <div class="spanMessage"></div>
             </div>
             <div class="one_third">
+                @Html.ValidationSummary()
+                <input type="submit" value="Actualizar" class="form-submit-button">
                 <h3>Historia clínica</h3>
                 <p>Eliga la respuesta o explíquela claramente ya que es importante su sinceridad para el correcto diagnóstico y atención de su hijo (a).</p>
                 <br>      <h3>Odontopediatría</h3>
                 <h6>¿Has asistido al odontólogo anteriormente?</h6>
                 <label>
                     Si
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.FirstVisit, true, Model.FirstVisit ? new { @checked = true } : null)
                     No
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.FirstVisit, false, !Model.FirstVisit ? new { @checked = true } : null)
                 </label><br>
                 <h6>¿Por qué?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+                @Html.TextBoxFor(model => model.FirstVisitReason, new { placeholder = "Otro" })
+                @Html.ValidationMessageFor(model => model.FirstVisitReason)
 
                 <br> <h6>La experiencia el tratamiento fue:</h6>
                 <label>
                     Buena
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.PreviousVisitExperience, AwakenYourSmile.Grade.Good, Model.PreviousVisitExperience == AwakenYourSmile.Grade.Good ? new { @checked = true } : null)
                     Mala
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.PreviousVisitExperience, AwakenYourSmile.Grade.Bad, Model.PreviousVisitExperience == AwakenYourSmile.Grade.Bad ? new { @checked = true } : null)
                 </label>
 
                 <br> <h6>¿Cómo piensa que reaccionó el niño en visitas médicas anteriores?</h6>
                 <label>
                     Buena
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.ReactionToPreviousVisits, AwakenYourSmile.Grade.Good, Model.ReactionToPreviousVisits == AwakenYourSmile.Grade.Good ? new { @checked = true } : null)
                     Regular
-                    <input type="checkbox" name="regular" id="regular">
+                    @Html.RadioButtonFor(m => m.ReactionToPreviousVisits, AwakenYourSmile.Grade.Regular, Model.ReactionToPreviousVisits == AwakenYourSmile.Grade.Regular ? new { @checked = true } : null)
                     Mala
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.ReactionToPreviousVisits, AwakenYourSmile.Grade.Bad, Model.ReactionToPreviousVisits == AwakenYourSmile.Grade.Bad ? new { @checked = true } : null)
                 </label>
 
                 <br><h6>¿Cómo calificaría su grado de ansiedad en este momento?</h6>
                 <label>
                     Buena
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.AnxietyGrade, AwakenYourSmile.Grade.Good, Model.AnxietyGrade == AwakenYourSmile.Grade.Good ? new { @checked = true } : null)
                     Regular
-                    <input type="checkbox" name="regular" id="regular">
+                    @Html.RadioButtonFor(m => m.AnxietyGrade, AwakenYourSmile.Grade.Regular, Model.AnxietyGrade == AwakenYourSmile.Grade.Regular ? new { @checked = true } : null)
                     Mala
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.AnxietyGrade, AwakenYourSmile.Grade.Bad, Model.AnxietyGrade == AwakenYourSmile.Grade.Bad ? new { @checked = true } : null)
                 </label>
 
                 <br> <h6>¿Cómo piensa que reaccione el niño en el sillón dental?</h6>
                 <label>
                     Buena
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.ExpectedReactionGrade, AwakenYourSmile.Grade.Good, Model.ExpectedReactionGrade == AwakenYourSmile.Grade.Good ? new { @checked = true } : null)
                     Regular
-                    <input type="checkbox" name="regular" id="regular">
+                    @Html.RadioButtonFor(m => m.ExpectedReactionGrade, AwakenYourSmile.Grade.Regular, Model.ExpectedReactionGrade == AwakenYourSmile.Grade.Regular ? new { @checked = true } : null)
                     Mala
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.ExpectedReactionGrade, AwakenYourSmile.Grade.Bad, Model.ExpectedReactionGrade == AwakenYourSmile.Grade.Bad ? new { @checked = true } : null)
                 </label>
 
                 <br><h6>¿Cómo es el rendimiento escolar del niño?</h6>
                 <label>
                     Buena
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.PerformanceAtSchool, AwakenYourSmile.Grade.Good, Model.PerformanceAtSchool == AwakenYourSmile.Grade.Good ? new { @checked = true } : null)
                     Regular
-                    <input type="checkbox" name="regular" id="regular">
+                    @Html.RadioButtonFor(m => m.PerformanceAtSchool, AwakenYourSmile.Grade.Regular, Model.PerformanceAtSchool == AwakenYourSmile.Grade.Regular ? new { @checked = true } : null)
                     Mala
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.PerformanceAtSchool, AwakenYourSmile.Grade.Bad, Model.PerformanceAtSchool == AwakenYourSmile.Grade.Bad ? new { @checked = true } : null)
                 </label>
 
                 <br><h6>¿Cómo motiva al niño?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="motivación" />
+                @Html.TextBoxFor(model => model.Motivation, new { placeholder = "motivación" })
+                @Html.ValidationMessageFor(model => model.Motivation)
 
                 <h6>¿Se usó anestesia local anteriormente?</h6>
                 <label>
                     Si
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.HasBeenAnesthetized, true, Model.HasBeenAnesthetized ? new { @checked = true } : null)
                     No
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.HasBeenAnesthetized, false, !Model.HasBeenAnesthetized ? new { @checked = true } : null)
                 </label>
 
                 <br><h6>¿Tuvo una reacción adversa?</h6>
                 <label>
                     Si
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.AdverseReactionToAnesthesia, true, Model.AdverseReactionToAnesthesia ? new { @checked = true } : null)
                     No
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.AdverseReactionToAnesthesia, false, !Model.AdverseReactionToAnesthesia ? new { @checked = true } : null)
                 </label>
 
                 <br><h6>¿Cuál?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="reaación" />
+                @Html.TextBoxFor(model => model.ReactionToAnesthesia, new { placeholder = "reacción" })
+                @Html.ValidationMessageFor(model => model.ReactionToAnesthesia)
 
                 <h6>¿Su hijo se cepilla los dientes solo?</h6>
                 <label>
                     Si
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.SelfCleaningTooth, true, Model.SelfCleaningTooth ? new { @checked = true } : null)
                     No
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.SelfCleaningTooth, false, !Model.SelfCleaningTooth ? new { @checked = true } : null)
                 </label>
 
                 <br><h6>¿Cuántas veces al día?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+                @Html.TextBoxFor(model => model.CleaningTimes, new { placeholder = "cepillado" })
+                @Html.ValidationMessageFor(model => model.CleaningTimes)
 
                 <h6>Usa o usó</h6>
                 <label>
                     Chupón
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.CheckBoxFor(m => m.UsedPacifier, Model.UsedPacifier ? new { @checked = true } : null)
                     Biberón
-                    <input type="checkbox" name="regular" id="regular">
+                    @Html.CheckBoxFor(m => m.UsedBabyBottle, Model.UsedBabyBottle ? new { @checked = true } : null)
                     Se chupa el dedo
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.Thumbsucking, Model.Thumbsucking ? new { @checked = true } : null)
                     Se muerde las uñas
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.BitingNails, Model.BitingNails ? new { @checked = true } : null)
                 </label>
                 <h6>¿A que edad empezó y cuando lo dejó?</h6>
                 <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
@@ -555,11 +564,11 @@
                        @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
                         {
                             @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                                                                        }
+                                                                                                                                                }
                         else
                         {
                             @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-                                                                        }
+                                                                                                                                                }
                     });
             }
         });

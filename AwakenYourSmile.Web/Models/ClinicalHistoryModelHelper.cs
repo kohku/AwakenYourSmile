@@ -25,5 +25,21 @@ namespace AwakenYourSmile.Web.Models
                 return genders;
             }
         }
+
+        public static IEnumerable<System.Web.Mvc.SelectListItem> ReasonForVisit
+        {
+            get
+            {
+                var reasons = new List<System.Web.Mvc.SelectListItem>();
+
+                reasons.Add(new System.Web.Mvc.SelectListItem { Text = "Revisión", Value = "Revisión" });
+                reasons.Add(new System.Web.Mvc.SelectListItem { Text = "Dolor", Value = "Dolor" });
+                reasons.Add(new System.Web.Mvc.SelectListItem { Text = "Dientes Chuecos", Value = "Dientes Chuecos" });
+                reasons.Add(new System.Web.Mvc.SelectListItem { Text = "Traumatismo", Value = "Traumatismo" });
+                reasons.Add(new System.Web.Mvc.SelectListItem { Text = "Lesión bucal", Value = "Lesión bucal" });
+
+                return reasons;
+            }
+        }
     }
 }

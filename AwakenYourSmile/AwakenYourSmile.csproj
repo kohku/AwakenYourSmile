@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201501192307058_AddingSomeValidators.Designer.cs">
       <DependentUpon>201501192307058_AddingSomeValidators.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501211630042_SimpleValidation.cs" />
+    <Compile Include="Migrations\201501211630042_SimpleValidation.Designer.cs">
+      <DependentUpon>201501211630042_SimpleValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501192307058_AddingSomeValidators.resx">
       <DependentUpon>201501192307058_AddingSomeValidators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501211630042_SimpleValidation.resx">
+      <DependentUpon>201501211630042_SimpleValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
