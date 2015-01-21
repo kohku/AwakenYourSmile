@@ -96,6 +96,14 @@
     <Compile Include="Migrations\201501211630042_SimpleValidation.Designer.cs">
       <DependentUpon>201501211630042_SimpleValidation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501212146311_CompletingHistorialClinical.cs" />
+    <Compile Include="Migrations\201501212146311_CompletingHistorialClinical.Designer.cs">
+      <DependentUpon>201501212146311_CompletingHistorialClinical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501212155427_ChangesIntoColumnTypes.cs" />
+    <Compile Include="Migrations\201501212155427_ChangesIntoColumnTypes.Designer.cs">
+      <DependentUpon>201501212155427_ChangesIntoColumnTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501211630042_SimpleValidation.resx">
       <DependentUpon>201501211630042_SimpleValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501212146311_CompletingHistorialClinical.resx">
+      <DependentUpon>201501212146311_CompletingHistorialClinical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501212155427_ChangesIntoColumnTypes.resx">
+      <DependentUpon>201501212155427_ChangesIntoColumnTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

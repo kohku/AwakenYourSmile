@@ -33,7 +33,7 @@
                 @Html.DropDownListFor(m => m.Gender, ClinicalHistoryModelHelper.Genders, "Seleccione")
                 @Html.ValidationMessageFor(model => model.Gender)
                 <h6>Fecha de nacimiento:</h6>
-                @Html.TextBoxFor(model => model.BirthDate, String.Format("{0:yyyy-MM-dd}", Model.BirthDate), new { placeholder = "Cumpleaños" })
+                @Html.TextBoxFor(model => model.BirthDate, String.Format("{0:dd-MM-yyyy}", Model.BirthDate), new { placeholder = "Cumpleaños" })
                 <h6>Domicilio:</h6>
                 @Html.TextBoxFor(model => model.Address, new { placeholder = "Domicilio" })
                 @Html.ValidationMessageFor(model => model.Address)
@@ -88,8 +88,6 @@
                 <div class="spanMessage"></div>
             </div>
             <div class="one_third">
-                @Html.ValidationSummary()
-                <input type="submit" value="Actualizar" class="form-submit-button">
                 <h3>Historia clínica</h3>
                 <p>Eliga la respuesta o explíquela claramente ya que es importante su sinceridad para el correcto diagnóstico y atención de su hijo (a).</p>
                 <br>      <h3>Odontopediatría</h3>
@@ -200,36 +198,38 @@
                     @Html.CheckBoxFor(m => m.BitingNails, Model.BitingNails ? new { @checked = true } : null)
                 </label>
                 <h6>¿A que edad empezó y cuando lo dejó?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+                @Html.TextBoxFor(model => model.HabitsDetails, new { placeholder = "tiempo" })
+                @Html.ValidationMessageFor(model => model.HabitsDetails)
 
                 <br><h6>¿Fue alimentado por seno materno?</h6>
                 <label>
                     Si
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.BreastFed, true, Model.BreastFed ? new { @checked = true } : null)
                     No
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.BreastFed, false, !Model.BreastFed ? new { @checked = true } : null)
                 </label>
                 <br><h6>Tiempo</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+                @Html.TextBoxFor(model => model.BreastFedDetails, new { placeholder = "tiempo" })
+                @Html.ValidationMessageFor(model => model.BreastFedDetails)
 
                 <br> <h6>¿Su alimentación es?</h6>
                 <label>
                     Blanda
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.FeedingType, AwakenYourSmile.FeedingType.Soft, Model.FeedingType == AwakenYourSmile.FeedingType.Soft ? new { @checked = true } : null)
                     Fibrosa y dura
-                    <input type="checkbox" name="regular" id="regular">
+                    @Html.RadioButtonFor(m => m.FeedingType, AwakenYourSmile.FeedingType.HardFibrous, Model.FeedingType == AwakenYourSmile.FeedingType.HardFibrous ? new { @checked = true } : null)
                     Mixta
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.FeedingType, AwakenYourSmile.FeedingType.Mixed, Model.FeedingType == AwakenYourSmile.FeedingType.Mixed ? new { @checked = true } : null)
                 </label>
 
                 <br>
                 <h6>Cuadro de inmunizaciones</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
+                @Html.TextBoxFor(model => model.ImmunizationsBox, new { placeholder = "inmunizaciones" })
+                @Html.ValidationMessageFor(model => model.ImmunizationsBox)
 
                 <h6>Habitación</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="cepillado" />
-
-
+                @Html.TextBoxFor(model => model.Room, new { placeholder = "Habitación" })
+                @Html.ValidationMessageFor(model => model.Room)
                 <div class="spanMessage"></div>
             </div>
             <div class="one_third column-last">
@@ -237,293 +237,331 @@
                 <br>  <h6>¿Tuvo problemas durante el embarazo o al nacer?</h6>
                 <label>
                     Si
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.PregnacyBirthProblems, true, Model.PregnacyBirthProblems ? new { @checked = true } : null)
                     No
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.PregnacyBirthProblems, false, !Model.PregnacyBirthProblems ? new { @checked = true } : null)
                 </label><br>
                 <h6>¿Cuáles?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+                @Html.TextBoxFor(model => model.PregnacyBirthProblemsDetails, new { placeholder = "otro" })
+                @Html.ValidationMessageFor(model => model.PregnacyBirthProblemsDetails)
                 <br>  <h6>¿La salud en general del niño es?</h6>
                 <label>
                     Buena
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.OverallHealth, AwakenYourSmile.Grade.Good, Model.OverallHealth == AwakenYourSmile.Grade.Good ? new { @checked = true } : null)
                     Regular
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.OverallHealth, AwakenYourSmile.Grade.Regular, Model.OverallHealth == AwakenYourSmile.Grade.Regular ? new { @checked = true } : null)
                     Mala
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.OverallHealth, AwakenYourSmile.Grade.Bad, Model.OverallHealth == AwakenYourSmile.Grade.Bad ? new { @checked = true } : null)
                 </label><br>
 
                 <br>  <h6>¿Es alérgico?</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.Allergic, false, !Model.Allergic ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.Allergic, true, Model.Allergic ? new { @checked = true } : null)
                 </label><br>
                 <h6>A</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Otro" />
+                @Html.TextBoxFor(model => model.AllergicDetails, new { placeholder = "alergia" })
+                @Html.ValidationMessageFor(model => model.AllergicDetails)
 
                 <br>  <h6>¿Ha tenido sangrado espontáneo por la nariz?</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.SpontaneousBleedingNose, false, !Model.SpontaneousBleedingNose ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.SpontaneousBleedingNose, true, Model.SpontaneousBleedingNose ? new { @checked = true } : null)
                 </label><br>
                 <h6>Fecha</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                @Html.TextBoxFor(model => model.SpontaneousBleedingNoseDate, String.Format("{0:dd-MM-yyyy}", Model.SpontaneousBleedingNoseDate), new { placeholder = "fecha" })
+                @Html.ValidationMessageFor(model => model.SpontaneousBleedingNoseDate)
                 <h6>Causa</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+                @Html.TextBoxFor(model => model.SpontaneousBleedingNoseReason, new { placeholder = "causa" })
+                @Html.ValidationMessageFor(model => model.SpontaneousBleedingNoseReason)
 
                 <br>  <h6>¿Presenta moretones con facilidad?</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.Bruises, false, !Model.Bruises ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.Bruises, true, Model.Bruises ? new { @checked = true } : null)
                 </label><br>
                 <h6>Fecha</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                @Html.TextBoxFor(model => model.BruisesDate, String.Format("{0:dd-MM-yyyy}", Model.BruisesDate), new { placeholder = "fecha" })
+                @Html.ValidationMessageFor(model => model.BruisesDate)
                 <h6>Causa</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+                @Html.TextBoxFor(model => model.BruisesReason, new { placeholder = "causa" })
+                @Html.ValidationMessageFor(model => model.BruisesReason)
 
                 <br>  <h6>¿Ha recibido transfusiones sanguíneas?</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.ReceivedBloodTransfusions, false, !Model.ReceivedBloodTransfusions ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.ReceivedBloodTransfusions, true, Model.ReceivedBloodTransfusions ? new { @checked = true } : null)
                 </label><br>
                 <h6>Fecha</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                @Html.TextBoxFor(model => model.BloodTransfusionsDate, String.Format("{0:dd-MM-yyyy}", Model.SpontaneousBleedingNoseDate), new { placeholder = "fecha" })
+                @Html.ValidationMessageFor(model => model.BloodTransfusionsDate)
                 <h6>Causa</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+                @Html.TextBoxFor(model => model.BloodTransfusionsReason, new { placeholder = "causa" })
+                @Html.ValidationMessageFor(model => model.BloodTransfusionsReason)
 
                 <br>  <h6>¿Ha sido hospitalizado?</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.Hospitalized, false, !Model.Hospitalized ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.Hospitalized, true, Model.Hospitalized ? new { @checked = true } : null)
                 </label><br>
                 <h6>Fecha</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                @Html.TextBoxFor(model => model.HospitalizedDate, String.Format("{0:dd-MM-yyyy}", Model.HospitalizedDate), new { placeholder = "fecha" })
+                @Html.ValidationMessageFor(model => model.HospitalizedDate)
                 <h6>Causa</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+                @Html.TextBoxFor(model => model.HospitalizedReason, new { placeholder = "causa" })
+                @Html.ValidationMessageFor(model => model.HospitalizedReason)
 
-                <br>  <h6>¿Ha sido hospitalizado?</h6>
+                <br>  <h6>¿Ha sido medicado?</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.Medicated, false, !Model.Medicated ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.Medicated, true, Model.Medicated ? new { @checked = true } : null)
                 </label><br>
                 <h6>Fecha</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
-                <h6>Causa</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+                @Html.TextBoxFor(model => model.MedicatedDate, String.Format("{0:dd-MM-yyyy}", Model.MedicatedDate), new { placeholder = "fecha" })
+                @Html.ValidationMessageFor(model => model.MedicatedDate)
+                <h6>¿Cuál y por qué?</h6>
+                @Html.TextBoxFor(model => model.MedicatedReason, new { placeholder = "cual" })
+                @Html.ValidationMessageFor(model => model.MedicatedReason)
 
                 <br>  <h6>¿Actualmente toma algún medicamento?</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.Prescribed, false, !Model.Prescribed ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.Prescribed, true, Model.Prescribed ? new { @checked = true } : null)
                 </label><br>
                 <h6>Fecha</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
+                @Html.TextBoxFor(model => model.PrescribedDate, String.Format("{0:dd-MM-yyyy}", Model.PrescribedDate), new { placeholder = "fecha" })
+                @Html.ValidationMessageFor(model => model.PrescribedDate)
                 <h6>¿Cuál y por qué?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
-
-                <br>  <h6>¿Actualmente toma algún medicamento?</h6>
-                <label>
-                    No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
-                </label><br>
-                <h6>Fecha</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Fecha" />
-                <h6>¿Cuál y por qué?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="Causa" />
+                @Html.TextBoxFor(model => model.PrescribedReason, new { placeholder = "cual" })
+                @Html.ValidationMessageFor(model => model.PrescribedReason)
 
                 <br>  <h6>¿Ha padecido o padece alguna de las siguientes enfermedades?</h6>
                 <label>
                     Sarampión
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.CheckBoxFor(m => m.Measles, Model.Measles ? new { @checked = true } : null)
                     Asma
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.Asthma, Model.Asthma ? new { @checked = true } : null)
                 </label>
                 <label>
                     Enfermedad renal
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.CheckBoxFor(m => m.RenalDisease, Model.RenalDisease ? new { @checked = true } : null)
                     Enfermedad del corazón
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.HeartDisease, Model.HeartDisease ? new { @checked = true } : null)
                 </label>
                 <label>
                     Varicela
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.CheckBoxFor(m => m.ChickenPox, Model.ChickenPox ? new { @checked = true } : null)
                     Leucemia
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.Leukemia, Model.Leukemia ? new { @checked = true } : null)
                 </label>
                 <label>
                     Anemia
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.CheckBoxFor(m => m.Anemia, Model.Anemia ? new { @checked = true } : null)
                     Diabetes
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.Diabetes, Model.Diabetes ? new { @checked = true } : null)
                 </label>
                 <label>
                     Hepatitis
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.CheckBoxFor(m => m.Hepatitis, Model.Hepatitis ? new { @checked = true } : null)
                     Hemofilia
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.Hemophilia, Model.Hemophilia ? new { @checked = true } : null)
                 </label>
                 <label>
                     VIH
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.CheckBoxFor(m => m.Hiv, Model.Hiv ? new { @checked = true } : null)
                     Epilepsia
-                    <input type="checkbox" name="No" id="No">
+                    @Html.CheckBoxFor(m => m.Epilepsy, Model.Epilepsy ? new { @checked = true } : null)
                 </label>
 
                 <h3>Antecedentes hereditarios</h3>
-                <br><h6>¿El padre, la mare, abuelos o familiares cercanos presentan alguna enfermedad como: diabetes, hipertensión arterial sistémica, problemas del corazón, problemas de la sangre, retraso mental, labio o paladar hendido? Especifique ¿Cuál? y ¿Quién?</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
-
+                <br><h6>¿El padre, la madre, abuelos o familiares cercanos presentan alguna enfermedad como: diabetes, hipertensión arterial sistémica, problemas del corazón, problemas de la sangre, retraso mental, labio o paladar hendido? Especifique ¿Cuál? y ¿Quién?</h6>
+                @Html.TextBoxFor(model => model.Hereditaries, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.Hereditaries)
                 <h3>Exploración intraoral</h3>
                 <h5>Mucosas</h5>
 
                 <br><h6>Frenillos</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.IntraoralExaminationBraces, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.IntraoralExaminationBraces)
 
                 <br><h6>Amigdalas</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.IntraoralExaminationTonsils, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.IntraoralExaminationTonsils)
 
                 <br><h6>Paladar duro</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.IntraoralExaminationHardPalate, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.IntraoralExaminationHardPalate)
                 <br><h6>Paladar blando</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.IntraoralExaminationSoftPalate, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.IntraoralExaminationSoftPalate)
 
                 <h4>Periodonto</h4>
                 <h5>Oclusión</h5>
                 <br><h6>Plano terminal<small> Derecho</small></h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.RightTerminalPlane, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.RightTerminalPlane)
                 <br><h6><small> Izquierdo</small></h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.LeftTerminalPlane, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.LeftTerminalPlane)
 
                 <br><h6>Clase molar<small> Derecho</small></h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.RightMolarClass, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.RightMolarClass)
                 <br><h6><small> Izquierdo</small></h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.LeftMolarClass, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.LeftMolarClass)
 
                 <br><h6>Clase canina<small> Derecho</small></h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.RightCanineClass, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.RightCanineClass)
                 <br><h6><small> Izquierdo</small></h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.LeftCanineClass, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.LeftCanineClass)
 
                 <br><h6>Overbite</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.Overbite, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.Overbite)
 
                 <br><h6>Overjet</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.Overjet, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.Overjet)
 
                 <br><h6>Forma de arco superior</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.UpperArchShape, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.UpperArchShape)
 
                 <br><h6>Forma de arco interior</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.InnerArchShape, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.InnerArchShape)
 
                 <br><h5>Hábitos</h5>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.Habits, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.Habits)
                 <br>  <h6>Succión digital</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.FingerSucking, false, !Model.FingerSucking ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.FingerSucking, true, Model.FingerSucking ? new { @checked = true } : null)
                 </label>
                 <br><h6>Frecuencia</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.FingerSuckingFrequency, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.FingerSuckingFrequency)
                 <br><h6>Intensidadd</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.FingerSuckingIntensity, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.FingerSuckingIntensity)
                 <br><h6>Tiempo</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.FingerSuckingTime, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.FingerSuckingTime)
 
                 <br>  <h6>Deglución atípica</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.AtypicalSwallowing, false, !Model.AtypicalSwallowing ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.AtypicalSwallowing, true, Model.AtypicalSwallowing ? new { @checked = true } : null)
                 </label>
                 <br><h6>Frecuencia</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.AtypicalSwallowingFrequency, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.AtypicalSwallowingFrequency)
                 <br><h6>Intensidadd</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.AtypicalSwallowingIntensity, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.AtypicalSwallowingIntensity)
                 <br><h6>Tiempo</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.AtypicalSwallowingTime, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.AtypicalSwallowingTime)
 
                 <br>  <h6>Bruxismo</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.Bruxism, false, !Model.Bruxism ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.Bruxism, true, Model.Bruxism ? new { @checked = true } : null)
                 </label>
                 <br><h6>Frecuencia</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.BruxismFrequency, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.BruxismFrequency)
                 <br><h6>Intensidadd</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.BruxismIntensity, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.BruxismIntensity)
                 <br><h6>Tiempo</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.BruxismTime, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.BruxismTime)
 
                 <br>  <h6>Respiración oral</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.OralBreathing, false, !Model.OralBreathing ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.OralBreathing, true, Model.OralBreathing ? new { @checked = true } : null)
                 </label>
                 <br><h6>Frecuencia</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.OralBreathingFrequency, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.OralBreathingFrequency)
                 <br><h6>Intensidadd</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.OralBreathingIntensity, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.OralBreathingIntensity)
                 <br><h6>Tiempo</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.OralBreathingTime, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.OralBreathingTime)
 
                 <br>  <h6>Onicofagia</h6>
                 <label>
                     No
-                    <input type="checkbox" name="Si" id="si">
-                    Si
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.Onychophagia, false, !Model.Onychophagia ? new { @checked = true } : null)
+                    Sí
+                    @Html.RadioButtonFor(m => m.Onychophagia, true, Model.Onychophagia ? new { @checked = true } : null)
                 </label>
                 <br><h6>Frecuencia</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.OnychophagiaFrequency, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.OnychophagiaFrequency)
                 <br><h6>Intensidadd</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.OnychophagiaIntensity, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.OnychophagiaIntensity)
                 <br><h6>Tiempo</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.OnychophagiaTime, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.OnychophagiaTime)
 
                 <br>  <h6>Otros</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.Others, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.Others)
                 <br>  <h6>Anomalías dentales</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.DentalAnomalies, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.DentalAnomalies)
                 <br>  <h6>Hallazgos radiográficos</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.RadiographicFindings, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.RadiographicFindings)
                 <br>  <h6>Impresión diagnóstica y padecimiento actual</h6>
-                <input type="text" name="txtEmail" id="txtEmail" value="" placeholder="hereditario" />
+                @Html.TextBoxFor(model => model.DiagnosticImpressionCurrentCondition, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.DiagnosticImpressionCurrentCondition)
 
                 <br>  <h6>Cooperación del paciente durante la exploración</h6>
                 <label>
                     Cooperador
-                    <input type="checkbox" name="Si" id="si">
+                    @Html.RadioButtonFor(m => m.PatientCooperationDuringScan, AwakenYourSmile.CooperationGrade.Cooperator, Model.PatientCooperationDuringScan == AwakenYourSmile.CooperationGrade.Cooperator ? new { @checked = true } : null)
                     Potencialmente cooperador
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.PatientCooperationDuringScan, AwakenYourSmile.CooperationGrade.PartiallyCooperator, Model.PatientCooperationDuringScan == AwakenYourSmile.CooperationGrade.PartiallyCooperator ? new { @checked = true } : null)
                     No cooperador
-                    <input type="checkbox" name="No" id="No">
+                    @Html.RadioButtonFor(m => m.PatientCooperationDuringScan, AwakenYourSmile.CooperationGrade.NoCooperator, Model.PatientCooperationDuringScan == AwakenYourSmile.CooperationGrade.NoCooperator ? new { @checked = true } : null)
                 </label>
-                <br>  <h4>Subir archivo</h4>
-                <input name="" type="file">
+
+                @Html.ValidationSummary()
+                <input type="submit" value="Actualizar" class="form-submit-button">
+
 
             </div>
         </div>
@@ -564,11 +602,11 @@
                        @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
                         {
                             @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
                         else
                         {
                             @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
                     });
             }
         });

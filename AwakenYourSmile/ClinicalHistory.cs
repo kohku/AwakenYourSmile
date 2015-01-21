@@ -699,6 +699,21 @@ namespace AwakenYourSmile
             }
         }
 
+        private string _pregnacyBirthProblemsDetails;
+        public string PregnacyBirthProblemsDetails
+        {
+            get { return _pregnacyBirthProblemsDetails; }
+            set
+            {
+                var changed = !object.Equals(_pregnacyBirthProblemsDetails, value);
+                if (changed)
+                    this.OnPropertyChanging("PregnacyBirthProblemsDetails");
+                this._pregnacyBirthProblemsDetails = value;
+                if (changed)
+                    MarkChanged("PregnacyBirthProblemsDetails");
+            }
+        }
+
         private Grade _overallHealth;
         public Grade OverallHealth
         {
@@ -726,6 +741,21 @@ namespace AwakenYourSmile
                 this._allergic = value;
                 if (changed)
                     MarkChanged("Allergic");
+            }
+        }
+
+        private string _allergicDetails;
+        public string AllergicDetails
+        {
+            get { return _allergicDetails; }
+            set
+            {
+                var changed = !object.Equals(_allergicDetails, value);
+                if (changed)
+                    this.OnPropertyChanging("AllergicDetails");
+                this._allergicDetails = value;
+                if (changed)
+                    MarkChanged("AllergicDetails");
             }
         }
 
@@ -819,6 +849,51 @@ namespace AwakenYourSmile
             }
         }
 
+        private bool _bruises;
+        public bool Bruises
+        {
+            get { return _bruises; }
+            set
+            {
+                var changed = !object.Equals(_bruises, value);
+                if (changed)
+                    this.OnPropertyChanging("Bruises");
+                this._bruises = value;
+                if (changed)
+                    MarkChanged("Bruises");
+            }
+        }
+
+        private DateTime? _bruisesDate;
+        public DateTime? BruisesDate
+        {
+            get { return _bruisesDate; }
+            set
+            {
+                var changed = !object.Equals(_bruisesDate, value);
+                if (changed)
+                    this.OnPropertyChanging("BruisesDate");
+                this._bruisesDate = value;
+                if (changed)
+                    MarkChanged("BruisesDate");
+            }
+        }
+
+        private string _bruisesReason;
+        public string BruisesReason
+        {
+            get { return _bruisesReason; }
+            set
+            {
+                var changed = !object.Equals(_bruisesReason, value);
+                if (changed)
+                    this.OnPropertyChanging("BruisesReason");
+                this._bruisesReason = value;
+                if (changed)
+                    MarkChanged("BruisesReason");
+            }
+        }
+
         private bool _hospitalized;
         public bool Hospitalized
         {
@@ -834,8 +909,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private bool _hospitalizedDate;
-        public bool HospitalizedDate
+        private DateTime? _hospitalizedDate;
+        public DateTime? HospitalizedDate
         {
             get { return _hospitalizedDate; }
             set
@@ -849,8 +924,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private bool _hospitalizedReason;
-        public bool HospitalizedReason
+        private string _hospitalizedReason;
+        public string HospitalizedReason
         {
             get { return _hospitalizedReason; }
             set
@@ -879,8 +954,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private bool _medicatedDate;
-        public bool MedicatedDate
+        private DateTime? _medicatedDate;
+        public DateTime? MedicatedDate
         {
             get { return _medicatedDate; }
             set
@@ -894,8 +969,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private bool _medicatedReason;
-        public bool MedicatedReason
+        private string _medicatedReason;
+        public string MedicatedReason
         {
             get { return _medicatedReason; }
             set
@@ -924,8 +999,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private bool _prescribedDate;
-        public bool PrescribedDate
+        private DateTime? _prescribedDate;
+        public DateTime? PrescribedDate
         {
             get { return _prescribedDate; }
             set
@@ -939,8 +1014,8 @@ namespace AwakenYourSmile
             }
         }
 
-        private bool _prescribedReason;
-        public bool PrescribedReason
+        private string _prescribedReason;
+        public string PrescribedReason
         {
             get { return _prescribedReason; }
             set
@@ -1670,6 +1745,21 @@ namespace AwakenYourSmile
                 this._onychophagiaTime = value;
                 if (changed)
                     MarkChanged("OnychophagiaTime");
+            }
+        }
+
+        private string _others;
+        public string Others
+        {
+            get { return _others; }
+            set
+            {
+                var changed = !object.Equals(_others, value);
+                if (changed)
+                    this.OnPropertyChanging("Others");
+                this._others = value;
+                if (changed)
+                    MarkChanged("Others");
             }
         }
 
