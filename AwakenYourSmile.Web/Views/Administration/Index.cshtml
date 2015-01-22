@@ -1,44 +1,59 @@
-﻿@using AwakenYourSmile.Web.Models
-@model LoginViewModel
-
+﻿@using Microsoft.AspNet.Identity
 @{
-    ViewBag.Title = "Ingresa a tu administrador";
+    ViewBag.Title = "Bienvenido a tu administrador";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section id="headline">
-    <div class="container">
-        <h3>Bienvenidos</h3>
-    </div>
-</section>
-<section class="container page-content">
+<section class="container">
 
-    <hr class="vertical-space3">
+    <section class="our-process-wrap">
 
-    <h4>Despierta tu sonrisa</h4>
-    <br />
-    <p><strong>Bienvenido a tu administrador</strong></p>
-
-
-    <div class="eight columns offset-by-one">
-        <div class="contact-form">
-            <div class="clr"></div><br />
-            @using (Html.BeginForm("Login", "Administration", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "frmContact", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h5>@Html.LabelFor(m => m.Email)</h5>
-                @Html.TextBoxFor(m => m.Email, new { @class = "txbx" })
-                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.Password)</h5>
-                @Html.PasswordFor(m => m.Password, new { @class = "txbx" })
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })<br />
-
-                <input type="submit" class="sendbtn btnSend" value="Ingresar" />
-
-                <div id="spanMessage">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="icon-top-title aligncenter">
+            <hr class="vertical-space2">
+            <i class="icomoon-grin"></i>
+            <hr class="vertical-space1">
+            <h2>Bienvenido @User.Identity.GetUserName()</h2>
+            <h3 class="slight">Administrador de Despierta Tu Sonrisa :D</h3>
+            <hr class="vertical-space4">
+        </div>
+        <div class="our-process proc3level">
+            <div class="our-process-item">
+                <a href="@Url.Action("Index", "Historial")"><i class=" icomoon-file"></i></a>
+                <div class="our-process-content">
+                    <h5>1. Historial Clínico</h5>
+                    <p>@Html.ActionLink("Crea o actualiza tus historiales clínicos.", "Index", "Historial")</p>
                 </div>
+            </div>
+            <div class="our-process-item">
+                <a href="@Url.Action("Index", "Agenda")"><i class=" icomoon-alarm"></i></a>
+                <div class="our-process-content">
+                    <h5>2. Agenda</h5>
+                    <p>@Html.ActionLink("Consulta tus citas pendientes.", "Index", "Agenda")</p>
+                </div>
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Administration", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="our-process-item">
+                        <i class="icomoon-exit"></i>
+                        <div class="our-process-content">
+                            <h5>3.Salir</h5>
+                            <p id="logOffBtn">Salir del administrador</p>
+                        </div>
+                    </div>
+                }
             }
         </div>
-    </div><!-- end-contact-form  -->
-</section><!-- container -->
+    </section>
+</section>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("i.icomoon-exit, #logOffBtn").click(function () {
+                $("#logoutForm").submit();
+            }).css("cursor", "pointer");
+        });
+    </script>
+}

@@ -39,6 +39,7 @@ namespace AwakenYourSmile.Web.Controllers
 
         //
         // GET: /Administration
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -48,7 +49,7 @@ namespace AwakenYourSmile.Web.Controllers
         // GET: /Administration/Login
         public ActionResult Login()
         {
-            return RedirectToAction("Index");
+            return View();
         }
 
         //
@@ -105,7 +106,7 @@ namespace AwakenYourSmile.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Selector", "Administration");
+                    return RedirectToAction("Index", "Administration");
                 }
                 else
                 {
@@ -115,14 +116,6 @@ namespace AwakenYourSmile.Web.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
-        }
-
-        //
-        // GET: /Administration/Selector
-        [Authorize]
-        public ActionResult Selector()
-        {
-            return View();
         }
 
         //
@@ -168,7 +161,7 @@ namespace AwakenYourSmile.Web.Controllers
             }
             else
             {
-                return RedirectToAction("Selector", "Administration");
+                return RedirectToAction("Index", "Administration");
             }
         }
 
