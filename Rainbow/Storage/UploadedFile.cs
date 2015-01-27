@@ -156,6 +156,7 @@ namespace Rainbow.Web.Storage
         // for reading the contents of the file. Returns: A System.IO.Stream pointing to a file.
         /// </summary>
         [NotMapped]
+        [Calculated]
         public virtual Stream InputStream
         {
             [System.Diagnostics.DebuggerStepThrough]

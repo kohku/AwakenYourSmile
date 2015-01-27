@@ -1,4 +1,5 @@
 ﻿using AwakenYourSmile.Web.Models;
+using Rainbow.Web.Storage;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -180,6 +181,35 @@ namespace AwakenYourSmile.Web.Controllers
             return View(model);
         }
 
+        //
+        // GET: /Historial/Upload
+        [AllowAnonymous]
+        public ActionResult Upload()
+        {
+            return View(new UploadFileModel() { Reference = Guid.NewGuid() });
+        }
 
+        //
+        // POST: /Historial/Upload
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Upload(Guid? reference, HttpPostedFileBase file)
+        {
+            if (!reference.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var uploadedFile = new UploadedFile();
+
+            uploadedFile.CreatedBy = User.Identity.Name;
+            uploadedFile.FileName = file.FileName;
+            uploadedFile.InputStream = file.InputStream;
+            uploadedFile.ContentLength = file.ContentLength;
+            uploadedFile.ContentType = file.ContentType;
+            uploadedFile.ParentID = reference;
+
+            uploadedFile.AcceptChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

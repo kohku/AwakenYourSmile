@@ -175,6 +175,7 @@
     <Compile Include="Models\AgendaModelHelper.cs" />
     <Compile Include="Models\ClinicalHistoryModelHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\UploadFileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -736,6 +737,7 @@
     <Content Include="Views\Agenda\AgendarCita.cshtml" />
     <Content Include="Views\Administration\Login.cshtml" />
     <Content Include="Views\Agenda\CitaRegistrada.cshtml" />
+    <Content Include="Views\Historial\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

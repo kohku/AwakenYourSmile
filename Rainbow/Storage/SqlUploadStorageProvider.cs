@@ -65,6 +65,8 @@ namespace Rainbow.Web.Storage
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
+            entity.ApplicationName = this.ApplicationName;
+
             using (var db = new SqlUploadStorageContext(this.ConnectionStringName))
             {
                 db.UploadedFiles.Add(entity);
