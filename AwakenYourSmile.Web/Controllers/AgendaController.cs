@@ -47,7 +47,7 @@ namespace AwakenYourSmile.Web.Controllers
 
                         if (String.IsNullOrEmpty(recaptchaHelper.Response))
                         {
-                            ModelState.AddModelError("", "Captcha answer cannot be empty.");
+                            ModelState.AddModelError("", "El código de verificación no puede estar vacío.");
                             return View(model);
                         }
 
@@ -55,13 +55,13 @@ namespace AwakenYourSmile.Web.Controllers
 
                         if (recaptchaResult != RecaptchaVerificationResult.Success)
                         {
-                            ModelState.AddModelError("", "Incorrect captcha answer.");
+                            ModelState.AddModelError("", "Código de verificación incorrecto.");
                             return View(model);
                         }
 
                         model.AcceptChanges();
 
-                        return RedirectToAction("ConfirmarCita", new { id = model.ID });
+                        return RedirectToAction("CitaRegistrada", new { id = model.ID });
                     }
 
                     ModelState.AddModelError("ValidationMessage", model.ValidationMessage);
@@ -69,7 +69,7 @@ namespace AwakenYourSmile.Web.Controllers
             }
             catch (DataException /* dex */)
             {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", "Imposible guardar cambios. Intenta de nuevo y si el problema persiste contacte al administrador.");
             }
 
             // If we got this far, something failed, redisplay form
@@ -77,8 +77,24 @@ namespace AwakenYourSmile.Web.Controllers
         }
 
         //
-        // GET: /Agenda/ConfirmarCita
+        // GET: /Agenda/CitaRegistrada
         [AllowAnonymous]
+        public ActionResult CitaRegistrada(Guid? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var model = Appointment.Load(id.Value);
+
+            if (model == null)
+                return HttpNotFound();
+
+            return View(model);
+        }
+
+        //
+        // GET: /Agenda/ConfirmarCita
+        [Authorize]
         public ActionResult ConfirmarCita(Guid? id)
         {
             if (!id.HasValue)
@@ -111,6 +127,8 @@ namespace AwakenYourSmile.Web.Controllers
             entity.LastUpdatedBy = User.Identity.Name;
 
             entity.AcceptChanges();
+
+
 
             return Redirect(Url.Content("~/index.html"));
         }

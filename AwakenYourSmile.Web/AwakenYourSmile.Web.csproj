@@ -735,6 +735,7 @@
     <Content Include="Views\Agenda\Evento.cshtml" />
     <Content Include="Views\Agenda\AgendarCita.cshtml" />
     <Content Include="Views\Administration\Login.cshtml" />
+    <Content Include="Views\Agenda\CitaRegistrada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
