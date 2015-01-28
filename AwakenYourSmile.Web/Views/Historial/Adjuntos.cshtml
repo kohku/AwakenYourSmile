@@ -1,0 +1,54 @@
+﻿@model AwakenYourSmile.Web.Models.UploadFileModel
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container page-content">
+    <hr class="vertical-space2">
+    <div class="sixteen columns">
+        <div class="one_third">
+            <table id="results">
+                <thead>
+                    <tr>
+                        <th>Nombre del Archivo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Files.Count() > 0)
+                    {
+                        foreach (var item in Model.Files)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.FileName)</td>
+                                <td>
+                                    @Html.ActionLink("Ver", "Adjunto", new { id = item.ID })
+                                    &nbsp;|&nbsp;
+                                    @Html.ActionLink("Borrar", "BorrarAdjunto", new { id = item.ID })
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>No hay archivos adjuntos.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="one_third column-last">
+            @using (Html.BeginForm("Adjuntos", "Historial", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.Reference)
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" />
+
+                <input type="submit" value="Agregar" class="form-submit-button" />
+                <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href("@Url.Action("Modificar", new { id = Model.Reference })")' />
+            }
+        </div>
+    </div>
+</section>

@@ -10,15 +10,15 @@
     <link href="@Url.Content("~/css/datepicker.css")" rel="stylesheet" type="text/css" />
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.ID)
-    @Html.HiddenFor(model => model.CreatedBy)
-    @Html.HiddenFor(model => model.DateCreated)
-    <section class="container page-content">
-        <hr class="vertical-space2">
-        <div class="sixteen columns">
+<section class="container page-content">
+    <hr class="vertical-space2">
+    <div class="sixteen columns">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.HiddenFor(model => model.DateCreated)
             <div class="one_third">
                 <h6>Nombre:</h6>
                 @Html.TextBoxFor(model => model.Name, new { placeholder = "Nombre" })
@@ -561,12 +561,14 @@
 
                 @Html.ValidationSummary()
                 <input type="submit" value="Actualizar" class="form-submit-button">
-
-
+                <input type="button" value="Cancelar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index")")'>
+                <br/>
+                @Html.ActionLink("Archivos Adjuntos", "Adjuntos", new { reference = Model.ID })
             </div>
-        </div>
-    </section>
-}
+        }
+    </div>
+</section>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryUI")
@@ -602,11 +604,11 @@
                        @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
                         {
                             @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
                         else
                         {
                             @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
                     });
             }
         });

@@ -65,31 +65,31 @@ namespace Rainbow.Web.Storage
         }
 
         [System.Diagnostics.DebuggerStepThrough]
-        public static List<UploadedFile> GetFiles(Guid groupId)
+        internal static IEnumerable<UploadedFile> GetFiles(Guid groupId)
         {
             return _defaultProvider.GetFiles(groupId);
         }
 
         [System.Diagnostics.DebuggerStepThrough]
-        public static UploadedFile SelectFile(Guid id)
+        internal static UploadedFile SelectFile(Guid id)
         {
             return _defaultProvider.SelectFile(id);
         }
 
         [System.Diagnostics.DebuggerStepThrough]
-        public static void UpdateFile(UploadedFile file)
+        internal static void UpdateFile(UploadedFile file)
         {
             _defaultProvider.UpdateFile(file);
         }
 
         [System.Diagnostics.DebuggerStepThrough]
-        public static void InsertFile(UploadedFile file)
+        internal static void InsertFile(UploadedFile file)
         {
             _defaultProvider.InsertFile(file);
         }
 
         [System.Diagnostics.DebuggerStepThrough]
-        public static void DeleteFile(UploadedFile file)
+        internal static void DeleteFile(UploadedFile file)
         {
             _defaultProvider.DeleteFile(file);
         }
@@ -101,7 +101,7 @@ namespace Rainbow.Web.Storage
         }
 
         [System.Diagnostics.DebuggerStepThrough]
-        public static List<UploadedFile> GetFiles(Guid? id, Guid? parentId, string fileName,
+        internal static List<UploadedFile> GetFiles(Guid? id, Guid? parentId, string fileName,
             DateTime? initialDateCreated, DateTime? finalDateCreated,
             DateTime? initialLastUpdated, DateTime? finalLastUpdated,
             string contentType, bool includeData, int pageSize, int pageIndex, out int totalCount)
@@ -109,10 +109,6 @@ namespace Rainbow.Web.Storage
             return _defaultProvider.GetFiles(id, parentId, fileName, initialDateCreated, finalDateCreated,
                 initialLastUpdated, finalLastUpdated, contentType,
                 includeData, pageSize, pageIndex, out totalCount);
-        }
-
-        public static void Clean(System.Web.HttpContext httpContext)
-        {
         }
     }
 }

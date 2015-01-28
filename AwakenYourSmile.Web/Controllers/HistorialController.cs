@@ -51,7 +51,7 @@ namespace AwakenYourSmile.Web.Controllers
                     {
                         model.AcceptChanges();
 
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Modificar", new { id = model.ID });
                     }
 
                     ModelState.AddModelError("ValidationMessage", model.ValidationMessage);
@@ -59,7 +59,7 @@ namespace AwakenYourSmile.Web.Controllers
             }
             catch (DataException /* dex */)
             {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", "No es posible guardar los cambios. Intente de nuevo y si no es posible favor de contactar al administrador del sistema.");
             }
 
             // If we got this far, something failed, redisplay form
@@ -179,6 +179,77 @@ namespace AwakenYourSmile.Web.Controllers
             model.ClinicalHistories = ClinicalHistory.GetClinicalHistories(null, name, null, birthDate);
 
             return View(model);
+        }
+
+        //
+        // GET: /Historial/Adjuntos
+        [Authorize]
+        public ActionResult Adjuntos(Guid? reference)
+        {
+            if (!reference.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var model = new UploadFileModel() { Reference = reference.Value };
+
+            model.Files = UploadedFile.GetFiles(reference.Value);
+
+            return View(model);
+        }
+
+        //
+        // POST: /Historial/Adjuntos
+        [Authorize]
+        [HttpPost]
+        public ActionResult Adjuntos(Guid? reference, HttpPostedFileBase file)
+        {
+            if (!reference.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var uploadedFile = new UploadedFile();
+
+            uploadedFile.CreatedBy = User.Identity.Name;
+            uploadedFile.FileName = file.FileName;
+            uploadedFile.InputStream = file.InputStream;
+            uploadedFile.ContentLength = file.ContentLength;
+            uploadedFile.ContentType = file.ContentType;
+            uploadedFile.ParentID = reference;
+
+            uploadedFile.AcceptChanges();
+
+            return RedirectToAction("Adjuntos", new { reference = reference });
+        }
+
+        //
+        // GET: /Historial/Adjunto
+        [Authorize]
+        public ActionResult Adjunto(Guid? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var file = UploadedFile.Load(id.Value);
+
+            if (file == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            return File(file.Data, file.ContentType);
+        }
+
+        //
+        // GET: /Historial/BorrarAdjunto
+        [Authorize]
+        public ActionResult BorrarAdjunto(Guid? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var file = UploadedFile.Load(id.Value);
+
+            file.Delete();
+
+            file.AcceptChanges();
+
+            return RedirectToAction("Adjuntos", new { reference = file.ParentID });
         }
 
         //

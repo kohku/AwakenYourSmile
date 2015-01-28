@@ -326,5 +326,10 @@ namespace Rainbow.Web.Storage
             file.ContentLength = file.Data.Length;
             return file;
         }
+
+        public static IEnumerable<UploadedFile> GetFiles(Guid reference)
+        {
+            return UploadStorageService.GetFiles(reference);
+        }
     }
 }
