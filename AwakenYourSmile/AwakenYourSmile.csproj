@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201501212155427_ChangesIntoColumnTypes.Designer.cs">
       <DependentUpon>201501212155427_ChangesIntoColumnTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501282238186_RemovingExtraFunction.cs" />
+    <Compile Include="Migrations\201501282238186_RemovingExtraFunction.Designer.cs">
+      <DependentUpon>201501282238186_RemovingExtraFunction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501212155427_ChangesIntoColumnTypes.resx">
       <DependentUpon>201501212155427_ChangesIntoColumnTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501282238186_RemovingExtraFunction.resx">
+      <DependentUpon>201501282238186_RemovingExtraFunction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

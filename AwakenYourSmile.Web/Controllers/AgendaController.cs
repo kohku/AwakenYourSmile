@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
+using Rainbow.Web.PostOffice;
+using System.Configuration;
 
 namespace AwakenYourSmile.Web.Controllers
 {
@@ -89,48 +91,20 @@ namespace AwakenYourSmile.Web.Controllers
             if (model == null)
                 return HttpNotFound();
 
-            return View(model);
-        }
+            var path = Server.MapPath(ConfigurationManager.AppSettings["AppointmentNotification"]);
+            var parameters = new Dictionary<string, string>();
 
-        //
-        // GET: /Agenda/ConfirmarCita
-        [Authorize]
-        public ActionResult ConfirmarCita(Guid? id)
-        {
-            if (!id.HasValue)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            using (var template = System.IO.File.OpenRead(path))
+            {
+                var message = PostOfficeService.Create(model, template, parameters);
 
-            var model = Appointment.Load(id.Value);
+                message.IsBodyHtml = true;
+                message.To.Add(ConfigurationManager.AppSettings["AppointmentNotificationEmail"]);
 
-            if (model == null)
-                return HttpNotFound();
+                PostOfficeService.SendMessage(message);
+            }
 
             return View(model);
-        }
-
-        //
-        // POST: /Agenda/ConfirmarCita
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ConfirmarCita(Appointment model)
-        {
-            if (model == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            var entity = Appointment.Load(model.ID);
-
-            if (entity == null)
-                return HttpNotFound();
-
-            entity.ConfirmedByUser = true;
-            entity.LastUpdatedBy = User.Identity.Name;
-
-            entity.AcceptChanges();
-
-
-
-            return Redirect(Url.Content("~/index.html"));
         }
 
         //
@@ -141,6 +115,7 @@ namespace AwakenYourSmile.Web.Controllers
             var model = new Appointment();
 
             model.CreatedBy = User.Identity.Name;
+            model.Booked = true;
 
             return View(model);
         }
@@ -168,7 +143,7 @@ namespace AwakenYourSmile.Web.Controllers
             }
             catch (DataException /* dex */)
             {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", "Imposible guardar cambios. Intenta de nuevo y si el problema persiste contacte al administrador.");
             }
 
             // If we got this far, something failed, redisplay form
@@ -202,8 +177,7 @@ namespace AwakenYourSmile.Web.Controllers
                     end = appointment.AppointmentDate.AddHours(1),
                     url = Url.Action("Evento", new { id = appointment.ID }),
                     className = (appointment.Cancelled ? "appointment_cancelled" : 
-                        appointment.Booked ? "appointment_booked" : 
-                        appointment.ConfirmedByUser ? "appointment_confirmed" : "appointment_entered")
+                        appointment.Booked ? "appointment_booked" : "appointment_entered")
                 });
             }
 
@@ -245,6 +219,18 @@ namespace AwakenYourSmile.Web.Controllers
 
             entity.AcceptChanges();
 
+            var path = Server.MapPath(ConfigurationManager.AppSettings["AppointmentConfirmation"]);
+            var parameters = new Dictionary<string, string>();
+
+            using (var template = System.IO.File.OpenRead(path))
+            {
+                var message = PostOfficeService.Create(entity, template, parameters);
+                message.IsBodyHtml = true;
+                message.To.Add(entity.Email);
+
+                PostOfficeService.SendMessage(message);
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -266,6 +252,18 @@ namespace AwakenYourSmile.Web.Controllers
             entity.LastUpdatedBy = User.Identity.Name;
 
             entity.AcceptChanges();
+
+            var path = Server.MapPath(ConfigurationManager.AppSettings["AppointmentConfirmation"]);
+            var parameters = new Dictionary<string, string>();
+
+            using (var template = System.IO.File.OpenRead(path))
+            {
+                var message = PostOfficeService.Create(entity, template, parameters);
+                message.IsBodyHtml = true;
+                message.To.Add(entity.Email);
+
+                PostOfficeService.SendMessage(message);
+            }
 
             return RedirectToAction("Index");
         }

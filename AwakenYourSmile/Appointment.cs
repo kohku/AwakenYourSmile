@@ -122,21 +122,6 @@ namespace AwakenYourSmile
             }
         }
 
-        private bool _confirmedByUser;
-        public bool ConfirmedByUser
-        {
-            get { return _confirmedByUser; }
-            set
-            {
-                var changed = !object.Equals(_confirmedByUser, value);
-                if (changed)
-                    this.OnPropertyChanging("ConfirmedByUser");
-                this._confirmedByUser = value;
-                if (changed)
-                    MarkChanged("ConfirmedByUser");
-            }
-        }
-
         private bool _booked;
         public bool Booked
         {
@@ -193,7 +178,7 @@ namespace AwakenYourSmile
 
         protected override Appointment DataSelect(Guid id)
         {
-            return Appointment.GetAppointments(id, null, null, null, null, null).FirstOrDefault();
+            return Appointment.GetAppointments(id, null, null, null, null).FirstOrDefault();
         }
 
         protected override void DataUpdate()
@@ -260,15 +245,15 @@ namespace AwakenYourSmile
 
         public static List<Appointment> GetAppointments()
         {
-            return Appointment.GetAppointments(null, null, null, null, null, null);
+            return Appointment.GetAppointments(null, null, null, null, null);
         }
 
         public static List<Appointment> GetAppointments(DateTime? start, DateTime? end)
         {
-            return Appointment.GetAppointments(null, start, end, null, null, null);
+            return Appointment.GetAppointments(null, start, end, null, null);
         }
 
-        public static List<Appointment> GetAppointments(Guid? id, DateTime? start, DateTime? end, bool? confirmed, bool? booked, bool? cancelled)
+        public static List<Appointment> GetAppointments(Guid? id, DateTime? start, DateTime? end, bool? booked, bool? cancelled)
         {
             List<Appointment> entities = new List<Appointment>();
 
@@ -278,7 +263,6 @@ namespace AwakenYourSmile
                             where !id.HasValue || a.ID == id.Value
                             where !start.HasValue || a.AppointmentDate >= start.Value
                             where !end.HasValue || a.AppointmentDate <= end.Value
-                            where !confirmed.HasValue || a.ConfirmedByUser == confirmed.Value
                             where !booked.HasValue || a.Booked == booked.Value
                             where !cancelled.HasValue || a.Cancelled == cancelled.Value
                             select a;

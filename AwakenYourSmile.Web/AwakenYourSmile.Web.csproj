@@ -184,6 +184,8 @@
     <Content Include="administrador.html" />
     <Content Include="agenda.html" />
     <Content Include="appointment.html" />
+    <Content Include="App_Data\confirmation.xslt" />
+    <Content Include="App_Data\notification.xslt" />
     <Content Include="busca.html" />
     <Content Include="Views\Shared\contact.html" />
     <Content Include="Content\bootstrap.css" />
@@ -731,7 +733,6 @@
     <Content Include="Views\Historial\ConfirmarBorrar.cshtml" />
     <Content Include="Views\Historial\Resultados.cshtml" />
     <Content Include="Views\Agenda\Cita.cshtml" />
-    <Content Include="Views\Agenda\ConfirmarCita.cshtml" />
     <Content Include="Views\Agenda\Calendario.cshtml" />
     <Content Include="Views\Agenda\Evento.cshtml" />
     <Content Include="Views\Agenda\AgendarCita.cshtml" />
@@ -739,9 +740,7 @@
     <Content Include="Views\Agenda\CitaRegistrada.cshtml" />
     <Content Include="Views\Historial\Adjuntos.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
