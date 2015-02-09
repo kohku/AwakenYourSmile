@@ -379,11 +379,11 @@ namespace Rainbow.Web.PostOffice
                 AlternateView avHtml = AlternateView.CreateAlternateViewFromString(
                     message.Body, null, System.Net.Mime.MediaTypeNames.Text.Html);
 
-                string textBody = "You must use an e-mail client that supports HTML messages";
+                //string textBody = "You must use an e-mail client that supports HTML messages";
 
-                // Create an alternate view for unsupported clients
-                AlternateView avText = AlternateView.CreateAlternateViewFromString(
-                    textBody, null, System.Net.Mime.MediaTypeNames.Text.Plain);
+                //// Create an alternate view for unsupported clients
+                //AlternateView avText = AlternateView.CreateAlternateViewFromString(
+                //    textBody, null, System.Net.Mime.MediaTypeNames.Text.Plain);
 
                 foreach (KeyValuePair<string, Stream> item in message.LinkedResources)
                 {
@@ -394,7 +394,7 @@ namespace Rainbow.Web.PostOffice
                 }
 
                 message.AlternateViews.Add(avHtml);
-                message.AlternateViews.Add(avText);
+                //message.AlternateViews.Add(avText);
 
                 client.Send(message);
             }

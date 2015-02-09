@@ -9,6 +9,7 @@ using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using Rainbow.Web.PostOffice;
 using System.Configuration;
+using System.Text;
 
 namespace AwakenYourSmile.Web.Controllers
 {
@@ -100,6 +101,7 @@ namespace AwakenYourSmile.Web.Controllers
             {
                 var message = PostOfficeService.Create(model, template, parameters);
 
+                message.BodyEncoding = Encoding.UTF8;
                 message.IsBodyHtml = true;
                 message.To.Add(ConfigurationManager.AppSettings["AppointmentNotificationEmail"]);
 
@@ -229,6 +231,8 @@ namespace AwakenYourSmile.Web.Controllers
             using (var template = System.IO.File.OpenRead(path))
             {
                 var message = PostOfficeService.Create(entity, template, parameters);
+
+                message.BodyEncoding = Encoding.UTF8;
                 message.IsBodyHtml = true;
                 message.To.Add(entity.Email);
 
@@ -263,6 +267,8 @@ namespace AwakenYourSmile.Web.Controllers
             using (var template = System.IO.File.OpenRead(path))
             {
                 var message = PostOfficeService.Create(entity, template, parameters);
+
+                message.BodyEncoding = Encoding.UTF8;
                 message.IsBodyHtml = true;
                 message.To.Add(entity.Email);
 
