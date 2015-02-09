@@ -18,6 +18,8 @@ namespace AwakenYourSmile
         }
 
         private DateTime _appointmentDate;
+        [Required(ErrorMessage = "La fecha de la cita es requerida.")]
+
         public DateTime AppointmentDate
         {
             get { return _appointmentDate; }
@@ -33,6 +35,7 @@ namespace AwakenYourSmile
         }
 
         private TimeSpan _appointmentTime;
+        [Required(ErrorMessage = "La hora de la cita es requerida.")]
         public TimeSpan AppointmentTime
         {
             get { return _appointmentTime; }
@@ -48,6 +51,7 @@ namespace AwakenYourSmile
         }
 
         private string _firstName;
+        [Required(ErrorMessage="El nombre es requerido.")]
         public string FirstName
         {
             get { return _firstName; }
@@ -63,6 +67,7 @@ namespace AwakenYourSmile
         }
 
         private string _lastName;
+        [Required(ErrorMessage = "El apellido es requerido.")]
         public string LastName
         {
             get { return _lastName; }
@@ -78,6 +83,7 @@ namespace AwakenYourSmile
         }
 
         private string _email;
+        [Required(ErrorMessage = "El email es requerido.")]
         public string Email
         {
             get { return _email; }
@@ -93,6 +99,7 @@ namespace AwakenYourSmile
         }
 
         private string _phoneNumber;
+        [Required(ErrorMessage = "El teléfono es requerido.")]
         public string PhoneNumber
         {
             get { return _phoneNumber; }

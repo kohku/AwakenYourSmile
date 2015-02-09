@@ -28,27 +28,26 @@
                 @Html.HiddenFor(model => model.CreatedBy)
                 @Html.HiddenFor(model => model.DateCreated)
 
-                <h5>@Html.LabelFor(m => m.FirstName, "Nombre:")</h5>
+                <h5>@Html.LabelFor(m => m.FirstName, "Nombre:") @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })<br /></h5>
                 @Html.TextBoxFor(m => m.FirstName, new { @class = "txbx", placeholder = "nombre" })
-                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.LastName, "Apellidos:")</h5>
+                <h5>@Html.LabelFor(m => m.LastName, "Apellidos:") @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })<br /></h5>
                 @Html.TextBoxFor(m => m.LastName, new { @class = "txbx", placeholder = "apellidos" })
-                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.Email, "Email:")</h5>
+
+                <h5>@Html.LabelFor(m => m.Email, "Email:") @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })<br /></h5>
                 @Html.TextBoxFor(m => m.Email, new { @class = "txbx", placeholder = "email" })
-                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.PhoneNumber, "Teléfono:")</h5>
+
+                <h5>@Html.LabelFor(m => m.PhoneNumber, "Teléfono:") @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })<br /></h5>
                 @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "txbx", placeholder = "teléfono" })
-                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.CellPhone, "Celular:")</h5>
+
+                <h5>@Html.LabelFor(m => m.CellPhone, "Celular:") @Html.ValidationMessageFor(m => m.CellPhone, "", new { @class = "text-danger" })<br /></h5>
                 @Html.TextBoxFor(m => m.CellPhone, new { @class = "txbx", placeholder = "celular" })
-                @Html.ValidationMessageFor(m => m.CellPhone, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.AppointmentDate, "Fecha:")</h5>
+
+                <h5>@Html.LabelFor(m => m.AppointmentDate, "Fecha:") @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br /></h5>
                 @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha" })
-                @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
-                <h5>@Html.LabelFor(m => m.AppointmentTime, "Hora:")</h5>
+
+                <h5>@Html.LabelFor(m => m.AppointmentTime, "Hora:") @Html.ValidationMessageFor(m => m.AppointmentTime, "", new { @class = "text-danger" })<br /></h5>
                 @Html.TextBoxFor(m => m.AppointmentTime, new { @class = "txbx", type = "time", placeholder = "hora" })
-                @Html.ValidationMessageFor(m => m.AppointmentTime, "", new { @class = "text-danger" })<br />
+
                 @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)<br />
 
                 <input type="button" value="Regresar" class="sendbtn btnSend" onclick="document.location.href='@Url.Content("~/Index.html")';return false;">
@@ -138,11 +137,11 @@
                        @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
                         {
                             @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                }
                         else
                         {
                             @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                }
                     });
             }
         });

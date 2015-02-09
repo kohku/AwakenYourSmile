@@ -112,6 +112,10 @@
     <Compile Include="Migrations\201502091639418_TimeSpan4AppointmentDate.Designer.cs">
       <DependentUpon>201502091639418_TimeSpan4AppointmentDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502091659195_AppointmentRequiredFields.cs" />
+    <Compile Include="Migrations\201502091659195_AppointmentRequiredFields.Designer.cs">
+      <DependentUpon>201502091659195_AppointmentRequiredFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502091639418_TimeSpan4AppointmentDate.resx">
       <DependentUpon>201502091639418_TimeSpan4AppointmentDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502091659195_AppointmentRequiredFields.resx">
+      <DependentUpon>201502091659195_AppointmentRequiredFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
