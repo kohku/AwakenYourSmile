@@ -26,10 +26,10 @@
 
 <section class="container page-content">
     <hr class="vertical-space2">
-    <input type="button" value="Agregar nueva cita" class="form-submit-button" onclick='document.location.href("@Url.Action("AgendarCita", "Agenda")")'>
+    <input type="button" value="Agregar nueva cita" class="form-submit-button" onclick='document.location.href="@Url.Action("AgendarCita", "Agenda")";return false;'>
     <div id='calendar'></div>
     <br/>
-    <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index", "Administration")")'>
+    <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href="@Url.Action("Index", "Administration")";return false;'>
 </section>
 
 @section Scripts {

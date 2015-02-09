@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201501282238186_RemovingExtraFunction.Designer.cs">
       <DependentUpon>201501282238186_RemovingExtraFunction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502091639418_TimeSpan4AppointmentDate.cs" />
+    <Compile Include="Migrations\201502091639418_TimeSpan4AppointmentDate.Designer.cs">
+      <DependentUpon>201502091639418_TimeSpan4AppointmentDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501282238186_RemovingExtraFunction.resx">
       <DependentUpon>201501282238186_RemovingExtraFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502091639418_TimeSpan4AppointmentDate.resx">
+      <DependentUpon>201502091639418_TimeSpan4AppointmentDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

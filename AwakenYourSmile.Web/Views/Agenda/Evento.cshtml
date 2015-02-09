@@ -28,11 +28,11 @@
             <h5>Fecha:</h5>
             @Html.DisplayTextFor(model => model.AppointmentDate)<br />
             
-            <input type="button" value="Confirmar" class="form-submit-button" onclick='document.location.href("@Url.Action("Confirmar", "Agenda", new { id = Model.ID })")'>
+            <input type="button" value="Confirmar" class="form-submit-button" onclick='document.location.href="@Url.Action("Confirmar", "Agenda", new { id = Model.ID })";return false;'>
             &nbsp;
-            <input type="button" value="Rechazar" class="form-submit-button" onclick='document.location.href("@Url.Action("Cancelar", "Agenda", new { id = Model.ID })")'>
+            <input type="button" value="Rechazar" class="form-submit-button" onclick='document.location.href="@Url.Action("Cancelar", "Agenda", new { id = Model.ID })";return false;'>
             &nbsp;
-            <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index", "Agenda")")'>
+            <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href="@Url.Action("Index", "Agenda")";return false;'>
             <br />
         </div>
     </div>

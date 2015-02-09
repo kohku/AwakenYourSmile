@@ -43,6 +43,8 @@ namespace AwakenYourSmile.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    model.AppointmentDate = model.AppointmentDate.Add(model.AppointmentTime);
+
                     if (model.IsValid)
                     {
                         RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
@@ -131,6 +133,8 @@ namespace AwakenYourSmile.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    model.AppointmentDate = model.AppointmentDate.Add(model.AppointmentTime);
+
                     if (model.IsValid)
                     {
                         model.AcceptChanges();

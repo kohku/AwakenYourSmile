@@ -46,7 +46,7 @@
                 @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha y hora" })
                 @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
 
-                <input type="button" value="Regresar" class="sendbtn btnSend" onclick='document.location.href("@Url.Action("Index", "Agenda")")'>
+    <input type="button" value="Regresar" class="sendbtn btnSend" onclick='document.location.href="@Url.Action("Index", "Agenda")";return false;'>
                 <text>&nbsp;</text>
                 <input type="submit" class="sendbtn btnSend" value="Agendar Cita" />
 
@@ -105,11 +105,11 @@
         };
 
         $(document).ready(function () {
-            $('#__appointmentDate').datetimepicker({
+            @*$('#__appointmentDate').datetimepicker({
                 controlType: timepicker,
                 datepicker: $.datepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"],
                 timepicker: $.timepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"]
-            })
+            })*@
 
             var datefields = $("input[type='date']");
 

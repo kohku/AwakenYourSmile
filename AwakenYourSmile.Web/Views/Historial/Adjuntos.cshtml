@@ -47,7 +47,7 @@
                 <input type="file" name="file" id="file" />
 
                 <input type="submit" value="Agregar" class="form-submit-button" />
-                <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href("@Url.Action("Modificar", new { id = Model.Reference })")' />
+    <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href="@Url.Action("Modificar", new { id = Model.Reference })";return false;' />
             }
         </div>
     </div>

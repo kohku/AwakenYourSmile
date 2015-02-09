@@ -32,6 +32,21 @@ namespace AwakenYourSmile
             }
         }
 
+        private TimeSpan _appointmentTime;
+        public TimeSpan AppointmentTime
+        {
+            get { return _appointmentTime; }
+            set
+            {
+                var changed = !object.Equals(_appointmentTime, value);
+                if (changed)
+                    this.OnPropertyChanging("AppointmentTime");
+                this._appointmentTime = value;
+                if (changed)
+                    MarkChanged("AppointmentTime");
+            }
+        }
+
         private string _firstName;
         public string FirstName
         {

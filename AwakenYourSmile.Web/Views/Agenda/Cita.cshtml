@@ -44,11 +44,14 @@
                 @Html.TextBoxFor(m => m.CellPhone, new { @class = "txbx", placeholder = "celular" })
                 @Html.ValidationMessageFor(m => m.CellPhone, "", new { @class = "text-danger" })<br />
                 <h5>@Html.LabelFor(m => m.AppointmentDate, "Fecha:")</h5>
-                @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha y hora" })
+                @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha" })
                 @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
+                <h5>@Html.LabelFor(m => m.AppointmentTime, "Hora:")</h5>
+                @Html.TextBoxFor(m => m.AppointmentTime, new { @class = "txbx", type = "time", placeholder = "hora" })
+                @Html.ValidationMessageFor(m => m.AppointmentTime, "", new { @class = "text-danger" })<br />
                 @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)<br />
 
-                <input type="button" value="Regresar" class="sendbtn btnSend" onclick='document.location.href("@Url.Content("~/Index.html")")'>
+                <input type="button" value="Regresar" class="sendbtn btnSend" onclick="document.location.href='@Url.Content("~/Index.html")';return false;">
                 <text>&nbsp;</text>
                 <input type="submit" class="sendbtn btnSend" value="Agendar Cita" />
 
@@ -72,6 +75,10 @@
     }
 
     <script type="text/javascript">
+        function redirectToLocation(url) {
+            (url);
+        }
+
         var timepicker = {
             create: function (tp_inst, obj, unit, val, min, max, step) {
                 $('<input class="ui-timepicker-input" value="' + val + '" style="width:50%">')
@@ -107,11 +114,11 @@
         };
 
         $(document).ready(function () {
-            $('#__appointmentDate').datetimepicker({
+            @*$('#__appointmentDate').datetimepicker({
                 controlType: timepicker,
                 datepicker: $.datepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"],
                 timepicker: $.timepicker.regional["@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName"]
-            })
+            })*@
 
             var datefields = $("input[type='date']");
 
@@ -131,11 +138,11 @@
                        @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
                         {
                             @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                                                                                                                                                                                        }
+                                                                                                                                                                                                                }
                         else
                         {
                             @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-                                                                                                                                                                                        }
+                                                                                                                                                                                                                }
                     });
             }
         });

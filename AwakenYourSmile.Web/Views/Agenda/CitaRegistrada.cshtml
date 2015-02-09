@@ -28,7 +28,7 @@
             <h5>Fecha:</h5>
             @Html.DisplayTextFor(model => model.AppointmentDate)<br />
             <br />
-            <input type="button" value="Regresar" class="sendbtn btnSend" onclick='document.location.href("@Url.Content("~/Index.html")")'>
+            <input type="button" value="Regresar" class="sendbtn btnSend" onclick="document.location.href='@Url.Content("~/Index.html")';return false;">
             <div id="spanMessage">
             </div>
         </div>

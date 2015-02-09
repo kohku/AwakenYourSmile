@@ -561,9 +561,9 @@
 
                 @Html.ValidationSummary()
                 <input type="submit" value="Actualizar" class="form-submit-button">
-                <input type="button" value="Cancelar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index", "Administration")")'>
+                <input type="button" value="Cancelar" class="form-submit-button" onclick='document.location.href="@Url.Action("Index", "Administration")";return false;'>
                 <br/>
-                <input type="button" value="Archivos Adjuntos" class="form-submit-button" onclick='document.location.href("@Url.Action("Adjuntos", new { reference = Model.ID })")'>
+                <input type="button" value="Archivos Adjuntos" class="form-submit-button" onclick='document.location.href="@Url.Action("Adjuntos", new { reference = Model.ID })";return false;'>
             </div>
         }
     </div>
