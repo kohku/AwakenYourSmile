@@ -27,10 +27,13 @@
             @Html.DisplayTextFor(model => model.CellPhone)<br />
             <h5>Fecha:</h5>
             @Html.DisplayTextFor(model => model.AppointmentDate)<br />
-
-            @Html.ActionLink("Regresar", "Index")&nbsp;|&nbsp;
-            @Html.ActionLink("Confirmar", "Confirmar", new { id = Model.ID })&nbsp;|&nbsp;
-            @Html.ActionLink("Cancelar", "Cancelar", new { id = Model.ID })
+            
+            <input type="button" value="Confirmar" class="form-submit-button" onclick='document.location.href("@Url.Action("Confirmar", "Agenda", new { id = Model.ID })")'>
+            &nbsp;
+            <input type="button" value="Rechazar" class="form-submit-button" onclick='document.location.href("@Url.Action("Cancelar", "Agenda", new { id = Model.ID })")'>
+            &nbsp;
+            <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index", "Agenda")")'>
+            <br />
         </div>
     </div>
 </section>

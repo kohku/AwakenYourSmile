@@ -9,25 +9,27 @@
     @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/fullcalendar")
     <style type="text/css">
-        .appointment_cancelled {
+        .appointment_cancelled, .appointment_cancelled:visited, .appointment_cancelled:hover, .appointment_cancelled:active {
             background-color: #ffffff;
             color: #ff0000 !important;
             text-decoration: line-through;
         }
-        .appointment_booked {
+        .appointment_booked, .appointment_booked:visited, .appointment_booked:hover, .appointment_booked:active {
+            color: #ffffff !important;
         }
-        .appointment_confirmed {
-        }
-        .appointment_entered {
+        .appointment_entered, .appointment_entered:visited, .appointment_entered:hover, .appointment_entered:active {
+            color: #c0c0c0 !important;
+            background-color: #ffffff;
         }
     </style>
 }
 
 <section class="container page-content">
     <hr class="vertical-space2">
-    @Html.ActionLink("Agregar nueva cita", "AgendarCita")
+    <input type="button" value="Agregar nueva cita" class="form-submit-button" onclick='document.location.href("@Url.Action("AgendarCita", "Agenda")")'>
     <div id='calendar'></div>
-    @Html.ActionLink("Regresar", "Index")
+    <br/>
+    <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index", "Administration")")'>
 </section>
 
 @section Scripts {

@@ -8,7 +8,7 @@
         </title>
       </head>
       <body>
-        Se registro una cita.
+        Se registro una cita en el sistema.
       </body>
     </html>
   </xsl:template>

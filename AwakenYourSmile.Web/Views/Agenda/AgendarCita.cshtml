@@ -46,7 +46,8 @@
                 @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha y hora" })
                 @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
 
-                @Html.ActionLink("Regresar", "Index")&nbsp;|&nbsp;
+                <input type="button" value="Regresar" class="sendbtn btnSend" onclick='document.location.href("@Url.Action("Index", "Agenda")")'>
+                <text>&nbsp;</text>
                 <input type="submit" class="sendbtn btnSend" value="Agendar Cita" />
 
                 <div id="spanMessage">
@@ -128,11 +129,11 @@
                        @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
                         {
                             @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                                                                                                                                        }
+                                                                                                                                                                                        }
                         else
                         {
                             @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-                                                                                                                                        }
+                                                                                                                                                                                        }
                     });
             }
         });

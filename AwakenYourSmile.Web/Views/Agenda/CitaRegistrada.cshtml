@@ -13,24 +13,24 @@
 
     <div class="eight columns offset-by-one">
         <div class="contact-form">
+            Gracias, pronto recibirá una notificación de la cita.
             <div class="clr"></div><br />
-                Gracias, pronto recibirá una notificación de la cita.
-                <h5>Nombre:</h5>
-                @Html.DisplayTextFor(model => model.FirstName)<br/>
-                <h5>Apellidos:</h5>
-                @Html.DisplayTextFor(model => model.LastName)<br/>
-                <h5>Email:</h5>
-                @Html.DisplayTextFor(model => model.Email)<br/>
-                <h5>Teléfono:</h5>
-                @Html.DisplayTextFor(model => model.PhoneNumber)<br/>
-                <h5>Celular:</h5>
-                @Html.DisplayTextFor(model => model.CellPhone)<br/>
-                <h5>Fecha:</h5>
-                @Html.DisplayTextFor(model => model.AppointmentDate)<br/>
-
-                @Html.ActionLink("Regresar", "Index")&nbsp;|&nbsp;
-                <div id="spanMessage">
-                </div>
+            <h5>Nombre:</h5>
+            @Html.DisplayTextFor(model => model.FirstName)<br />
+            <h5>Apellidos:</h5>
+            @Html.DisplayTextFor(model => model.LastName)<br />
+            <h5>Email:</h5>
+            @Html.DisplayTextFor(model => model.Email)<br />
+            <h5>Teléfono:</h5>
+            @Html.DisplayTextFor(model => model.PhoneNumber)<br />
+            <h5>Celular:</h5>
+            @Html.DisplayTextFor(model => model.CellPhone)<br />
+            <h5>Fecha:</h5>
+            @Html.DisplayTextFor(model => model.AppointmentDate)<br />
+            <br />
+            <input type="button" value="Regresar" class="sendbtn btnSend" onclick='document.location.href("@Url.Content("~/Index.html")")'>
+            <div id="spanMessage">
+            </div>
         </div>
     </div>
 </section>

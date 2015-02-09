@@ -173,8 +173,8 @@ namespace AwakenYourSmile.Web.Controllers
                 {
                     id = appointment.ID.ToString(),
                     title = string.Format("{0}, {1}", appointment.LastName, appointment.FirstName),
-                    start = appointment.AppointmentDate,
-                    end = appointment.AppointmentDate.AddHours(1),
+                    start = appointment.AppointmentDate.ToLocalTime(),
+                    end = appointment.AppointmentDate.ToLocalTime().AddHours(1),
                     url = Url.Action("Evento", new { id = appointment.ID }),
                     className = (appointment.Cancelled ? "appointment_cancelled" : 
                         appointment.Booked ? "appointment_booked" : "appointment_entered")

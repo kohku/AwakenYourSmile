@@ -109,14 +109,14 @@ namespace Rainbow.Web.PostOffice
                 XmlNode subject = emailMessage.SelectSingleNode("//html:title", manager);
 
                 if (subject != null)
-                    message.Subject = subject.InnerText.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("\t", string.Empty);
+                    message.Subject = subject.InnerText.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("\t", string.Empty).Trim();
 
                 // Generating email body.
                 XmlNode body = emailMessage.SelectSingleNode("//html:body", manager);
 
                 if (body != null)
                 {
-                    message.Body = body.InnerXml;
+                    message.Body = body.InnerXml.Trim();
                     if (message.Body.Length > 0)
                         message.Body = message.Body.Replace("&amp;", "&");
                 }

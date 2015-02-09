@@ -487,7 +487,7 @@ namespace Rainbow.Web
                 if (this.IsNew)
                 {
                     if (this.DateCreated.Equals(DateTime.MinValue))
-                        this.DateCreated = DateTime.UtcNow;
+                        this.DateCreated = DateTime.Now;
 
                     action = SaveAction.Insert;
                     OnSaving(this, action);
@@ -495,9 +495,9 @@ namespace Rainbow.Web
                 }
                 else
                 {
-                    // This allows to save DateTime.UtcNow if required
+                    // This allows to save DateTime.Now if required
                     if (!this.ChangedProperties.Contains("LastUpdated"))
-                        this.LastUpdated = DateTime.UtcNow;
+                        this.LastUpdated = DateTime.Now;
 
                     action = SaveAction.Update;
                     OnSaving(this, action);

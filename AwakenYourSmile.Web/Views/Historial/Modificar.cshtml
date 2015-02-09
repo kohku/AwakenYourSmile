@@ -301,7 +301,7 @@
                     @Html.RadioButtonFor(m => m.ReceivedBloodTransfusions, true, Model.ReceivedBloodTransfusions ? new { @checked = true } : null)
                 </label><br>
                 <h6>Fecha</h6>
-                @Html.TextBoxFor(model => model.BloodTransfusionsDate, String.Format("{0:dd-MM-yyyy}", Model.SpontaneousBleedingNoseDate), new { placeholder = "fecha" })
+                @Html.TextBoxFor(model => model.BloodTransfusionsDate, String.Format("{0:dd-MM-yyyy}", Model.BloodTransfusionsDate), new { placeholder = "fecha" })
                 @Html.ValidationMessageFor(model => model.BloodTransfusionsDate)
                 <h6>Causa</h6>
                 @Html.TextBoxFor(model => model.BloodTransfusionsReason, new { placeholder = "causa" })
@@ -561,9 +561,9 @@
 
                 @Html.ValidationSummary()
                 <input type="submit" value="Actualizar" class="form-submit-button">
-                <input type="button" value="Cancelar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index")")'>
+                <input type="button" value="Cancelar" class="form-submit-button" onclick='document.location.href("@Url.Action("Index", "Administration")")'>
                 <br/>
-                @Html.ActionLink("Archivos Adjuntos", "Adjuntos", new { reference = Model.ID })
+                <input type="button" value="Archivos Adjuntos" class="form-submit-button" onclick='document.location.href("@Url.Action("Adjuntos", new { reference = Model.ID })")'>
             </div>
         }
     </div>

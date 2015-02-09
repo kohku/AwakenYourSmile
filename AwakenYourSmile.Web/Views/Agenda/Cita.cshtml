@@ -48,7 +48,8 @@
                 @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
                 @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)<br />
 
-                @Html.ActionLink("Regresar", "Index")&nbsp;|&nbsp;
+                <input type="button" value="Regresar" class="sendbtn btnSend" onclick='document.location.href("@Url.Content("~/Index.html")")'>
+                <text>&nbsp;</text>
                 <input type="submit" class="sendbtn btnSend" value="Agendar Cita" />
 
                 <div id="spanMessage">
@@ -130,11 +131,11 @@
                        @if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "es")
                         {
                             @:date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                                                                                                                                        }
+                                                                                                                                                                                        }
                         else
                         {
                             @:date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
-                                                                                                                                        }
+                                                                                                                                                                                        }
                     });
             }
         });
