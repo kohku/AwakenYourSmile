@@ -184,6 +184,7 @@
     <Content Include="administrador.html" />
     <Content Include="agenda.html" />
     <Content Include="appointment.html" />
+    <Content Include="App_Data\nextAppointments.xslt" />
     <Content Include="App_Data\reject.xslt" />
     <Content Include="App_Data\accept.xslt" />
     <Content Include="App_Data\notification.xslt" />
