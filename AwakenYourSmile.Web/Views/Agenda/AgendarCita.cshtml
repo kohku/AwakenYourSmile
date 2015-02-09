@@ -46,6 +46,7 @@
                 @Html.TextBoxFor(m => m.AppointmentDate, new { id = "__appointmentDate", @class = "txbx", type = "date", placeholder = "fecha y hora" })
                 @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @class = "text-danger" })<br />
 
+                @Html.ActionLink("Regresar", "Index")&nbsp;|&nbsp;
                 <input type="submit" class="sendbtn btnSend" value="Agendar Cita" />
 
                 <div id="spanMessage">

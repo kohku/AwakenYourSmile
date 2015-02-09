@@ -184,7 +184,8 @@
     <Content Include="administrador.html" />
     <Content Include="agenda.html" />
     <Content Include="appointment.html" />
-    <Content Include="App_Data\confirmation.xslt" />
+    <Content Include="App_Data\reject.xslt" />
+    <Content Include="App_Data\accept.xslt" />
     <Content Include="App_Data\notification.xslt" />
     <Content Include="busca.html" />
     <Content Include="Views\Shared\contact.html" />

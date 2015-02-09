@@ -219,7 +219,7 @@ namespace AwakenYourSmile.Web.Controllers
 
             entity.AcceptChanges();
 
-            var path = Server.MapPath(ConfigurationManager.AppSettings["AppointmentConfirmation"]);
+            var path = Server.MapPath(ConfigurationManager.AppSettings["AppointmentAccept"]);
             var parameters = new Dictionary<string, string>();
 
             using (var template = System.IO.File.OpenRead(path))
@@ -253,7 +253,7 @@ namespace AwakenYourSmile.Web.Controllers
 
             entity.AcceptChanges();
 
-            var path = Server.MapPath(ConfigurationManager.AppSettings["AppointmentConfirmation"]);
+            var path = Server.MapPath(ConfigurationManager.AppSettings["AppointmentReject"]);
             var parameters = new Dictionary<string, string>();
 
             using (var template = System.IO.File.OpenRead(path))
