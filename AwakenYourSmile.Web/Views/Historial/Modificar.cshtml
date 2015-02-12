@@ -566,6 +566,7 @@
                 <input type="submit" value="Actualizar" class="form-submit-button">
                 <input type="button" value="Cancelar" class="form-submit-button" onclick='document.location.href="@Url.Action("Index", "Administration")";return false;'>
                 <br/>
+                <input type="button" value="Odontograma" class="form-submit-button" onclick='document.location.href="@Url.Action("Odontograma", new { reference = Model.ID })";return false;'>
                 <input type="button" value="Archivos Adjuntos" class="form-submit-button" onclick='document.location.href="@Url.Action("Adjuntos", new { reference = Model.ID })";return false;'>
             </div>
         }

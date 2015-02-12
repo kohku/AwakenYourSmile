@@ -120,7 +120,12 @@
     <Compile Include="Migrations\201502121454384_AilmentAge.Designer.cs">
       <DependentUpon>201502121454384_AilmentAge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502121720198_Odontogram.cs" />
+    <Compile Include="Migrations\201502121720198_Odontogram.Designer.cs">
+      <DependentUpon>201502121720198_Odontogram.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Odontogram.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -182,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502121454384_AilmentAge.resx">
       <DependentUpon>201502121454384_AilmentAge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502121720198_Odontogram.resx">
+      <DependentUpon>201502121720198_Odontogram.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

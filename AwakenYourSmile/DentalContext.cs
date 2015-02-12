@@ -25,5 +25,7 @@ namespace AwakenYourSmile
         public DbSet<Patient> Patients { get; set; }
 
         public DbSet<ClinicalHistory> ClinicalHistories { get; set; }
+
+        public DbSet<Odontogram> Odontograms { get; set; }
     }
 }

@@ -282,5 +282,53 @@ namespace AwakenYourSmile.Web.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //
+        // GET: /Historial/Odontograma
+        [Authorize]
+        public ActionResult Odontograma(Guid? reference)
+        {
+            if (!reference.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var model = Odontogram.Load(reference.Value);
+
+            if (model == null)
+                model = new Odontogram(reference.Value);
+
+            return View(model);
+        }
+
+        //
+        // POST: /Historial/Odontograma
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Odontograma(Odontogram model)
+        {
+            if (model == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (model.IsValid)
+                    {
+                        model.AcceptChanges();
+
+                        return RedirectToAction("Odontograma", new { reference = model.ID });
+                    }
+
+                    ModelState.AddModelError("ValidationMessage", model.ValidationMessage);
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                ModelState.AddModelError("", "No es posible guardar los cambios. Intente de nuevo y si no es posible favor de contactar al administrador del sistema.");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
     }
 }
