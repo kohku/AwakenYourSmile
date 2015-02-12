@@ -125,7 +125,7 @@ namespace AwakenYourSmile.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Administration");
+            return RedirectToAction("Login", "Administration");
         }
 
         #region Helpers

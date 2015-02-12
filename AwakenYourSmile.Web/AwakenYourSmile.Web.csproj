@@ -741,6 +741,7 @@
     <Content Include="Views\Administration\Login.cshtml" />
     <Content Include="Views\Agenda\CitaRegistrada.cshtml" />
     <Content Include="Views\Historial\Adjuntos.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

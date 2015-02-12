@@ -3,7 +3,7 @@
 @model AwakenYourSmile.ClinicalHistory
 @{
     ViewBag.Title = "Modifica un historial clínico.";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 @section AddToHead{
@@ -386,6 +386,9 @@
                     Epilepsia
                     @Html.CheckBoxFor(m => m.Epilepsy, Model.Epilepsy ? new { @checked = true } : null)
                 </label>
+                <h6>¿A qué edad?</h6>
+                @Html.TextBoxFor(model => model.AilmentAge, new { placeholder = "Edad" })
+                @Html.ValidationMessageFor(model => model.AilmentAge)
 
                 <h3>Antecedentes hereditarios</h3>
                 <br><h6>¿El padre, la madre, abuelos o familiares cercanos presentan alguna enfermedad como: diabetes, hipertensión arterial sistémica, problemas del corazón, problemas de la sangre, retraso mental, labio o paladar hendido? Especifique ¿Cuál? y ¿Quién?</h6>

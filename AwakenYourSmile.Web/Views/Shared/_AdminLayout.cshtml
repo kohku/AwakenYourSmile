@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="@Url.Content("~/css/style.css")" type="text/css" media="all">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Roboto+Slab:300,400" rel="stylesheet" type="text/css">
+
+
+    <!-- JS
+    ================================================== -->
+    <script type="text/javascript" src="@Url.Content("~/js/jquery.min.js")"></script>
+    <!--[if lt IE 9]>
+    <script src="js/modernizr.custom.11889.js" type="text/javascript"></script>
+    <![endif]-->
+    <!-- HTML5 Shiv events (end)-->
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="@Url.Content("~/images/favicon.ico")">
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#__log_out").click(function () {
+                $("#__nav_logout").submit();
+                return false;
+            }).css("cursor", "pointer");
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Primary Page Layout
+    ================================================== -->
+
+    <div id="wrap" class="colorskin-0">
+        <div id="sticker">
+            <header id="header">
+
+                <div class="container">
+                    <div class="four columns">
+                        <div class="logo"><a href="@Url.Content("~/index.html")"><img src="@Url.Content("~/images/logo.png")" width="150" id="img-logo" alt="logo"></a></div>
+                    </div>
+
+                    <!-- Navigation starts
+                      ================================================== -->
+                    <nav id="nav-wrap" class="nav-wrap1 twelve columns">
+
+                        <ul id="nav">
+                            <li>
+                                <a href="@Url.Action("Index", "Historial")">Historial clínico</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Agenda")">Agenda</a>
+                            </li>
+                            <li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Administration", FormMethod.Post, new { id = "__nav_logout" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <a href="@Url.Action("Index", "Administration")" id="__log_out">Salir</a>
+                                    }
+                                }
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <!-- /nav-wrap -->
+                    <!-- Navigation ends
+                      ================================================== -->
+                </div>
+
+            </header>
+        </div>
+        <!-- end-header -->
+        @RenderBody()
+        <div class="white-space"></div>
+
+        <section class="footbot">
+            <div class="container">
+                <div class="footer-navi">© 2014 <a href="">Despierta tu sonrisa </a>Derechos Reservados.</div>
+                <div class="socailfollow">
+                    <a href="https://www.facebook.com/pages/Consultorio-Despierta-tu-Sonrisa/179267908777968" class="facebook"><i class="icomoon-facebook"></i></a>
+                    <a href="http://instagram.com/despierta_tu_sonrisa" class="twitter"><i class="icomoon-instagram"></i></a>
+                    <a href="#" class="google"><i class="icomoon-email"></i></a>
+
+                </div>
+            </div>
+            <!-- footer-navigation /end -->
+        </section>
+        <!-- end-footbot -->
+        <span id="scroll-top"><a class="scrollup"><i class="icomoon-arrow-up"></i></a></span>
+    </div><!-- end-wrap -->
+    <!-- End Document
+    ================================================== -->
+    <script src="@Url.Content("~/js/jquery.jcarousel.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/doubletaptogo.js")"></script>
+    <script defer src="@Url.Content("~/js/jquery.flexslider-min.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap-alert.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap-dropdown.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap-tab.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap-tooltip.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/florida-custom.js")"></script>
+    <script src="@Url.Content("~/js/jquery.prettyPhoto.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/jquery.sticky.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/jquery.easy-pie-chart.js")"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

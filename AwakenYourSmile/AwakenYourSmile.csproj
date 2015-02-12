@@ -116,6 +116,10 @@
     <Compile Include="Migrations\201502091659195_AppointmentRequiredFields.Designer.cs">
       <DependentUpon>201502091659195_AppointmentRequiredFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502121454384_AilmentAge.cs" />
+    <Compile Include="Migrations\201502121454384_AilmentAge.Designer.cs">
+      <DependentUpon>201502121454384_AilmentAge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502091659195_AppointmentRequiredFields.resx">
       <DependentUpon>201502091659195_AppointmentRequiredFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502121454384_AilmentAge.resx">
+      <DependentUpon>201502121454384_AilmentAge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

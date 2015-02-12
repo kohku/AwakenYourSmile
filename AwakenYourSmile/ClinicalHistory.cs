@@ -1209,8 +1209,8 @@ namespace AwakenYourSmile
         }
 
 
-        private bool _ailmentAge;
-        public bool AilmentAge
+        private string _ailmentAge;
+        public string AilmentAge
         {
             get { return _ailmentAge; }
             set

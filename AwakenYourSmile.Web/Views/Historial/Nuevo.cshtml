@@ -3,7 +3,7 @@
 @model AwakenYourSmile.ClinicalHistory
 @{
     ViewBag.Title = "Crea un nuevo historial clínico.";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 @section AddToHead{
@@ -386,8 +386,8 @@
                     Epilepsia
                     @Html.CheckBoxFor(m => m.Epilepsy, Model.Epilepsy ? new { @checked = true } : null)
                 </label>
-                <h6>¿Cuál y por qué?</h6>
-                @Html.TextBoxFor(model => model.AilmentAge, new { placeholder = "¿A qué edad?" })
+                <h6>¿A qué edad?</h6>
+                @Html.TextBoxFor(model => model.AilmentAge, new { placeholder = "Edad" })
                 @Html.ValidationMessageFor(model => model.AilmentAge)
 
                 <h3>Antecedentes hereditarios</h3>
