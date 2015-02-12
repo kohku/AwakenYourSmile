@@ -1,461 +1,285 @@
 ﻿@model AwakenYourSmile.Odontogram
-    @{
-        ViewBag.Title = "Odontograma";
-        Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    }
+@{
+    ViewBag.Title = "Odontograma";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-    <section class="container page-content">
-        <hr class="vertical-space2">
-        @using (Html.BeginForm("Odontograma", "Historial", FormMethod.Post))
-        {
-            @Html.HiddenFor(model => model.ID)
-            @Html.HiddenFor(model => model.CreatedBy)
-            @Html.HiddenFor(model => model.DateCreated)
-            <div class="sixteen columns">
-                <div class="one_third">
-                    <table width="800" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width="49" height="20"><input name="textarea2" type="text" id="textarea2" value="" size="4" /></td>
-                            <td width="46"><input name="textarea4" type="text" id="textarea4" value="" size="4" /></td>
-                            <td width="46"><input name="textarea7" type="text" id="textarea7" value="" size="4" /></td>
-                            <td width="46"><input name="textarea10" type="text" id="textarea10" value="" size="4" /></td>
-                            <td width="52"><input name="textarea13" type="text" id="textarea13" value="" size="4" /></td>
-                            <td width="47"><input name="textarea16" type="text" id="textarea16" value="" size="4" /></td>
-                            <td width="49"><input name="textarea19" type="text" id="textarea19" value="" size="4" /></td>
-                            <td width="83"><input name="textarea22" type="text" id="textarea22" value="" size="4" /></td>
-                            <td width="49"><input name="textarea25" type="text" id="textarea25" value="" size="4" /></td>
-                            <td width="46"><input name="textarea28" type="text" id="textarea28" value="" size="4" /></td>
-                            <td width="48"><input name="textarea31" type="text" id="textarea31" value="" size="4" /></td>
-                            <td width="46"><input name="textarea34" type="text" id="textarea34" value="" size="4" /></td>
-                            <td width="46"><input name="textarea37" type="text" id="textarea37" value="" size="4" /></td>
-                            <td width="46"><input name="textarea40" type="text" id="textarea40" value="" size="4" /></td>
-                            <td width="46"><input name="textarea43" type="text" id="textarea43" value="" size="4" /></td>
-                            <td width="55"><input name="textarea46" type="text" id="textarea46" value="" size="4" /></td>
-                        </tr>
-                        <tr>
-                            <td height="20">
-                                <label>
-                                    <input name="textarea" type="text" id="textarea" value="" size="4" />
-                                </label>
-                            </td>
-                            <td><input name="textarea5" type="text" id="textarea5" value="" size="4" /></td>
-                            <td><input name="textarea8" type="text" id="textarea8" value="" size="4" /></td>
-                            <td><input name="textarea11" type="text" id="textarea11" value="" size="4" /></td>
-                            <td><input name="textarea14" type="text" id="textarea14" value="" size="4" /></td>
-                            <td><input name="textarea17" type="text" id="textarea17" value="" size="4" /></td>
-                            <td><input name="textarea20" type="text" id="textarea20" value="" size="4" /></td>
-                            <td><input name="textarea23" type="text" id="textarea23" value="" size="4" /></td>
-                            <td><input name="textarea26" type="text" id="textarea26" value="" size="4" /></td>
-                            <td><input name="textarea29" type="text" id="textarea29" value="" size="4" /></td>
-                            <td><input name="textarea32" type="text" id="textarea32" value="" size="4" /></td>
-                            <td><input name="textarea35" type="text" id="textarea35" value="" size="4" /></td>
-                            <td><input name="textarea38" type="text" id="textarea38" value="" size="4" /></td>
-                            <td><input name="textarea41" type="text" id="textarea41" value="" size="4" /></td>
-                            <td><input name="textarea44" type="text" id="textarea44" value="" size="4" /></td>
-                            <td><input name="textarea47" type="text" id="textarea47" value="" size="4" /></td>
-                        </tr>
-                        <tr>
-                            <td height="20"><input name="textarea3" type="text" id="textarea3" value="" size="4" /></td>
-                            <td><input name="textarea6" type="text" id="textarea6" value="" size="4" /></td>
-                            <td><input name="textarea9" type="text" id="textarea9" value="" size="4" /></td>
-                            <td><input name="textarea12" type="text" id="textarea12" value="" size="4" /></td>
-                            <td><input name="textarea15" type="text" id="textarea15" value="" size="4" /></td>
-                            <td><input name="textarea18" type="text" id="textarea18" value="" size="4" /></td>
-                            <td><input name="textarea21" type="text" id="textarea21" value="" size="4" /></td>
-                            <td><input name="textarea24" type="text" id="textarea24" value="" size="4" /></td>
-                            <td><input name="textarea27" type="text" id="textarea27" value="" size="4" /></td>
-                            <td><input name="textarea30" type="text" id="textarea30" value="" size="4" /></td>
-                            <td><input name="textarea33" type="text" id="textarea33" value="" size="4" /></td>
-                            <td><input name="textarea36" type="text" id="textarea36" value="" size="4" /></td>
-                            <td><input name="textarea39" type="text" id="textarea39" value="" size="4" /></td>
-                            <td><input name="textarea42" type="text" id="textarea42" value="" size="4" /></td>
-                            <td><input name="textarea45" type="text" id="textarea45" value="" size="4" /></td>
-                            <td><input name="textarea48" type="text" id="textarea48" value="" size="4" /></td>
-                        </tr>
-                    </table>
-                    <table width="800" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/18.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/17.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/16.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/15.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/14.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/13.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/12.jpg")" width="47" height="62" /></td>
-                            <td width="86"><img src="@Url.Content("~/images/odontogram/11.jpg")" width="47" height="62" />></td>
-                            <td width="52"><img src="@Url.Content("~/images/odontogram/21.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/22.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/23.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/24.jpg")" width="47" height="62" />></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/25.jpg")" width="47" height="62" /></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/26.jpg")" width="47" height="62" />></td>
-                            <td width="47"><img src="@Url.Content("~/images/odontogram/27.jpg")" width="47" height="62" /></td>
-                            <td width="51"><img src="@Url.Content("~/images/odontogram/28.jpg")" width="47" height="62" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="textarea49" type="text" id="textarea49" value="" size="4" /></td>
-                            <td><input name="textarea50" type="text" id="textarea50" value="" size="4" /></td>
-                            <td><input name="textarea51" type="text" id="textarea51" value="" size="4" /></td>
-                            <td><input name="textarea52" type="text" id="textarea52" value="" size="4" /></td>
-                            <td><input name="textarea53" type="text" id="textarea53" value="" size="4" /></td>
-                            <td><input name="textarea54" type="text" id="textarea54" value="" size="4" /></td>
-                            <td><input name="textarea55" type="text" id="textarea55" value="" size="4" /></td>
-                            <td><input name="textarea56" type="text" id="textarea56" value="" size="4" /></td>
-                            <td><input name="textarea57" type="text" id="textarea57" value="" size="4" /></td>
-                            <td><input name="textarea58" type="text" id="textarea58" value="" size="4" /></td>
-                            <td><input name="textarea59" type="text" id="textarea59" value="" size="4" /></td>
-                            <td><input name="textarea60" type="text" id="textarea60" value="" size="4" /></td>
-                            <td><input name="textarea61" type="text" id="textarea61" value="" size="4" /></td>
-                            <td><input name="textarea62" type="text" id="textarea62" value="" size="4" /></td>
-                            <td><input name="textarea63" type="text" id="textarea63" value="" size="4" /></td>
-                            <td><input name="textarea64" type="text" id="textarea64" value="" size="4" /></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td><img src="@Url.Content("~/images/odontogram/55.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/54.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/53.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/52.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/51.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/61.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/62.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/63.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/64.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/65.jpg")" width="47" height="62" />></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td><input name="textarea74" type="text" id="textarea74" value="" size="4" /></td>
-                            <td><input name="textarea73" type="text" id="textarea73" value="" size="4" /></td>
-                            <td><input name="textarea72" type="text" id="textarea72" value="" size="4" /></td>
-                            <td><input name="textarea71" type="text" id="textarea71" value="" size="4" /></td>
-                            <td><input name="textarea70" type="text" id="textarea70" value="" size="4" /></td>
-                            <td><input name="textarea69" type="text" id="textarea69" value="" size="4" /></td>
-                            <td><input name="textarea68" type="text" id="textarea68" value="" size="4" /></td>
-                            <td><input name="textarea66" type="text" id="textarea66" value="" size="4" /></td>
-                            <td><input name="textarea67" type="text" id="textarea67" value="" size="4" /></td>
-                            <td><input name="textarea65" type="text" id="textarea65" value="" size="4" /></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td><img src="@Url.Content("~/images/odontogram/85.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/84.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/83.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/82.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/81.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/71.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/72.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/73.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/74.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/75.jpg")" width="47" height="62" /></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td><input name="textarea75" type="text" id="textarea75" value="" size="4" /></td>
-                            <td><input name="textarea76" type="text" id="textarea76" value="" size="4" /></td>
-                            <td><input name="textarea77" type="text" id="textarea77" value="" size="4" /></td>
-                            <td><input name="textarea78" type="text" id="textarea78" value="" size="4" /></td>
-                            <td><input name="textarea79" type="text" id="textarea79" value="" size="4" /></td>
-                            <td><input name="textarea80" type="text" id="textarea80" value="" size="4" /></td>
-                            <td><input name="textarea81" type="text" id="textarea81" value="" size="4" /></td>
-                            <td><input name="textarea82" type="text" id="textarea82" value="" size="4" /></td>
-                            <td><input name="textarea83" type="text" id="textarea83" value="" size="4" /></td>
-                            <td><input name="textarea84" type="text" id="textarea84" value="" size="4" /></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td><img src="@Url.Content("~/images/odontogram/48.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/47.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/46.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/45.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/44.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/43.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/42.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/41.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/31.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/32.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/33.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/34.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/35.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/36.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/37.jpg")" width="47" height="62" /></td>
-                            <td><img src="@Url.Content("~/images/odontogram/38.jpg")" width="47" height="62" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="textarea85" type="text" id="textarea85" value="" size="4" /></td>
-                            <td><input name="textarea86" type="text" id="textarea86" value="" size="4" /></td>
-                            <td><input name="textarea87" type="text" id="textarea87" value="" size="4" /></td>
-                            <td><input name="textarea88" type="text" id="textarea88" value="" size="4" /></td>
-                            <td><input name="textarea89" type="text" id="textarea89" value="" size="4" /></td>
-                            <td><input name="textarea90" type="text" id="textarea90" value="" size="4" /></td>
-                            <td><input name="textarea91" type="text" id="textarea91" value="" size="4" /></td>
-                            <td><input name="textarea92" type="text" id="textarea92" value="" size="4" /></td>
-                            <td><input name="textarea93" type="text" id="textarea93" value="" size="4" /></td>
-                            <td><input name="textarea94" type="text" id="textarea94" value="" size="4" /></td>
-                            <td><input name="textarea95" type="text" id="textarea95" value="" size="4" /></td>
-                            <td><input name="textarea96" type="text" id="textarea96" value="" size="4" /></td>
-                            <td><input name="textarea97" type="text" id="textarea97" value="" size="4" /></td>
-                            <td><input name="textarea98" type="text" id="textarea98" value="" size="4" /></td>
-                            <td><input name="textarea99" type="text" id="textarea99" value="" size="4" /></td>
-                            <td><input name="textarea100" type="text" id="textarea100" value="" size="4" /></td>
-                        </tr>
-                    </table>
-                    <table width="800" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width="49" height="20"><input name="textarea101" type="text" id="textarea101" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea102" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea103" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea104" value="" size="4" /></td>
-                            <td width="52"><input name="textarea101" type="text" id="textarea105" value="" size="4" /></td>
-                            <td width="47"><input name="textarea101" type="text" id="textarea106" value="" size="4" /></td>
-                            <td width="49"><input name="textarea101" type="text" id="textarea107" value="" size="4" /></td>
-                            <td width="83"><input name="textarea101" type="text" id="textarea108" value="" size="4" /></td>
-                            <td width="49"><input name="textarea101" type="text" id="textarea109" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea110" value="" size="4" /></td>
-                            <td width="48"><input name="textarea101" type="text" id="textarea111" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea112" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea113" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea114" value="" size="4" /></td>
-                            <td width="46"><input name="textarea101" type="text" id="textarea115" value="" size="4" /></td>
-                            <td width="55"><input name="textarea101" type="text" id="textarea116" value="" size="4" /></td>
-                        </tr>
-                        <tr>
-                            <td height="20">
-                                <label>
-                                    <input name="textarea101" type="text" id="textarea117" value="" size="4" />
-                                </label>
-                            </td>
-                            <td><input name="textarea101" type="text" id="textarea118" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea119" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea120" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea121" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea122" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea123" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea124" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea125" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea126" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea127" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea128" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea129" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea130" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea131" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea132" value="" size="4" /></td>
-                        </tr>
-                        <tr>
-                            <td height="20"><input name="textarea101" type="text" id="textarea133" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea134" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea135" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea136" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea137" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea138" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea139" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea140" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea141" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea142" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea143" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea144" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea145" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea146" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea147" value="" size="4" /></td>
-                            <td><input name="textarea101" type="text" id="textarea148" value="" size="4" /></td>
-                        </tr>
-                    </table>
-                    <div>
-                        <h6>Tratamiento:</h6>
-                        @Html.TextAreaFor(model => model.Treatment, new { placeholder = "Tratamiento", cols = "112"})
-                        @Html.ValidationMessageFor(model => model.Treatment)
-                    </div>
-                    <div>
-                        <h6>Notas:</h6>
-                        @Html.TextAreaFor(model => model.Notes, new { placeholder = "Notas", cols = "112" })
-                        @Html.ValidationMessageFor(model => model.Notes)
-                    </div>
-                    <table width="800" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width="401">Fecha:</td>
-                            <td width="399">Procedimiento Realizado:</td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText2" type="text" id="txtText2" value="" size="52" /></td>
-                            <td><input name="txtText3" type="text" id="txtText3" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText4" type="text" id="txtText4" value="" size="52" /></td>
-                            <td><input name="txtText42" type="text" id="txtText42" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText5" type="text" id="txtText5" value="" size="52" /></td>
-                            <td><input name="txtText43" type="text" id="txtText43" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText6" type="text" id="txtText6" value="" size="52" /></td>
-                            <td><input name="txtText44" type="text" id="txtText44" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText7" type="text" id="txtText7" value="" size="52" /></td>
-                            <td><input name="txtText45" type="text" id="txtText45" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText8" type="text" id="txtText8" value="" size="52" /></td>
-                            <td><input name="txtText46" type="text" id="txtText46" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText9" type="text" id="txtText9" value="" size="52" /></td>
-                            <td><input name="txtText47" type="text" id="txtText47" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText10" type="text" id="txtText10" value="" size="52" /></td>
-                            <td><input name="txtText48" type="text" id="txtText48" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText11" type="text" id="txtText11" value="" size="52" /></td>
-                            <td><input name="txtText49" type="text" id="txtText49" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText12" type="text" id="txtText12" value="" size="52" /></td>
-                            <td><input name="txtText50" type="text" id="txtText50" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText13" type="text" id="txtText13" value="" size="52" /></td>
-                            <td><input name="txtText51" type="text" id="txtText51" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText14" type="text" id="txtText14" value="" size="52" /></td>
-                            <td><input name="txtText52" type="text" id="txtText52" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText15" type="text" id="txtText15" value="" size="52" /></td>
-                            <td><input name="txtText53" type="text" id="txtText53" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText16" type="text" id="txtText16" value="" size="52" /></td>
-                            <td><input name="txtText54" type="text" id="txtText54" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText17" type="text" id="txtText17" value="" size="52" /></td>
-                            <td><input name="txtText55" type="text" id="txtText55" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText18" type="text" id="txtText18" value="" size="52" /></td>
-                            <td><input name="txtText56" type="text" id="txtText56" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText19" type="text" id="txtText19" value="" size="52" /></td>
-                            <td><input name="txtText57" type="text" id="txtText57" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText20" type="text" id="txtText20" value="" size="52" /></td>
-                            <td><input name="txtText58" type="text" id="txtText58" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText21" type="text" id="txtText21" value="" size="52" /></td>
-                            <td><input name="txtText59" type="text" id="txtText59" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText22" type="text" id="txtText22" value="" size="52" /></td>
-                            <td><input name="txtText60" type="text" id="txtText60" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText23" type="text" id="txtText23" value="" size="52" /></td>
-                            <td><input name="txtText61" type="text" id="txtText61" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText24" type="text" id="txtText24" value="" size="52" /></td>
-                            <td><input name="txtText62" type="text" id="txtText62" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText25" type="text" id="txtText25" value="" size="52" /></td>
-                            <td><input name="txtText63" type="text" id="txtText63" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText26" type="text" id="txtText26" value="" size="52" /></td>
-                            <td><input name="txtText64" type="text" id="txtText64" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText27" type="text" id="txtText27" value="" size="52" /></td>
-                            <td><input name="txtText65" type="text" id="txtText65" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText28" type="text" id="txtText28" value="" size="52" /></td>
-                            <td><input name="txtText66" type="text" id="txtText66" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText29" type="text" id="txtText29" value="" size="52" /></td>
-                            <td><input name="txtText67" type="text" id="txtText67" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText30" type="text" id="txtText30" value="" size="52" /></td>
-                            <td><input name="txtText68" type="text" id="txtText68" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText31" type="text" id="txtText31" value="" size="52" /></td>
-                            <td><input name="txtText69" type="text" id="txtText69" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText32" type="text" id="txtText32" value="" size="52" /></td>
-                            <td><input name="txtText70" type="text" id="txtText70" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText33" type="text" id="txtText33" value="" size="52" /></td>
-                            <td><input name="txtText71" type="text" id="txtText71" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText34" type="text" id="txtText34" value="" size="52" /></td>
-                            <td><input name="txtText72" type="text" id="txtText72" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText35" type="text" id="txtText35" value="" size="52" /></td>
-                            <td><input name="txtText73" type="text" id="txtText73" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText36" type="text" id="txtText36" value="" size="52" /></td>
-                            <td><input name="txtText74" type="text" id="txtText74" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText37" type="text" id="txtText37" value="" size="52" /></td>
-                            <td><input name="txtText75" type="text" id="txtText75" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText38" type="text" id="txtText38" value="" size="52" /></td>
-                            <td><input name="txtText76" type="text" id="txtText76" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText39" type="text" id="txtText39" value="" size="52" /></td>
-                            <td><input name="txtText77" type="text" id="txtText77" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText40" type="text" id="txtText40" value="" size="52" /></td>
-                            <td><input name="txtText78" type="text" id="txtText78" value="" size="52" /></td>
-                        </tr>
-                        <tr>
-                            <td><input name="txtText41" type="text" id="txtText41" value="" size="52" /></td>
-                            <td><input name="txtText79" type="text" id="txtText79" value="" size="52" /></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="one_third column-last">
-                    <input type="submit" value="Guardar" class="form-submit-button" />
-                    <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href="@Url.Action("Modificar", new { id = Model.ID })";return false;' />
-                </div>
-            </div>
+@section AddToHead
+{
+    <style type="text/css">
+        .odontogram_item {
+            display: inline-block;
+            width: 47px;
         }
-    </section>
+        input.odontogram_item {
+            display: inline-block;
+            padding: 0 0;
+            margin-bottom: 2px;
+            width: 45px;
+        }
+        .odontogram_row {
+            float: none;
+            clear: both;
+            width: 840px;
+        }
+        .odontogram_offset {
+            margin-left: 150px;
+        }
+        textarea.odontogram_field {
+            width: 752px;
+            height: 120px;
+        }
+    </style>
+}
+
+<section class="container page-content">
+    <hr class="vertical-space2">
+    @using (Html.BeginForm("Odontograma", "Historial", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.CreatedBy)
+        @Html.HiddenFor(model => model.DateCreated)
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item18A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item17A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item16A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item15A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item14A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item13A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item12A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item11A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item21A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item22A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item23A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item24A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item25A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item26A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item27A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item28A, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item18B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item17B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item16B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item15B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item14B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item13B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item12B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item11B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item21B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item22B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item23B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item24B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item25B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item26B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item27B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item28B, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item18C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item17C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item16C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item15C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item14C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item13C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item12C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item11C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item21C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item22C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item23C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item24C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item25C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item26C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item27C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item28C, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            <img src="@Url.Content("~/images/odontogram/18.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/17.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/16.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/15.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/14.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/13.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/12.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/11.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/21.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/22.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/23.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/24.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/25.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/26.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/27.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/28.jpg")" width="47" height="62" />
+        </div>
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item18D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item17D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item16D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item15D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item14D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item13D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item12D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item11D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item21D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item22D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item23D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item24D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item25D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item26D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item27D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item28D, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row odontogram_offset">
+            <img src="@Url.Content("~/images/odontogram/55.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/54.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/53.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/52.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/51.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/61.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/62.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/63.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/64.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/65.jpg")" width="47" height="62" />
+        </div>
+        <div class="odontogram_row odontogram_offset">
+            @Html.TextBoxFor(m => m.Item55A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item54A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item53A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item52A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item51A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item61A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item62A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item63A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item64A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item65A, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row odontogram_offset">
+            <img src="@Url.Content("~/images/odontogram/85.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/84.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/83.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/82.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/81.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/71.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/72.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/73.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/74.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/75.jpg")" width="47" height="62" />
+        </div>
+        <div class="odontogram_row odontogram_offset">
+            @Html.TextBoxFor(m => m.Item85A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item84A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item83A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item82A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item81A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item71A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item72A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item73A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item74A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item75A, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            <img src="@Url.Content("~/images/odontogram/48.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/47.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/46.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/45.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/44.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/43.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/42.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/41.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/31.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/32.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/33.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/34.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/35.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/36.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/37.jpg")" width="47" height="62" />
+            <img src="@Url.Content("~/images/odontogram/38.jpg")" width="47" height="62" />
+        </div>
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item48D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item47D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item46D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item45D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item44D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item43D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item42D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item41D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item31D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item32D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item33D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item34D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item35D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item36D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item37D, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item38D, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item48A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item47A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item46A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item45A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item44A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item43A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item42A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item41A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item31A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item32A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item33A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item34A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item35A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item36A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item37A, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item38A, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item48B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item47B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item46B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item45B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item44B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item43B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item42B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item41B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item31B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item32B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item33B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item34B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item35B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item36B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item37B, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item38B, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            @Html.TextBoxFor(m => m.Item48C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item47C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item46C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item45C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item44C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item43C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item42C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item41C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item31C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item32C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item33C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item34C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item35C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item36C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item37C, new { @class = "odontogram_item" })
+            @Html.TextBoxFor(m => m.Item38C, new { @class = "odontogram_item" })
+        </div>
+        <div class="odontogram_row">
+            <h6>Tratamiento:</h6>
+            @Html.TextAreaFor(model => model.Treatment, new { placeholder = "Tratamiento", @class = "odontogram_field" })
+            @Html.ValidationMessageFor(model => model.Treatment)
+            <h6>Notas:</h6>
+            @Html.TextAreaFor(model => model.Notes, new { placeholder = "Notas", @class = "odontogram_field" })
+            @Html.ValidationMessageFor(model => model.Notes)
+        </div>
+        <div class="sixteen columns">
+            <div class="one_third column-last">
+                <input type="submit" value="Guardar" class="form-submit-button" />
+                <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href="@Url.Action("Modificar", new { id = Model.ID })";return false;' />
+            </div>
+        </div>
+    }
+</section>

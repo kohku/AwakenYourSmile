@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201502121756390_Odontogram1.Designer.cs">
       <DependentUpon>201502121756390_Odontogram1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502122145238_AddingOdontogramItems.cs" />
+    <Compile Include="Migrations\201502122145238_AddingOdontogramItems.Designer.cs">
+      <DependentUpon>201502122145238_AddingOdontogramItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Odontogram.cs" />
     <Compile Include="Patient.cs" />
@@ -197,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502121756390_Odontogram1.resx">
       <DependentUpon>201502121756390_Odontogram1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502122145238_AddingOdontogramItems.resx">
+      <DependentUpon>201502122145238_AddingOdontogramItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -315,17 +315,26 @@ namespace AwakenYourSmile.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (model.IsValid)
-                    {
-                        if (!model.IsNew && model.IsChanged)
-                            model.LastUpdatedBy = User.Identity.Name;
+                    var entity = Odontogram.Load(model.ID);
 
-                        model.AcceptChanges();
+                    if (model == null)
+                        return HttpNotFound();
+
+                    typeof(Odontogram).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                        .Where(p => p.CanWrite && p.CanRead).ToList()
+                        .ForEach(p => p.SetValue(entity, p.GetValue(model, null)));
+
+                    if (entity.IsChanged)
+                        entity.LastUpdatedBy = User.Identity.Name;
+
+                    if (entity.IsValid)
+                    {
+                        entity.AcceptChanges();
 
                         return RedirectToAction("Odontograma", new { reference = model.ID });
                     }
 
-                    ModelState.AddModelError("ValidationMessage", model.ValidationMessage);
+                    ModelState.AddModelError("ValidationMessage", entity.ValidationMessage);
                 }
             }
             catch (DataException /* dex */)
