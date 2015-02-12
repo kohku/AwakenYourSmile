@@ -296,6 +296,9 @@ namespace AwakenYourSmile.Web.Controllers
             if (model == null)
                 model = new Odontogram(reference.Value);
 
+            if (model.IsNew)
+                model.CreatedBy = User.Identity.Name;
+
             return View(model);
         }
 
@@ -314,6 +317,9 @@ namespace AwakenYourSmile.Web.Controllers
                 {
                     if (model.IsValid)
                     {
+                        if (!model.IsNew && model.IsChanged)
+                            model.LastUpdatedBy = User.Identity.Name;
+
                         model.AcceptChanges();
 
                         return RedirectToAction("Odontograma", new { reference = model.ID });

@@ -1,6 +1,6 @@
 ﻿@model AwakenYourSmile.Odontogram
     @{
-        ViewBag.Title = "Upload";
+        ViewBag.Title = "Odontograma";
         Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
 
@@ -8,7 +8,9 @@
         <hr class="vertical-space2">
         @using (Html.BeginForm("Odontograma", "Historial", FormMethod.Post))
         {
-            @Html.HiddenFor(model => model.Reference)
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.HiddenFor(model => model.DateCreated)
             <div class="sixteen columns">
                 <div class="one_third">
                     <table width="800" border="0" cellspacing="0" cellpadding="0">
@@ -278,13 +280,14 @@
                         </tr>
                     </table>
                     <div>
-                        <h5>Tratamiento:</h5>
-                        <textarea name="txtText" cols="112" id="txtText"></textarea><br />
+                        <h6>Tratamiento:</h6>
+                        @Html.TextAreaFor(model => model.Treatment, new { placeholder = "Tratamiento", cols = "112"})
+                        @Html.ValidationMessageFor(model => model.Treatment)
                     </div>
                     <div>
-                        <h5>Notas:</h5>
-                        <textarea name="txtText" cols="112" id="txtText"></textarea><br />
-                        <br />
+                        <h6>Notas:</h6>
+                        @Html.TextAreaFor(model => model.Notes, new { placeholder = "Notas", cols = "112" })
+                        @Html.ValidationMessageFor(model => model.Notes)
                     </div>
                     <table width="800" border="0" cellspacing="0" cellpadding="0">
                         <tr>
@@ -451,7 +454,7 @@
                 </div>
                 <div class="one_third column-last">
                     <input type="submit" value="Guardar" class="form-submit-button" />
-                    <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href="@Url.Action("Modificar", new { id = Model.Reference })";return false;' />
+                    <input type="button" value="Regresar" class="form-submit-button" onclick='document.location.href="@Url.Action("Modificar", new { id = Model.ID })";return false;' />
                 </div>
             </div>
         }

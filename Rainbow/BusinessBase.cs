@@ -48,7 +48,7 @@ namespace Rainbow.Web
         {
             emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
             syncRoot = new object();
-            _dateCreated = DateTime.MinValue;
+            _dateCreated = DateTime.Now;
             _changedProperties = new StringCollection();
             _brokenRules = new StringDictionary();
             _isNew = true;

@@ -22,18 +22,33 @@ namespace AwakenYourSmile
 
         }
 
-        private string _reference;
-        public string Reference
+        private string _treatment;
+        public string Treatment
         {
-            get { return _reference; }
+            get { return _treatment; }
             set
             {
-                var changed = !object.Equals(_reference, value);
+                var changed = !object.Equals(_treatment, value);
                 if (changed)
-                    this.OnPropertyChanging("Reference");
-                this._reference = value;
+                    this.OnPropertyChanging("Treatment");
+                this._treatment = value;
                 if (changed)
-                    MarkChanged("Reference");
+                    MarkChanged("Treatment");
+            }
+        }
+
+        private string _notes;
+        public string Notes
+        {
+            get { return _notes; }
+            set
+            {
+                var changed = !object.Equals(_notes, value);
+                if (changed)
+                    this.OnPropertyChanging("Notes");
+                this._notes = value;
+                if (changed)
+                    MarkChanged("Notes");
             }
         }
 
