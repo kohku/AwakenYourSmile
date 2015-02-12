@@ -386,6 +386,9 @@
                     Epilepsia
                     @Html.CheckBoxFor(m => m.Epilepsy, Model.Epilepsy ? new { @checked = true } : null)
                 </label>
+                <h6>¿Cuál y por qué?</h6>
+                @Html.TextBoxFor(model => model.AilmentAge, new { placeholder = "¿A qué edad?" })
+                @Html.ValidationMessageFor(model => model.AilmentAge)
 
                 <h3>Antecedentes hereditarios</h3>
                 <br><h6>¿El padre, la madre, abuelos o familiares cercanos presentan alguna enfermedad como: diabetes, hipertensión arterial sistémica, problemas del corazón, problemas de la sangre, retraso mental, labio o paladar hendido? Especifique ¿Cuál? y ¿Quién?</h6>
@@ -444,9 +447,9 @@
                 @Html.TextBoxFor(model => model.UpperArchShape, new { placeholder = "hereditario" })
                 @Html.ValidationMessageFor(model => model.UpperArchShape)
 
-                <br><h6>Forma de arco interior</h6>
-                @Html.TextBoxFor(model => model.InnerArchShape, new { placeholder = "hereditario" })
-                @Html.ValidationMessageFor(model => model.InnerArchShape)
+                <br><h6>Forma de arco inferior</h6>
+                @Html.TextBoxFor(model => model.LowerArchShape, new { placeholder = "hereditario" })
+                @Html.ValidationMessageFor(model => model.LowerArchShape)
 
                 <br><h5>Hábitos</h5>
                 @Html.TextBoxFor(model => model.Habits, new { placeholder = "hereditario" })

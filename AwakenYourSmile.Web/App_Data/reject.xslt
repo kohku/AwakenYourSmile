@@ -13,7 +13,7 @@
       <body>
         Hola <xsl:value-of select="Appointment/FirstName"/>&#160;<xsl:value-of select="Appointment/LastName"/>, desafortunadamente no pudimos confirmar tu cita del día <xsl:value-of select="ms:format-date(Appointment/AppointmentDate, 'MMM dd, yyyy')"/>.
 
-      Por favor intenta con otro horaro o fecha distinta.
+      Por favor intenta con otro horario o fecha distinta.
 
       También puedes llamarnos al 01 452 519 2690
 

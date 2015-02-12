@@ -1208,6 +1208,22 @@ namespace AwakenYourSmile
             }
         }
 
+
+        private bool _ailmentAge;
+        public bool AilmentAge
+        {
+            get { return _ailmentAge; }
+            set
+            {
+                var changed = !object.Equals(_ailmentAge, value);
+                if (changed)
+                    this.OnPropertyChanging("AilmentAge");
+                this._ailmentAge = value;
+                if (changed)
+                    MarkChanged("AilmentAge");
+            }
+        }
+
         private string _hereditaries;
         public string Hereditaries
         {
@@ -1418,18 +1434,18 @@ namespace AwakenYourSmile
             }
         }
 
-        private string _innerArchShape;
-        public string InnerArchShape
+        private string _lowerArchShape;
+        public string LowerArchShape
         {
-            get { return _innerArchShape; }
+            get { return _lowerArchShape; }
             set
             {
-                var changed = !object.Equals(_innerArchShape, value);
+                var changed = !object.Equals(_lowerArchShape, value);
                 if (changed)
-                    this.OnPropertyChanging("InnerArchShape");
-                this._innerArchShape = value;
+                    this.OnPropertyChanging("LowerArchShape");
+                this._lowerArchShape = value;
                 if (changed)
-                    MarkChanged("InnerArchShape");
+                    MarkChanged("LowerArchShape");
             }
         }
 
