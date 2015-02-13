@@ -89,14 +89,17 @@ namespace AwakenYourSmile.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Modificar(ClinicalHistory model)
         {
+            if (model == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             try
             {
                 if (ModelState.IsValid)
                 {
                     var entity = ClinicalHistory.Load(model.ID);
 
-                    if (model == null)
-                        return HttpNotFound();
+                    if (entity == null)
+                        entity = new ClinicalHistory();
 
                     typeof(ClinicalHistory).GetProperties(BindingFlags.Public | BindingFlags.Instance)
                         .Where(p => p.CanWrite && p.CanRead).ToList()
@@ -317,8 +320,8 @@ namespace AwakenYourSmile.Web.Controllers
                 {
                     var entity = Odontogram.Load(model.ID);
 
-                    if (model == null)
-                        return HttpNotFound();
+                    if (entity == null)
+                        entity = new Odontogram();
 
                     typeof(Odontogram).GetProperties(BindingFlags.Public | BindingFlags.Instance)
                         .Where(p => p.CanWrite && p.CanRead).ToList()
